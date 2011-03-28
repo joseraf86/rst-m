@@ -1,0 +1,11 @@
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\bin\Debug\HTTPexample.exe
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\bin\Debug\HTTPexample.pdb
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.Form1.resources
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.Form2.resources
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.Form3.resources
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.Properties.Resources.resources
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.csproj.GenerateResource.Cache
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.exe
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.pdb
+C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\bin\Debug\ubicacion.sdf
