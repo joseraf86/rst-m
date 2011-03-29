@@ -42,8 +42,8 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(23, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 26);
-            this.label1.Text = "Registre una señal de tránsito o una avería";
+            this.label1.Size = new System.Drawing.Size(191, 16);
+            this.label1.Text = "Seleccione una opción";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // button1
@@ -52,7 +52,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 20);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Señal";
+            this.button1.Text = "Consultar Señal";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
@@ -61,7 +61,8 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(191, 20);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Avería";
+            this.button2.Text = "Registrar Señal";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 

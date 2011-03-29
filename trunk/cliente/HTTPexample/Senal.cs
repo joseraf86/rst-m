@@ -132,7 +132,7 @@ namespace Transito
 
 
         /* Consultar señales de transito por tipo, categoria, señal, estado, municipio, parroquia y coordenadas */
-        public ArrayList ConsultarSenalesPor(string idTipo,
+        public string ConsultarSenalesPor(string idTipo,
                                              string idCategoria,
                                              string idSenal,
                                              string codEstado,
@@ -140,7 +140,11 @@ namespace Transito
                                              string codParroquia)
         {
             HTTP.EnlaceHTTP enlace;
+            string vars = "";
+            rst.Usuario user = rst.Usuario.GetInstance();
+            string path = "rst-m/controller/MobileSenalController.php";
 
+            enlace = new HTTP.EnlaceHTTP();
             vars = "id_tipo_sen=" + idTipo +
                    "&id_categ_sen=" + idCategoria + 
                    "&id_senal_tra=" + idSenal + 
@@ -151,13 +155,13 @@ namespace Transito
 
             try
             {
-                enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
-                MessageBox.Show("Señal consultada");
+                enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
+                return "Señal consultada";
 
             }
             catch //(WebException)
             {
-                MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
+                return "Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo";
             }
         }
 
