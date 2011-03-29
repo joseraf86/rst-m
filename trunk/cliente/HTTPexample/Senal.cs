@@ -131,5 +131,35 @@ namespace Transito
         }
 
 
+        /* Consultar señales de transito por tipo, categoria, señal, estado, municipio, parroquia y coordenadas */
+        public ArrayList ConsultarSenalesPor(string idTipo,
+                                             string idCategoria,
+                                             string idSenal,
+                                             string codEstado,
+                                             string codMunicipio,
+                                             string codParroquia)
+        {
+            HTTP.EnlaceHTTP enlace;
+
+            vars = "id_tipo_sen=" + idTipo +
+                   "&id_categ_sen=" + idCategoria + 
+                   "&id_senal_tra=" + idSenal + 
+                   "&averia=N" + 
+                   "&cod_estado=" + codEstado + 
+                   "&cod_municipio=" + codMunicipio +
+                   "&cod_parroquia=" + codParroquia;
+
+            try
+            {
+                enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
+                MessageBox.Show("Señal consultada");
+
+            }
+            catch //(WebException)
+            {
+                MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
+            }
+        }
+
     }
 }
