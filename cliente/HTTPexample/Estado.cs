@@ -15,6 +15,7 @@ namespace Ubicacion
         public string descripcion;
     }
 
+    /* Clase que consulta la BD */
     public class Ubicacion
     {
         private SqlCeConnection conn = null;
