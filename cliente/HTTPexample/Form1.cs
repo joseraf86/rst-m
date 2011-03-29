@@ -8,13 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using System.Runtime.InteropServices;
 
 namespace HTTPexample
 {
 
     public partial class Form1 : Form
-    {
+    {/*
         private static Int32    FILE_DEVICE_HAL = 0x00000101;
         private static Int32    FILE_ANY_ACCESS = 0x0;
         private static Int32    METHOD_BUFFERED = 0x0;
@@ -24,7 +23,7 @@ namespace HTTPexample
         private static extern bool KernelIoControl(Int32 IoControlCode, IntPtr
           InputBuffer, Int32 InputBufferSize, byte[] OutputBuffer, Int32
           OutputBufferSize, ref Int32 BytesReturned);
-
+        */
         public Form1()
         {
             InitializeComponent();
@@ -37,28 +36,26 @@ namespace HTTPexample
 
         private void button1_Click(object sender, EventArgs e)
         {
+            rst.Usuario user = rst.Usuario.GetInstance();
+            HTTP.EnlaceHTTP enlace;
+            HTTP.Cifrado cifrado; 
             string domainName = "";
             string path = "rst-m/controller/SessionController.php";
             string login = "";
             string password = "";
-            string did = "";
             string respuesta = "";
             string vars = "";
-            rst.Usuario user = rst.Usuario.GetInstance();
-            HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
-            HTTP.Cifrado cifrado;
-            string hashedDID;
-            string hashedPassword;
+            string hashedDID = "";
+            string hashedPassword = "";
 
+            cifrado = new HTTP.Cifrado();
+            enlace = new HTTP.EnlaceHTTP();
             domainName = textBox1.Text;
             login = textBox2.Text;
             password = textBox3.Text;
-            did = GetDeviceID();
-            //3FBF5000-7351-0801-3633-433238384542
-            cifrado = new HTTP.Cifrado();
+            user.SetServer(domainName);
+            hashedDID = user.GetDID();
             hashedPassword = cifrado.MD5(password);
-            hashedDID = cifrado.MD5(did);
-
             vars = "login=" + login + "&password=" + hashedPassword + "&did=" + hashedDID;
 
            // try
@@ -68,8 +65,6 @@ namespace HTTPexample
                 {
                     user.SetLogin(login);
                     user.SetPassword(hashedPassword);
-                    user.SetDID(hashedDID);
-                    user.SetServer(domainName);
                     new Form2().Show();
                     this.Hide();
                 }
@@ -91,7 +86,7 @@ namespace HTTPexample
             }*/
         }
 
-        private static string GetDeviceID()
+       /* private static string GetDeviceID()
         {
             byte[] outputBuffer = new byte[256];
             Int32 outputBufferSize, bytesReturned;
@@ -151,7 +146,7 @@ namespace HTTPexample
             
             // return the Device ID string
             return sb.ToString();
-        }
+        } */
 
     }
 }

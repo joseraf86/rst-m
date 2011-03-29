@@ -17,12 +17,13 @@ namespace HTTPexample
             InitializeComponent();
         }
 
-        private void ok_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            new FConsultarSenal().Show();
+            this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             new Form3().Show();
             this.Hide();
