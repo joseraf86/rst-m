@@ -364,7 +364,7 @@ namespace RSTmobile
             this.Menu = this.mainMenu1;
             this.Name = "Form3";
             this.Text = "RST";
-            this.Load += new System.EventHandler(this.Form3_Load);
+            this.Load += new System.EventHandler(this.FRegistrarSenal_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

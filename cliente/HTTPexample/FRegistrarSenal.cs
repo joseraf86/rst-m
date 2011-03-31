@@ -22,7 +22,7 @@ namespace RSTmobile
             InitializeComponent();
         }
         
-        private void Form3_Load(object sender, EventArgs e)
+        private void FRegistrarSenal_Load(object sender, EventArgs e)
         {
             ubicacion   = new Ubicacion.Ubicacion();
             transito    = new Transito.Senal();
