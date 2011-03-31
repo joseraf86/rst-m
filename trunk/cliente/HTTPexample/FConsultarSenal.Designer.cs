@@ -1,4 +1,4 @@
-﻿namespace HTTPexample
+﻿namespace RSTmobile
 {
     partial class FConsultarSenal
     {

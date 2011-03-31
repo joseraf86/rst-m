@@ -2,7 +2,7 @@
 using System.Net;
 using System.Windows.Forms;
 
-namespace HTTPexample
+namespace RSTmobile
 {
 
     public partial class FMain : Form
