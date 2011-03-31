@@ -9,8 +9,10 @@ C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\
 C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.exe
 C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\obj\Debug\HTTPexample.pdb
 C:\Users\JOSE\Documents\Visual Studio 2008\Projects\HTTPexample\HTTPexample\bin\Debug\ubicacion.sdf
+C:\wamp\www\mrst\cliente\HTTPexample\bin\Debug\ubicacion.sdf
+C:\wamp\www\mrst\cliente\HTTPexample\bin\Debug\HTTPexample.exe
+C:\wamp\www\mrst\cliente\HTTPexample\bin\Debug\HTTPexample.pdb
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\ResolveAssemblyReference.cache
-C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.FConsultarSenal.resources
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.Form1.resources
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.Form2.resources
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.Form3.resources
@@ -18,6 +20,3 @@ C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.Properties.Resources.
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.csproj.GenerateResource.Cache
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.exe
 C:\wamp\www\mrst\cliente\HTTPexample\obj\Debug\HTTPexample.pdb
-C:\wamp\www\mrst\cliente\HTTPexample\bin\Debug\ubicacion.sdf
-C:\wamp\www\mrst\cliente\HTTPexample\bin\Debug\HTTPexample.exe
-C:\wamp\www\mrst\cliente\HTTPexample\bin\Debug\HTTPexample.pdb

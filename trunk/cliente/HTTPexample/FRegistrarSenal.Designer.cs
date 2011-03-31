@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace HTTPexample
 {
-    partial class Form3
+    partial class FRegistrarSenal
     {
         /// <summary>
         /// Required designer variable.
@@ -58,19 +58,26 @@ namespace HTTPexample
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(12, 7);
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.Location = new System.Drawing.Point(10, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 26);
+            this.label1.Size = new System.Drawing.Size(195, 20);
             this.label1.Text = "Datos de la Señal";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -86,7 +93,7 @@ namespace HTTPexample
             // 
             this.comboBox1.Location = new System.Drawing.Point(77, 92);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(129, 22);
+            this.comboBox1.Size = new System.Drawing.Size(140, 22);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -125,15 +132,15 @@ namespace HTTPexample
             // 
             this.label5.Location = new System.Drawing.Point(12, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 22);
+            this.label5.Size = new System.Drawing.Size(57, 21);
             this.label5.Text = "Coord Y";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(12, 33);
+            this.label6.Location = new System.Drawing.Point(12, 38);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 22);
+            this.label6.Size = new System.Drawing.Size(57, 19);
             this.label6.Text = "Coord X";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -152,7 +159,7 @@ namespace HTTPexample
             this.comboBox6.Items.Add("MAL ESTADO");
             this.comboBox6.Location = new System.Drawing.Point(77, 176);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(131, 22);
+            this.comboBox6.Size = new System.Drawing.Size(140, 22);
             this.comboBox6.TabIndex = 13;
             // 
             // label8
@@ -169,13 +176,14 @@ namespace HTTPexample
             this.comboBox7.Items.Add("INACTIVO");
             this.comboBox7.Location = new System.Drawing.Point(77, 204);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(131, 22);
+            this.comboBox7.Size = new System.Drawing.Size(140, 22);
             this.comboBox7.TabIndex = 15;
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.Color.PapayaWhip;
+            this.label9.BackColor = System.Drawing.Color.IndianRed;
             this.label9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label9.Location = new System.Drawing.Point(15, 239);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(194, 20);
@@ -195,7 +203,7 @@ namespace HTTPexample
             // 
             this.comboBox8.Location = new System.Drawing.Point(78, 262);
             this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(130, 22);
+            this.comboBox8.Size = new System.Drawing.Size(139, 22);
             this.comboBox8.TabIndex = 18;
             this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.comboBox8_SelectedIndexChanged);
             // 
@@ -211,7 +219,7 @@ namespace HTTPexample
             // 
             this.comboBox9.Location = new System.Drawing.Point(79, 292);
             this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(129, 22);
+            this.comboBox9.Size = new System.Drawing.Size(138, 22);
             this.comboBox9.TabIndex = 21;
             this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
@@ -227,12 +235,14 @@ namespace HTTPexample
             // 
             this.comboBox10.Location = new System.Drawing.Point(78, 320);
             this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(130, 22);
+            this.comboBox10.Size = new System.Drawing.Size(139, 22);
             this.comboBox10.TabIndex = 23;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 502);
+            this.button1.BackColor = System.Drawing.Color.PapayaWhip;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular);
+            this.button1.Location = new System.Drawing.Point(11, 7);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 20);
             this.button1.TabIndex = 24;
@@ -241,7 +251,9 @@ namespace HTTPexample
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(123, 503);
+            this.button2.BackColor = System.Drawing.Color.PapayaWhip;
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular);
+            this.button2.Location = new System.Drawing.Point(134, 7);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 20);
             this.button2.TabIndex = 25;
@@ -251,13 +263,15 @@ namespace HTTPexample
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PapayaWhip;
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.comboBox7);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.comboBox6);
             this.panel1.Controls.Add(this.label7);
@@ -269,10 +283,24 @@ namespace HTTPexample
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(311, 538);
+            this.panel1.Size = new System.Drawing.Size(311, 561);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(12, 389);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(242, 111);
+            this.textBox3.TabIndex = 45;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(10, 367);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 20);
+            this.label11.Text = "Observaciones";
             // 
             // textBox2
             // 
@@ -288,20 +316,36 @@ namespace HTTPexample
             this.textBox1.Size = new System.Drawing.Size(128, 21);
             this.textBox1.TabIndex = 34;
             // 
-            // label11
+            // panel2
             // 
-            this.label11.Location = new System.Drawing.Point(12, 353);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 20);
-            this.label11.Text = "Observaciones";
+            this.panel2.BackColor = System.Drawing.Color.IndianRed;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(2, 6);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(308, 24);
             // 
-            // textBox3
+            // panel3
             // 
-            this.textBox3.Location = new System.Drawing.Point(15, 374);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(194, 111);
-            this.textBox3.TabIndex = 45;
+            this.panel3.BackColor = System.Drawing.Color.IndianRed;
+            this.panel3.Location = new System.Drawing.Point(0, 234);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(310, 23);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.IndianRed;
+            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Location = new System.Drawing.Point(0, 511);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(310, 34);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.IndianRed;
+            this.panel5.Location = new System.Drawing.Point(0, 350);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(310, 10);
             // 
             // Form3
             // 
@@ -318,11 +362,12 @@ namespace HTTPexample
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
             this.Menu = this.mainMenu1;
-            this.MinimizeBox = false;
             this.Name = "Form3";
-            this.Text = "Registro de Señales de Tránsito";
+            this.Text = "RST";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -356,6 +401,10 @@ namespace HTTPexample
         private TextBox textBox1;
         private Label label11;
         private TextBox textBox3;
+        private Panel panel2;
+        private Panel panel4;
+        private Panel panel3;
+        private Panel panel5;
     }
 
 }
