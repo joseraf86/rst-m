@@ -28,7 +28,7 @@ namespace Transito
             Indicador aux;
             try
             {
-                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\ubicacion.sdf;Persist Security Info=False;";
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
                 engine = new SqlCeEngine(sdf_path);
 
                 conn = new SqlCeConnection(sdf_path);
@@ -64,7 +64,7 @@ namespace Transito
             Indicador aux;
             try
             {
-                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\ubicacion.sdf;Persist Security Info=False;";
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
                 engine = new SqlCeEngine(sdf_path);
 
                 conn = new SqlCeConnection(sdf_path);
@@ -102,7 +102,7 @@ namespace Transito
             //int entero;
             try
             {
-                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\ubicacion.sdf;Persist Security Info=False;";
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
                 engine = new SqlCeEngine(sdf_path);
 
                 conn = new SqlCeConnection(sdf_path);
