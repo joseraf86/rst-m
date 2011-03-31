@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace HTTPexample
+namespace RSTmobile
 {
     public partial class FRegistrarSenal : Form
     {
