@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Net;
-using System.IO;
 
 namespace HTTPexample
 {
-    public partial class Form3 : Form
+    public partial class FRegistrarSenal : Form
     {
         private string idTipoSenalActual;
         private string idCategSenalActual;
@@ -25,7 +17,7 @@ namespace HTTPexample
         private System.Collections.ArrayList listaCategSen;
         private System.Collections.ArrayList listaTipoSen;
     
-        public Form3()
+        public FRegistrarSenal()
         {
             InitializeComponent();
         }
@@ -51,7 +43,7 @@ namespace HTTPexample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Form2().Show();
+            new FMenu().Show();
             this.Hide();
         }
 
@@ -204,7 +196,7 @@ namespace HTTPexample
                         MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
                     }
 
-                    new Form2().Show();
+                    new FMenu().Show();
                     this.Hide();
                 }
                 return;

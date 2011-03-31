@@ -1,6 +1,6 @@
 ﻿namespace HTTPexample
 {
-    partial class Form2
+    partial class FMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -34,13 +34,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(23, 20);
+            this.label1.Location = new System.Drawing.Point(22, 142);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 16);
             this.label1.Text = "Seleccione una opción";
@@ -48,18 +51,22 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(23, 87);
+            this.button1.BackColor = System.Drawing.Color.PapayaWhip;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular);
+            this.button1.Location = new System.Drawing.Point(23, 11);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 20);
+            this.button1.Size = new System.Drawing.Size(190, 24);
             this.button1.TabIndex = 1;
             this.button1.Text = "Consultar Señal";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(23, 144);
+            this.button2.BackColor = System.Drawing.Color.PapayaWhip;
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular);
+            this.button2.Location = new System.Drawing.Point(23, 39);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 20);
+            this.button2.Size = new System.Drawing.Size(190, 24);
             this.button2.TabIndex = 2;
             this.button2.Text = "Registrar Señal";
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -67,12 +74,28 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PapayaWhip;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(237, 265);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.IndianRed;
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(1, 182);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(235, 73);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.IndianRed;
+            this.panel3.Location = new System.Drawing.Point(0, 8);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(236, 101);
             // 
             // Form2
             // 
@@ -82,10 +105,10 @@
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.panel1);
             this.Menu = this.mainMenu1;
-            this.MinimizeBox = false;
             this.Name = "Form2";
-            this.Text = "Registro de Señales de Tránsito";
+            this.Text = "RST";
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +119,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

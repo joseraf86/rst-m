@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace HTTPexample
 {
-    public partial class Form2 : Form
+    public partial class FMenu : Form
     {
 
-        public Form2()
+        public FMenu()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace HTTPexample
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new Form3().Show();
+            new FRegistrarSenal().Show();
             this.Hide();
         }
     }
