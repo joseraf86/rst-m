@@ -13,7 +13,7 @@
 <form name="input" action="../controller/SessionController.php" method="post">
 Login: <input type="text" name="login" value="CECF285319"/>
 pa: <input type="password" name="password" value="654321"/>
-<input type="text" name="did" value="cecf" />
+<input type="text" name="did" value="b313e938cbb42a991b0927ab95c28626" />
 <input type="submit" value="Submit" />
 </form>
 

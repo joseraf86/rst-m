@@ -19,56 +19,81 @@ $_SESSION['rol_db'] = "localhost";
 $_SESSION['manejador_db'] = "mysql";
 $_SESSION['usuario_db'] = "desarrollo";
 $_SESSION['password_db'] = "654321";
-/*
-$coord_x		= $_GET['coord_x'];
-$coord_y		= $_GET['coord_y'];
-$id_tipo_sen	= $_GET['id_tipo_sen'];
-$id_categ_sen	= $_GET['id_categ_sen'];
-$id_senal_tra	= $_GET['id_senal_tra'];
-$id_estad_sen	= $_GET['id_estad_sen'];	// 1
-$id_status_sen	= $_GET['id_status_sen'];	// 'I'
-$averia			= 'N';
-$cod_estado		= $_GET['cod_estado'];
-$cod_municipio	= $_GET['cod_municipio'];
-$cod_parroquia	= $_GET['cod_parroquia'];
-$login			= $_GET['login'];
-$observaciones	= $_GET['observaciones'];
-$desc_image_sen	= '';
-*/
 
-$coord_x		= $_POST['coord_x'];
-$coord_y		= $_POST['coord_y'];
-$id_tipo_sen	= $_POST['id_tipo_sen'];
-$id_categ_sen	= $_POST['id_categ_sen'];
-$id_senal_tra	= $_POST['id_senal_tra'];
-$id_estad_sen	= $_POST['id_estad_sen'];	// 1
-$id_status_sen	= $_POST['id_status_sen'];	// 'I'
-$averia			= 'N';
-$cod_estado		= $_POST['cod_estado'];
-$cod_municipio	= $_POST['cod_municipio'];
-$cod_parroquia	= $_POST['cod_parroquia'];
-$login			= $_POST['login'];
-$observaciones	= $_POST['observaciones'];
-$desc_image_sen	= '';
+//*********** BORRAR TRAS PRUEBA ***********
 
-$log = date(DATE_RFC822).": ($coord_x,$coord_y,$id_tipo_sen,$id_categ_sen,$id_senal_tra, $id_estad_sen, $id_status_sen, $cod_estado, $cod_municipio, $cod_parroquia, $login)\r\n";
-$fp = fopen('log.txt','a' ); 
-fwrite($fp,$log);
-fclose($fp);
+$_SESSION['db_portal'] 		= 'portal_inttt';
+$_SESSION['id_aplicacion'] 	= '13';
 
-try {
+//******************************************
+$id_op			= $_POST['id_op'];
+//$id_op			= $_GET['id_op'];
 
-$senal 	= new MobileSenal;
-$senal->registrar( $coord_x, $coord_y, $id_tipo_sen, $id_categ_sen, $id_senal_tra, $id_estad_sen, $id_status_sen, $averia, $cod_estado, $cod_municipio, 
+switch ($id_op) {
+
+  case 1: // Consultar señal
+  
+	$id_tipo_sen	= $_POST['id_tipo_sen'];
+	$id_categ_sen	= $_POST['id_categ_sen'];
+	$id_senal_tra	= $_POST['id_senal_tra'];
+	$cod_estado		= $_POST['cod_estado'];
+	$cod_municipio	= $_POST['cod_municipio'];
+	$cod_parroquia	= $_POST['cod_parroquia'];
+	$login			= $_POST['login'];
+	
+	/*$id_tipo_sen	= $_GET['id_tipo_sen'];
+	$id_categ_sen	= $_GET['id_categ_sen'];
+	$id_senal_tra	= $_GET['id_senal_tra'];
+	$cod_estado		= $_GET['cod_estado'];
+	$cod_municipio	= $_GET['cod_municipio'];
+	$cod_parroquia	= $_GET['cod_parroquia'];
+	//$login			= $_GET['login'];*/
+	
+	$senal 	= new MobileSenal;
+	$senal->consultar( $id_tipo_sen, $id_categ_sen, $id_senal_tra, $cod_estado, $cod_municipio, $cod_parroquia );
+		
+	echo "OK";
+  
+	break;
+  case 2: // Registrar señal
+	
+	$coord_x		= $_POST['coord_x'];
+	$coord_y		= $_POST['coord_y'];
+	$id_tipo_sen	= $_POST['id_tipo_sen'];
+	$id_categ_sen	= $_POST['id_categ_sen'];
+	$id_senal_tra	= $_POST['id_senal_tra'];
+	$id_estad_sen	= $_POST['id_estad_sen'];	// 1
+	$id_status_sen	= $_POST['id_status_sen'];	// 'I'
+	$averia			= 'N';
+	$cod_estado		= $_POST['cod_estado'];
+	$cod_municipio	= $_POST['cod_municipio'];
+	$cod_parroquia	= $_POST['cod_parroquia'];
+	$login			= $_POST['login'];
+	$observaciones	= $_POST['observaciones'];
+	$desc_image_sen	= '';
+
+	$log = date(DATE_RFC822).": ($coord_x,$coord_y,$id_tipo_sen,$id_categ_sen,$id_senal_tra, $id_estad_sen, $id_status_sen, $cod_estado, $cod_municipio, $cod_parroquia, $login)\r\n";
+	$fp = fopen('log.txt','a' ); 
+	fwrite($fp,$log);
+	fclose($fp);
+	
+	try {
+
+		$senal 	= new MobileSenal;
+		$senal->registrar( $coord_x, $coord_y, $id_tipo_sen, $id_categ_sen, $id_senal_tra, $id_estad_sen, $id_status_sen, $averia, $cod_estado, $cod_municipio, 
 					$cod_parroquia, $login, $observaciones, $desc_image_sen );
 		
-echo "OK";
+		echo "OK";
+	}
+	catch (Exception $e){ 
+		$fe = fopen('error.txt','w' ); 
+		fwrite($fe,$e->getMessage());
+		fclose($fe);
+	}
+	
+	break;
+  default:
+    break;  
 }
-catch (Exception $e){ 
-	$fe = fopen('error.txt','w' ); 
-	fwrite($fe,$e->getMessage());
-	fclose($fe);
-}		
-
 
 ?>
