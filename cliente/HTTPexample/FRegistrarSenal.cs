@@ -146,7 +146,7 @@ namespace RSTmobile
             int statusSen      = 0;
             rst.Usuario user;
             string domainName;
-            string path = "rst-m/controller/MobileSenalController.php";
+            string path = "RSTmobile/servidor/controller/MobileSenalController.php";
             HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
 
             if (comboBox6.SelectedItem != null && comboBox7.SelectedItem != null && comboBox8.SelectedItem != null && 
@@ -180,7 +180,7 @@ namespace RSTmobile
                     idEstadSen != "" && codEstado != "" && codMunicipio != "" &&
                     ((codParroquia == "" && codEstado == "DF") || (codParroquia != "" && codEstado != "DF")) ) 
                 {
-                    vars = "coord_x=" + coordX + "&coord_y=" + coordY + "&id_tipo_sen=" + idTipoSen +
+                    vars = "id_op=2&coord_x=" + coordX + "&coord_y=" + coordY + "&id_tipo_sen=" + idTipoSen +
                         "&id_categ_sen=" + idCategSen + "&id_senal_tra=" + idSenalTra + "&id_estad_sen=" + idEstadSen +
                         "&id_status_sen=" + idStatusSen + "&averia=N&cod_estado=" + codEstado + "&cod_municipio=" + codMunicipio +
                         "&cod_parroquia=" + codParroquia + "&login=" + login + "&observaciones=" + observaciones;
