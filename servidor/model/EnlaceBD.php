@@ -2,9 +2,9 @@
 
 @session_start();
 
-@include("../../publico/librerias/adodb/adodb.inc.php");
-@include("../../publico/librerias/adodb/drivers/adodb-sybase.inc.php");
-@include("../../publico/librerias/adodb/drivers/adodb-sybase_ase.inc.php");
+@include("../../../publico/librerias/adodb/adodb.inc.php");
+@include("../../../publico/librerias/adodb/drivers/adodb-sybase.inc.php");
+@include("../../../publico/librerias/adodb/drivers/adodb-sybase_ase.inc.php");
 @include_once('ResultadoBD.php');
 
 class EnlaceBD {

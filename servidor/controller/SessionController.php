@@ -28,5 +28,6 @@ if ( $data_sesion == 'CONEXION SATISFACTORIA' ) {
 }
 else
 	echo 'ERROR';
-	
+
+//echo '<script>parent.location="../view/xsenal.php"</script>';
 ?>
