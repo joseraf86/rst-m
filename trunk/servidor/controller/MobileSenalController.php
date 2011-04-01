@@ -27,7 +27,6 @@ $_SESSION['id_aplicacion'] 	= '13';
 
 //******************************************
 $id_op			= $_POST['id_op'];
-//$id_op			= $_GET['id_op'];
 
 switch ($id_op) {
 
@@ -41,19 +40,9 @@ switch ($id_op) {
 	$cod_parroquia	= $_POST['cod_parroquia'];
 	$login			= $_POST['login'];
 	
-	/*$id_tipo_sen	= $_GET['id_tipo_sen'];
-	$id_categ_sen	= $_GET['id_categ_sen'];
-	$id_senal_tra	= $_GET['id_senal_tra'];
-	$cod_estado		= $_GET['cod_estado'];
-	$cod_municipio	= $_GET['cod_municipio'];
-	$cod_parroquia	= $_GET['cod_parroquia'];
-	//$login			= $_GET['login'];*/
-	
 	$senal 	= new MobileSenal;
-	$senal->consultar( $id_tipo_sen, $id_categ_sen, $id_senal_tra, $cod_estado, $cod_municipio, $cod_parroquia );
-		
-	echo "OK";
-  
+	echo $senal->consultar( $id_tipo_sen, $id_categ_sen, $id_senal_tra, $cod_estado, $cod_municipio, $cod_parroquia );
+	
 	break;
   case 2: // Registrar señal
 	
