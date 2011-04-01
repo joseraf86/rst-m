@@ -37,17 +37,17 @@ class MobileSenal {
 			$bool = 0;
 		}
 	
-		if($cod_estado != '0'){
+		if($cod_estado != ''){
 			
 			if ($bool == 0)
 				$condicion .= 'AND ';
 			
 			$condicion .= "ds.cod_estado = '$cod_estado' ";
 						
-			if($cod_municipio != '0'){
+			if($cod_municipio != ''){
 				$condicion .= "AND ds.cod_municipio = '$cod_municipio' ";
 				
-				if($cod_parroquia != '0')
+				if($cod_parroquia != '')
 					$condicion .= "AND ds.cod_parroquia = '$cod_parroquia' ";					
 			}
 		}
@@ -60,7 +60,10 @@ class MobileSenal {
 							ds.id_senal_tra as id_senal_tra,
 							ds.id_estad_sen as id_estad_sen,
 							ds.id_status_sen as id_status_sen, 
-							ds.averia as averia, 
+							ds.averia as averia,
+							ds.cod_estado as cod_estado,
+							ds.cod_municipio as cod_municipio,
+							ds.cod_parroquia as cod_parroquia,
 							$fmt_fecha as fecha_registro,
 							ds.desc_image_sen as desc_image_sen
 						FROM db_rst.rst_datos_sen as ds 
@@ -68,15 +71,32 @@ class MobileSenal {
 		
 		$this->respuesta = $conexion->consultar($sql) 
 			or die("No se pudo consultar la Señal de Tránsito");
-		/*
+		
+		$xml = '<rst>';
 		while( $temparray = $this->respuesta->buscar_fila() ) {
-			echo $temparray['id_senal']." ".$temparray['coord_x']." ".$temparray['coord_y']." ".$temparray['averia']."<br/><h1>XXX</h1>";
+			$xml .= '<senal id="'.$temparray['id_senal'].'">'; 
+			$xml .= '<x>'.$temparray['coord_x'].'</x>';
+			$xml .= '<y>'.$temparray['coord_y'].'</y>';
+			$xml .= '<tipo>'.$temparray['id_tipo_sen'].'</tipo>';
+			$xml .= '<categoria>'.$temparray['id_categ_sen'].'</categoria>';
+			$xml .= '<descripcion>'.$temparray['id_senal_tra'].'</descripcion>';
+			$xml .= '<entidad>'.$temparray['cod_estado'].'</entidad>';
+			$xml .= '<municipio>'.$temparray['cod_municipio'].'</municipio>';
+			$xml .= '<parroquia>'.$temparray['cod_parroquia'].'</parroquia>';
+			$xml .= '<estado>'.$temparray['id_estad_sen'].'</estado>';
+			$xml .= '<averia>'.$temparray['averia'].'</averia>';
+			$xml .= '</senal>';
 		}
-		*/
+		
+		$xml .= '</rst>';
+		
 		$conexion->desconectar();
 		
 		$auditoria 	= new Auditoria;
 		$auditoria->insertar( "210" );
+		
+		return $xml;
+		
 	}
 	
 	public function registrar( $coord_x, $coord_y, $id_tipo_sen, $id_categ_sen, $id_senal_tra, $id_estad_sen, $id_status_sen, $averia, $cod_estado, 

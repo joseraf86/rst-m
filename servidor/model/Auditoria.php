@@ -38,8 +38,14 @@ class Auditoria {
 		$conexion 	= new EnlaceBD;
         $var 		= $conexion->conectar( $_SESSION['db_rst'] );
 		
+		if ( isset($_SESSION['USER_LOGIN']) ) {
 		$sql = "insert into ".$_SESSION['db_rst'].$_SESSION['schema_db'].".$this->trst_auditoria ( login, id_evento ) 
 				values ( '".$_SESSION['USER_LOGIN']."', $id_evento )";
+		}
+		else {
+		$sql = "insert into ".$_SESSION['db_rst'].$_SESSION['schema_db'].".$this->trst_auditoria ( login, id_evento ) 
+				values ( 'anonimo', $id_evento )";
+		}
 		
 		$this->respuesta = $conexion->consultar($sql) 
 			or die("No se pudo agregar el Evento $id_evento del Usuario $login.");

@@ -2,6 +2,7 @@
 
 @include("../model/Sesion.php");
 
+@session_start();
 // http://localhost/rst-m/controller/SessionController.php?login=CECF285319&password=654321&did=12345
 
 $login		= $_POST['login'];
@@ -17,6 +18,7 @@ $_SESSION['usuario_db'] = 'desarrollo';
 $_SESSION['password_db'] = '654321';
 $_SESSION['db_portal'] = 'portal_inttt';
 $_SESSION['id_aplicacion'] = '13';
+$_SESSION['USER_LOGIN'] = $login;
 //	$parametros	= new Parametros_sistema;
 //	$parametros->inicializar_datos_db();
 	
@@ -29,5 +31,5 @@ if ( $data_sesion == 'CONEXION SATISFACTORIA' ) {
 else
 	echo 'ERROR';
 
-//echo '<script>parent.location="../view/xsenal.php"</script>';
+echo '<script>parent.location="../view/xsenal.php"</script>';
 ?>
