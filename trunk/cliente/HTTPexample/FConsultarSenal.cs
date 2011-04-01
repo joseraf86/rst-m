@@ -183,12 +183,12 @@ namespace RSTmobile
             string idTipoSen = "";
             string idCategSen = "";
             string idSenalTra = "";
-            //string vars;
+            string vars;
             rst.Usuario user;
             string domainName;
-            //string path = "rst-m/controller/MobileSenalController.php";
-            //HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
-
+            string path = "RSTmobile/servidor/controller/MobileSenalController.php";
+            string response;
+            HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
 
             user = rst.Usuario.GetInstance();
             login = user.GetLogin();
@@ -213,9 +213,34 @@ namespace RSTmobile
             idCategSen = idCategSenalActual;
             idSenalTra = idSenalTransitoActual;
 
-            MessageBox.Show(codEstado + " " + codMunicipio + " " + codParroquia + " " + idTipoSen + " " + idCategSen + " " + idSenalTra);
+            //MessageBox.Show(codEstado + " " + codMunicipio + " " + codParroquia + " " + idTipoSen + " " + idCategSen + " " + idSenalTra);
+
+            //if (idTipoSen != "" && idCategSen != "" && idSenalTra != "" && codEstado != "" && codMunicipio != "" &&
+            //   ((codParroquia == "" && codEstado == "DF") || (codParroquia != "" && codEstado != "DF")) ) 
+            //    {
+                    vars = "id_op=1&id_tipo_sen=" + idTipoSen +
+                        "&id_categ_sen=" + idCategSen + "&id_senal_tra=" + idSenalTra +
+                        "&cod_estado=" + codEstado + "&cod_municipio=" + codMunicipio +
+                        "&cod_parroquia=" + codParroquia;
+
+                   /* try
+                    {*/
+                        response = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
+                        MessageBox.Show("respuesta: "+response);
+
+                    /*}
+                    catch //(WebException)
+                    {
+                        MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
+                   }*/
+
+                    new FMenu().Show();
+                    this.Hide();
+              //  }
+              //  return;
+            }
            
-        }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
