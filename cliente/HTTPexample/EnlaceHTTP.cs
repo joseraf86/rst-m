@@ -16,7 +16,7 @@ namespace HTTP
     {
         public static string POST = "POST";
 
-        public string Transferir(
+        public Stream Transferir(
             string vars,
             string method,
             string domainName,
@@ -26,7 +26,7 @@ namespace HTTP
             return this.Transferir(vars, method, domainName, path, "ISO-8859-1", "application/x-www-form-urlencoded");
         }
 
-        public string Transferir(
+        public Stream Transferir(
             string vars, 
             string method, 
             string domainName,
@@ -38,9 +38,7 @@ namespace HTTP
             {
                 HttpWebResponse webResp;
                 Stream stream;
-                StreamReader reader;
                 HttpWebRequest webReq;
-                string respuesta = "";
                 byte[] buffer;
             
                 buffer = Encoding.ASCII.GetBytes( vars );
@@ -55,15 +53,11 @@ namespace HTTP
                 stream.Close();
 
                 webResp = (HttpWebResponse)webReq.GetResponse();
-                reader = new StreamReader(webResp.GetResponseStream());
-                respuesta = reader.ReadToEnd();
-                reader.Close();
-                return respuesta;
-
+                return webResp.GetResponseStream();
             }
             else { // GET
             }
-            return "";
+            return null;
         }
     }
 

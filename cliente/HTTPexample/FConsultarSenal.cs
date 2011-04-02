@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Xml;
+using System.IO;
 
 namespace RSTmobile
 {
@@ -187,7 +189,8 @@ namespace RSTmobile
             rst.Usuario user;
             string domainName;
             string path = "RSTmobile/servidor/controller/MobileSenalController.php";
-            string response;
+            Stream stream;
+            string xml = "";
             HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
 
             user = rst.Usuario.GetInstance();
@@ -213,6 +216,8 @@ namespace RSTmobile
             idCategSen = idCategSenalActual;
             idSenalTra = idSenalTransitoActual;
 
+            XmlTextReader xmlReader;
+
             //MessageBox.Show(codEstado + " " + codMunicipio + " " + codParroquia + " " + idTipoSen + " " + idCategSen + " " + idSenalTra);
 
             //if (idTipoSen != "" && idCategSen != "" && idSenalTra != "" && codEstado != "" && codMunicipio != "" &&
@@ -221,13 +226,53 @@ namespace RSTmobile
                     vars = "id_op=1&id_tipo_sen=" + idTipoSen +
                         "&id_categ_sen=" + idCategSen + "&id_senal_tra=" + idSenalTra +
                         "&cod_estado=" + codEstado + "&cod_municipio=" + codMunicipio +
-                        "&cod_parroquia=" + codParroquia;
+                        "&cod_parroquia=" + codParroquia + "&login="+login;
 
                    /* try
                     {*/
-                        response = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
-                        MessageBox.Show("respuesta: "+response);
+                        stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
+                        if (stream != null)
+                        {
+                            xmlReader = new XmlTextReader(stream);
 
+                            while (xmlReader.Read())
+                            {
+                                switch (xmlReader.NodeType)
+                                {
+                                    case XmlNodeType.Element:
+                                        // i.e. <rst>
+                                        switch (xmlReader.LocalName)
+                                        {
+                                            case "rst":
+                                                break;
+                                            case "senal":
+                                                xml += "senal: \r\n";
+                                                break;
+                                            default:
+                                                xml += "" + xmlReader.LocalName+" ";
+                                                break;
+                                        }
+                                        
+                                        break;
+                                    case XmlNodeType.EndElement:
+                                        // i.e. </rst>
+                                        xml += ".\r\n"; 
+                                        break;
+                                    case XmlNodeType.Text:
+                                        // texto
+                                        xml += "" + xmlReader.Value; 
+                                        break;
+                                    default:
+                                        xml += "" + xmlReader.NodeType;
+                                        break;
+                                }
+                                //xml += String.Format("{0}: {1}\n", xmlReader.LocalName, xmlReader.Value);
+                            }
+
+                            MessageBox.Show(xml);
+                        
+                        }
+                        
                     /*}
                     catch //(WebException)
                     {
