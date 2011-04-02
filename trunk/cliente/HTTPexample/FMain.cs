@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RSTmobile
 {
@@ -30,6 +31,8 @@ namespace RSTmobile
             string vars = "";
             string hashedDID = "";
             string hashedPassword = "";
+            Stream stream;
+            StreamReader reader;
 
             cifrado = new HTTP.Cifrado();
             enlace = new HTTP.EnlaceHTTP();
@@ -43,7 +46,11 @@ namespace RSTmobile
 
             try
             {
-                respuesta = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
+                stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
+                reader = new StreamReader(stream);
+                respuesta = reader.ReadToEnd();
+                reader.Close();
+                
                 if (respuesta == "OK")
                 {
                     user.SetLogin(login);

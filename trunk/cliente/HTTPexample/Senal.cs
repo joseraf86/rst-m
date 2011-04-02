@@ -15,6 +15,120 @@ namespace Transito
         public string descripcion;
     }
 
+    public class SenalTransito
+    {
+        private int id;
+
+        private double x;
+        private double y;
+
+        private int idTipo;
+        private int idCategoria;
+        private int idSenal;
+
+        private int idEstado;
+        private int idEstatus;
+
+        private int codEstado;
+        private int codMunicipio;
+        private int codParroquia;
+
+        private string idAveria;
+
+        //********** SETTERS ***********
+        public void setID(int id)
+        {
+            this.id = id;
+        }
+        public void setX(double x)
+        {
+            this.x = x;
+        }
+        public void setY(double y)
+        {
+            this.y = y;
+        }
+        public void setIDTipo(int idTipo)
+        {
+            this.idTipo = idTipo;
+        }
+        public void setIDCategoria(int idCategoria)
+        {
+            this.idCategoria = idCategoria;
+        }
+        public void setIDSenal(int idSenal)
+        {
+            this.idSenal = idSenal;
+        }
+        public void setIDEstado(int idEstado)
+        {
+            this.idEstado = idEstado;
+        }
+        public void setIDEstatus(int idEstatus)
+        {
+            this.idEstatus = idEstatus;
+        }
+        public void setCodEstado(int codEstado)
+        {
+            this.codEstado = codEstado;
+        }
+        public void setCodMunicipio(int codMunicipio)
+        {
+            this.codMunicipio = codMunicipio;
+        }
+        public void setIDAveria(string idAveria)
+        {
+            this.idAveria = idAveria;
+        }
+
+        //********** GETTERS ***********
+        public int getID()
+        {
+            return this.id;
+        }
+        public double getX()
+        {
+            return this.x;
+        }
+        public double getY()
+        {
+            return this.y;
+        }
+        public int getIDTipo()
+        {
+            return this.idTipo;
+        }
+        public int getIDCategoria()
+        {
+            return this.idCategoria;
+        }
+        public int getIDSenal()
+        {
+            return this.idSenal;
+        }
+        public int getIDEstado()
+        {
+            return this.idEstado;
+        }
+        public int getIDEstatus()
+        {
+            return this.idEstatus;
+        }
+        public int getCodEstado()
+        {
+            return this.codEstado;
+        }
+        public int getCodMunicipio()
+        {
+            return this.codMunicipio;
+        }
+        public int getCodParroquia()
+        {
+            return this.codParroquia;
+        }
+
+    }
+
     public class Senal
     {
         private SqlCeConnection conn = null;
