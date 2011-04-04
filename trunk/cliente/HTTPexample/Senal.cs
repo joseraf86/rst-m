@@ -29,9 +29,9 @@ namespace Transito
         private int idEstado;
         private int idEstatus;
 
-        private int codEstado;
-        private int codMunicipio;
-        private int codParroquia;
+        private string codEstado;
+        private string codMunicipio;
+        private string codParroquia;
 
         private string idAveria;
 
@@ -68,13 +68,17 @@ namespace Transito
         {
             this.idEstatus = idEstatus;
         }
-        public void setCodEstado(int codEstado)
+        public void setCodEstado(string codEstado)
         {
             this.codEstado = codEstado;
         }
-        public void setCodMunicipio(int codMunicipio)
+        public void setCodMunicipio(string codMunicipio)
         {
             this.codMunicipio = codMunicipio;
+        }
+        public void setCodParroquia(string codParroquia)
+        {
+            this.codParroquia = codParroquia;
         }
         public void setIDAveria(string idAveria)
         {
@@ -82,15 +86,15 @@ namespace Transito
         }
 
         //********** GETTERS ***********
-        public int getID()
+        public int GetID()
         {
             return this.id;
         }
-        public double getX()
+        public double GetX()
         {
             return this.x;
         }
-        public double getY()
+        public double GetY()
         {
             return this.y;
         }
@@ -98,15 +102,15 @@ namespace Transito
         {
             return this.idTipo;
         }
-        public int getIDCategoria()
+        public int GetIDCategoria()
         {
             return this.idCategoria;
         }
-        public int getIDSenal()
+        public int GetIDSenal()
         {
             return this.idSenal;
         }
-        public int getIDEstado()
+        public int GetIDEstado()
         {
             return this.idEstado;
         }
@@ -114,25 +118,102 @@ namespace Transito
         {
             return this.idEstatus;
         }
-        public int getCodEstado()
+        public string getCodEstado()
         {
             return this.codEstado;
         }
-        public int getCodMunicipio()
+        public string GetCodMunicipio()
         {
             return this.codMunicipio;
         }
-        public int getCodParroquia()
+        public string GetCodParroquia()
         {
             return this.codParroquia;
         }
+        public override string ToString()
+        {
+            string str = "";
+            str += "( " + id;
 
+            str += ", " + x;
+            str += ", " + y;
+
+            str += ", " + idTipo;
+            str += ", " + idCategoria;
+            str += ", " + idSenal;
+
+            str += ", " + idEstado;
+            str += ", " + idEstatus;
+
+            str += ", " + codEstado;
+            str += ", " + codMunicipio;
+            str += ", " + codParroquia;
+
+            str += ", " + idAveria;
+            str += ")";
+            return str;
+        }
     }
 
     public class Senal
     {
         private SqlCeConnection conn = null;
         private SqlCeCommand cmd;
+        private ArrayList listaTipoSenal;
+        private ArrayList listaCategoria;
+        private ArrayList listaSenales;
+        private string idTipo;
+        private string idCategoria;
+
+        public ArrayList GetTipoSenal()
+        {
+            if (listaTipoSenal == null)
+            // Consultar Tipo de Señales 
+            {
+                listaTipoSenal = ConsultarTipos();
+            }
+            return listaTipoSenal;
+        }
+
+        public ArrayList GetCategoriaSenal( string idTipo )
+        {
+            if (listaCategoria == null)
+            // Consultar Tipo de Señales 
+            {
+                listaCategoria = this.ConsultarCategorias(idTipo);
+            }
+            else
+            {
+                if (this.idTipo != idTipo)
+                {
+                    this.idTipo = idTipo;
+                    this.idCategoria = "";    
+                    listaCategoria = this.ConsultarCategorias(idTipo);
+                }
+            }
+
+            return listaCategoria;
+        }
+
+        public ArrayList GetSenales ( string idTipo, string idCategoria )
+        {
+            if (listaSenales == null)
+            // Consultar Tipo de Señales 
+            {
+                listaSenales = this.ConsultarSenales(idTipo, idCategoria);
+            }
+            else
+            {
+                if (this.idTipo != idTipo || this.idCategoria != idCategoria)
+                {
+                    this.idTipo = idTipo;
+                    this.idCategoria = idCategoria;
+                    listaSenales = this.ConsultarSenales(idTipo, idCategoria);
+                }
+
+            }
+            return listaSenales;
+        }
 
         public ArrayList ConsultarSenales( string id_tipo_sen,  string id_categ_sen)
         {
