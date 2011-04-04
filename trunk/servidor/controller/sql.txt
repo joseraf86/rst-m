@@ -1,0 +1,6 @@
+INSERT INTO db_rst.rst_datos_sen 
+				( 	coord_x, coord_y, id_tipo_sen, id_categ_sen, id_senal_tra, id_estad_sen, id_status_sen, averia, cod_estado, cod_municipio, 
+					cod_parroquia, login, fecha_registro, observaciones, desc_image_sen ) 
+				VALUES 
+				( 	'10.4873291', '-66.8151324', 1, 2, 7, 01, 'A', 'N', 'AN', 'AN-AR', 
+					'AN-AR-01', 'CECF285319', NOW(), '', '' )
