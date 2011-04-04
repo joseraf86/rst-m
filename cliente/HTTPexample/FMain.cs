@@ -60,7 +60,7 @@ namespace RSTmobile
                 }
                 else
                 {
-                    MessageBox.Show("Datos incorrectos. Intente de nuevo " + respuesta + " " + hashedDID);
+                    MessageBox.Show("Datos incorrectos. Intente de nuevo");
                 }
     
             }
