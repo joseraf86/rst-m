@@ -80,10 +80,11 @@ class MobileSenal {
 			$xml .= '<tipo>'.$temparray['id_tipo_sen'].'</tipo>';
 			$xml .= '<categoria>'.$temparray['id_categ_sen'].'</categoria>';
 			$xml .= '<descripcion>'.$temparray['id_senal_tra'].'</descripcion>';
+			$xml .= '<estado>'.$temparray['id_estad_sen'].'</estado>';
+			$xml .= '<estatus>'.$temparray['id_status_sen'].'</estatus>';
 			$xml .= '<entidad>'.$temparray['cod_estado'].'</entidad>';
 			$xml .= '<municipio>'.$temparray['cod_municipio'].'</municipio>';
 			$xml .= '<parroquia>'.$temparray['cod_parroquia'].'</parroquia>';
-			$xml .= '<estado>'.$temparray['id_estad_sen'].'</estado>';
 			$xml .= '<averia>'.$temparray['averia'].'</averia>';
 			$xml .= '</senal>';
 		}
