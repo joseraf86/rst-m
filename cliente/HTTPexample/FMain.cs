@@ -33,6 +33,10 @@ namespace RSTmobile
             string hashedPassword = "";
             Stream stream;
             StreamReader reader;
+            
+            // Preparar lista cache de tipo de señal
+            Transito.Senal senales = Transito.Senal.GetInstance();
+            senales.GetTipoSenal();
 
             cifrado = new HTTP.Cifrado();
             enlace = new HTTP.EnlaceHTTP();

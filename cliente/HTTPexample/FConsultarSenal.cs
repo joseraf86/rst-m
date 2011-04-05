@@ -261,10 +261,10 @@ namespace RSTmobile
                                             case "senal":
                                                 break;
                                             case "x":
-                                                senal.setX(Convert.ToDouble(xmlReader.Value.ToString()));
+                                                senal.setX(Convert.ToDouble(""+xmlReader.Value));
                                                 break;
                                             case "y":
-                                                senal.setY(Convert.ToDouble(xmlReader.Value.ToString()));
+                                                senal.setY(Convert.ToDouble(""+xmlReader.Value));
                                                 break;
                                             case "tipo":
                                                 senal.setIDTipo(Convert.ToInt32(xmlReader.Value.ToString()));
