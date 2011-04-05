@@ -24,19 +24,19 @@ namespace RSTmobile
         
         private void FRegistrarSenal_Load(object sender, EventArgs e)
         {
-            ubicacion   = new Ubicacion.Ubicacion();
-            transito    = new Transito.Senal();
-            listaEstados = ubicacion.ConsultarEstados();
+            ubicacion = Ubicacion.Ubicacion.GetInstance();
+            transito    = Transito.Senal.GetInstance();
+            listaEstados = ubicacion.GetEstados();
             listaTipoSen = transito.GetTipoSenal();
 
             foreach (Ubicacion.Entidad edo in listaEstados)
             {
-                this.comboBox8.Items.Add(edo.descripcion);
+                this.comboEntidad.Items.Add(edo.descripcion);
             }
 
             foreach (Transito.Indicador edo in listaTipoSen)
             {
-                this.comboBox1.Items.Add(edo.descripcion);
+                this.comboTipo.Items.Add(edo.descripcion);
             }
 
         }
@@ -52,16 +52,16 @@ namespace RSTmobile
             int selectedIndex = 0;
             Transito.Indicador aux;
             
-            comboBox2.Items.Clear();
-            comboBox3.Items.Clear();
-            selectedIndex = comboBox1.SelectedIndex;
+            comboCategorias.Items.Clear();
+            comboSenales.Items.Clear();
+            selectedIndex = comboTipo.SelectedIndex;
             aux = (Transito.Indicador)listaTipoSen[selectedIndex];
             idTipoSenalActual = aux.id;
             listaCategSen = transito.GetCategoriaSenal(idTipoSenalActual);
 
             foreach (Transito.Indicador data in listaCategSen)
             {
-                this.comboBox2.Items.Add(data.descripcion);
+                this.comboCategorias.Items.Add(data.descripcion);
             }
         }
 
@@ -70,8 +70,8 @@ namespace RSTmobile
             int selectedIndex = 0;
             Transito.Indicador aux;
 
-            comboBox3.Items.Clear();
-            selectedIndex = comboBox2.SelectedIndex;
+            comboSenales.Items.Clear();
+            selectedIndex = comboCategorias.SelectedIndex;
             if (listaCategSen != null)
             {
                 aux = (Transito.Indicador)listaCategSen[selectedIndex];
@@ -80,45 +80,45 @@ namespace RSTmobile
 
                 foreach (Transito.Indicador data in listaSenalesTra)
                 {
-                    this.comboBox3.Items.Add(data.descripcion);
+                    this.comboSenales.Items.Add(data.descripcion);
                 }
             }
         }
 
         private void comboBox8_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox9.Items.Clear();
-            comboBox10.Items.Clear();
+            comboMunicipios.Items.Clear();
+            comboParroquias.Items.Clear();
             int selectedIndex = 0;
             Ubicacion.Entidad aux;
             Ubicacion.Ubicacion datos;
-            selectedIndex = comboBox8.SelectedIndex;
+            selectedIndex = comboEntidad.SelectedIndex;
             aux     = (Ubicacion.Entidad) listaEstados[selectedIndex];
-            datos   = new Ubicacion.Ubicacion();
-            listaMunicipios = datos.ConsultarMunicipios(aux.id);
+            datos = Ubicacion.Ubicacion.GetInstance();
+            listaMunicipios = datos.GetMunicipios(aux.id);
 
             foreach (Ubicacion.Entidad data in listaMunicipios)
             {
-                this.comboBox9.Items.Add(data.descripcion);
+                this.comboMunicipios.Items.Add(data.descripcion);
             }
         }
 
         private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox10.Items.Clear();
+            comboParroquias.Items.Clear();
             int selectedIndex = 0;
             Ubicacion.Entidad aux;
             Ubicacion.Ubicacion datos;
 
             if (listaMunicipios != null) {
-                selectedIndex = comboBox9.SelectedIndex;
+                selectedIndex = comboMunicipios.SelectedIndex;
                 aux = (Ubicacion.Entidad)listaMunicipios[selectedIndex];
-                datos = new Ubicacion.Ubicacion();
-                listaParroquias = datos.ConsultarParroquias(aux.id);
+                datos = Ubicacion.Ubicacion.GetInstance();
+                listaParroquias = datos.GetParroquias(aux.id);
 
                 foreach (Ubicacion.Entidad data in listaParroquias)
                 {
-                    this.comboBox10.Items.Add(data.descripcion);
+                    this.comboParroquias.Items.Add(data.descripcion);
                 }
             }
             
@@ -149,16 +149,16 @@ namespace RSTmobile
             string path = "RSTmobile/servidor/controller/MobileSenalController.php";
             HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
 
-            if (comboBox6.SelectedItem != null && comboBox7.SelectedItem != null && comboBox8.SelectedItem != null && 
-                comboBox9.SelectedItem != null && comboBox10.SelectedItem != null)
+            if (comboBox6.SelectedItem != null && comboBox7.SelectedItem != null && comboEntidad.SelectedItem != null && 
+                comboMunicipios.SelectedItem != null && comboParroquias.SelectedItem != null)
             {
                 user = rst.Usuario.GetInstance();
                 login = user.GetLogin();
                 domainName = user.GetServer();
                 statusSen = comboBox7.SelectedIndex;
-                edo = (Ubicacion.Entidad)listaEstados[comboBox8.SelectedIndex];
-                mun = (Ubicacion.Entidad)listaMunicipios[comboBox9.SelectedIndex];
-                par = (Ubicacion.Entidad)listaParroquias[comboBox10.SelectedIndex];
+                edo = (Ubicacion.Entidad)listaEstados[comboEntidad.SelectedIndex];
+                mun = (Ubicacion.Entidad)listaMunicipios[comboMunicipios.SelectedIndex];
+                par = (Ubicacion.Entidad)listaParroquias[comboParroquias.SelectedIndex];
                 coordX = "10.4873291";
                 coordY = "-66.8151324";
                 idTipoSen = idTipoSenalActual;
@@ -208,7 +208,7 @@ namespace RSTmobile
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Transito.Indicador aux = (Transito.Indicador)listaSenalesTra[comboBox3.SelectedIndex];
+            Transito.Indicador aux = (Transito.Indicador)listaSenalesTra[comboSenales.SelectedIndex];
             idSenalTransitoActual = aux.id;
         }
 

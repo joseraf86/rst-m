@@ -85,20 +85,20 @@
             // 
             this.button2.BackColor = System.Drawing.Color.PapayaWhip;
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(5, 6);
+            this.button2.Location = new System.Drawing.Point(4, 8);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 24);
+            this.button2.Size = new System.Drawing.Size(86, 20);
             this.button2.TabIndex = 14;
-            this.button2.Text = "Cancelar";
+            this.button2.Text = "Volver";
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.PapayaWhip;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(164, 6);
+            this.button1.Location = new System.Drawing.Point(149, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 24);
+            this.button1.Size = new System.Drawing.Size(86, 20);
             this.button1.TabIndex = 13;
             this.button1.Text = "Consultar";
             this.button1.Click += new System.EventHandler(this.button1_Click);
