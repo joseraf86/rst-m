@@ -48,10 +48,10 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.PapayaWhip;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular);
-            this.button1.Location = new System.Drawing.Point(151, 222);
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(134, 225);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 24);
+            this.button1.Size = new System.Drawing.Size(86, 20);
             this.button1.TabIndex = 1;
             this.button1.Text = "OK";
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -62,7 +62,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(137, 21);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "192.168.2.100";
+            this.textBox1.Text = "192.168.2.101";
             // 
             // label2
             // 

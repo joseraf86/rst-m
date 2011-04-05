@@ -20,6 +20,60 @@ namespace Ubicacion
     {
         private SqlCeConnection conn = null;
         private SqlCeCommand cmd;
+        private static Ubicacion instance;
+        private System.Collections.ArrayList listaEstados;
+        private System.Collections.ArrayList listaMunicipios;
+        private System.Collections.ArrayList listaParroquias;
+        private string codEstado;
+        private string codMunicipio;
+
+        private Ubicacion() { }
+
+        public static Ubicacion GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Ubicacion();
+            }
+            return instance;
+        }
+
+        public ArrayList GetEstados()
+        {
+            if (listaEstados == null)
+                listaEstados = ConsultarEstados();
+            return listaEstados;
+        }
+
+        public ArrayList GetMunicipios(string codEstado)
+        {
+            if (listaMunicipios == null)
+                listaMunicipios = ConsultarMunicipios(codEstado);
+            else
+            {
+                if (this.codEstado != codEstado)
+                {
+                    this.codEstado = codEstado;
+                    listaMunicipios = ConsultarMunicipios(codEstado);
+                }
+            }
+            return listaMunicipios;
+        }
+
+        public ArrayList GetParroquias(string codMunicipio)
+        {
+            if (listaParroquias == null)
+                listaParroquias = ConsultarParroquias(codMunicipio);
+            else
+            {
+                if (this.codMunicipio != codMunicipio)
+                {
+                    this.codMunicipio = codMunicipio;
+                    listaParroquias = ConsultarParroquias(codMunicipio);
+                }
+            }
+            return listaParroquias;
+        }
 
         public ArrayList ConsultarEstados()
         {

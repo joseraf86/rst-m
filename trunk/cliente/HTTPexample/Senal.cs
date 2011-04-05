@@ -27,7 +27,7 @@ namespace Transito
         private int idSenal;
 
         private int idEstado;
-        private int idEstatus;
+        private string idEstatus;
 
         private string codEstado;
         private string codMunicipio;
@@ -64,7 +64,7 @@ namespace Transito
         {
             this.idEstado = idEstado;
         }
-        public void setIDEstatus(int idEstatus)
+        public void setIDEstatus(string idEstatus)
         {
             this.idEstatus = idEstatus;
         }
@@ -98,7 +98,7 @@ namespace Transito
         {
             return this.y;
         }
-        public int getIDTipo()
+        public int GetIDTipo()
         {
             return this.idTipo;
         }
@@ -114,11 +114,11 @@ namespace Transito
         {
             return this.idEstado;
         }
-        public int getIDEstatus()
+        public string getIDEstatus()
         {
             return this.idEstatus;
         }
-        public string getCodEstado()
+        public string GetCodEstado()
         {
             return this.codEstado;
         }
@@ -164,6 +164,20 @@ namespace Transito
         private ArrayList listaSenales;
         private string idTipo;
         private string idCategoria;
+        private static Senal instance;
+
+        public static Senal GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Senal();
+            }
+            return instance;
+        }
+
+        private Senal()
+        {
+        }
 
         public ArrayList GetTipoSenal()
         {

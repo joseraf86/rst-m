@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Xml;
 using System.IO;
+using System.Net;
 
 namespace RSTmobile
 {
@@ -26,8 +27,8 @@ namespace RSTmobile
 
         private void FConsultarSenal_Load(object sender, EventArgs e)
         {
-            ubicacion = new Ubicacion.Ubicacion();
-            transito = new Transito.Senal();
+            ubicacion = Ubicacion.Ubicacion.GetInstance();
+            transito = Transito.Senal.GetInstance();
             listaEstados = ubicacion.ConsultarEstados();
             listaTipoSen = transito.ConsultarTipos();
 
@@ -136,7 +137,7 @@ namespace RSTmobile
             if (selectedIndex != 0)
             {
                 aux = (Ubicacion.Entidad)listaEstados[selectedIndex-1];
-                datos = new Ubicacion.Ubicacion();
+                datos = Ubicacion.Ubicacion.GetInstance();
                 listaMunicipios = datos.ConsultarMunicipios(aux.id);
 
                 foreach (Ubicacion.Entidad data in listaMunicipios)
@@ -161,7 +162,7 @@ namespace RSTmobile
                 if (selectedIndex != 0)
                 {
                     aux = (Ubicacion.Entidad)listaMunicipios[selectedIndex-1];
-                    datos = new Ubicacion.Ubicacion();
+                    datos = Ubicacion.Ubicacion.GetInstance();
                     listaParroquias = datos.ConsultarParroquias(aux.id);
 
                     foreach (Ubicacion.Entidad data in listaParroquias)
@@ -244,6 +245,10 @@ namespace RSTmobile
                                     case XmlNodeType.Element:
                                         // i.e. <rst>
                                         currentNode = xmlReader.LocalName;
+                                        if (currentNode == "senal")
+                                        {
+                                            senal.setID(Convert.ToInt32(xmlReader.GetAttribute(0)));
+                                        }
                                         break;
                                     case XmlNodeType.EndElement:
                                         // i.e. </rst>
@@ -274,7 +279,7 @@ namespace RSTmobile
                                                 senal.setIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
                                                 break;
                                             case "estatus":
-                                                //senal.setIDEstatus(Convert.ToInt32(xmlReader.Value.ToString()));
+                                                senal.setIDEstatus(xmlReader.Value.ToString());
                                                 break;
                                             case "entidad":
                                                 senal.setCodEstado(xmlReader.Value.ToString());
@@ -292,15 +297,6 @@ namespace RSTmobile
                                                 break;
                                         } 
                                         break;
-                                    case XmlNodeType.Attribute:
-                                      // i.e. </rst>
-                                        //if (currentNode == "senal") {
-                                            //xmlReader.GetAttribute("id")
-                                            MessageBox.Show("atributo");
-                                            //senal.setID(Convert.ToInt32(xmlReader.Value.ToString()));
-                                                
-                                        //} 
-                                        break;
                                     default:
                                         //xml += "" + xmlReader.NodeType;
                                         break;
@@ -311,8 +307,8 @@ namespace RSTmobile
                             fsenal.SetSenal(senal);
                             fsenal.Show();
                             this.Hide();
-
-                            //MessageBox.Show(senal.ToString());
+                            
+                            //    MessageBox.Show("No se encontraron señales");
                         
                         }
                         
@@ -324,7 +320,10 @@ namespace RSTmobile
                         new FMenu().Show();
                         this.Hide();
                     }
-
+                    catch (WebException)
+                    {
+                        MessageBox.Show("Asegurese de estar en un lugar con buena señal e intente de nuevo");
+                    }
                     
               //  }
               //  return;
