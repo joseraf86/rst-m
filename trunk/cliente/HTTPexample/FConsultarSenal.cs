@@ -19,10 +19,16 @@ namespace RSTmobile
         private System.Collections.ArrayList listaSenalesTra;
         private System.Collections.ArrayList listaCategSen;
         private System.Collections.ArrayList listaTipoSen;
+        private FMenu menu;
 
         public FConsultarSenal()
         {
             InitializeComponent();
+        }
+
+        public void SetMenu(FMenu menu)
+        {
+            this.menu = menu;
         }
 
         private void FConsultarSenal_Load(object sender, EventArgs e)
@@ -333,7 +339,9 @@ namespace RSTmobile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new FMenu().Show();
+            if (menu == null)
+                menu = new FMenu();
+            menu.Show();    
             this.Hide();
         }
 
