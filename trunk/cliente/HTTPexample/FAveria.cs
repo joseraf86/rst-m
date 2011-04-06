@@ -58,6 +58,10 @@ namespace RSTmobile
                 MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
             }
 
+            Transito.Senal xxx = null;
+            xxx.ConsultarMotivo();
+
+
         }
 
         private void FAveria_Load(object sender, EventArgs e)
