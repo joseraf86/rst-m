@@ -38,7 +38,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboMunicipio = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboEstado = new System.Windows.Forms.ComboBox();
+            this.comboEntidad = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboSenal = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.comboMunicipio);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.comboEstado);
+            this.panel1.Controls.Add(this.comboEntidad);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.comboSenal);
             this.panel1.Controls.Add(this.label3);
@@ -138,14 +138,14 @@
             this.label5.Text = "Municipio";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // comboEstado
+            // comboEntidad
             // 
-            this.comboEstado.Items.Add("TODOS");
-            this.comboEstado.Location = new System.Drawing.Point(72, 130);
-            this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(165, 22);
-            this.comboEstado.TabIndex = 8;
-            this.comboEstado.SelectedIndexChanged += new System.EventHandler(this.comboEstado_SelectedIndexChanged);
+            this.comboEntidad.Items.Add("TODOS");
+            this.comboEntidad.Location = new System.Drawing.Point(72, 130);
+            this.comboEntidad.Name = "comboEntidad";
+            this.comboEntidad.Size = new System.Drawing.Size(165, 22);
+            this.comboEntidad.TabIndex = 8;
+            this.comboEntidad.SelectedIndexChanged += new System.EventHandler(this.comboEstado_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -249,7 +249,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboMunicipio;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboEstado;
+        private System.Windows.Forms.ComboBox comboEntidad;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboSenal;
         private System.Windows.Forms.Label label3;

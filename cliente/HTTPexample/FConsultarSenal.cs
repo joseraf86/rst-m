@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.IO;
 using System.Net;
+using System.Collections;
 
 namespace RSTmobile
 {
@@ -11,48 +12,50 @@ namespace RSTmobile
         private string idTipoSenalActual;
         private string idCategSenalActual;
         private string idSenalTransitoActual;
+        private string codEstado;
         private Ubicacion.Ubicacion ubicacion;
         private Transito.Senal transito;
-        private System.Collections.ArrayList listaEstados;
-        private System.Collections.ArrayList listaMunicipios;
-        private System.Collections.ArrayList listaParroquias;
-        private System.Collections.ArrayList listaSenalesTra;
-        private System.Collections.ArrayList listaCategSen;
-        private System.Collections.ArrayList listaTipoSen;
-        private FMenu menu;
-
+        private ArrayList listaEstados;
+        private ArrayList listaMunicipios;
+        private ArrayList listaParroquias;
+        private ArrayList listaSenalesTra;
+        private ArrayList listaCategSen;
+        private ArrayList listaTipoSen;
+        
         public FConsultarSenal()
         {
             InitializeComponent();
-        }
-
-        public void SetMenu(FMenu menu)
-        {
-            this.menu = menu;
+            idTipoSenalActual = "";
+            idCategSenalActual = "";
+            idSenalTransitoActual = "";
+            codEstado = "";
+            ubicacion = Ubicacion.Ubicacion.GetInstance();
+            transito = Transito.Senal.GetInstance();
         }
 
         private void FConsultarSenal_Load(object sender, EventArgs e)
         {
-            ubicacion = Ubicacion.Ubicacion.GetInstance();
-            transito = Transito.Senal.GetInstance();
-            listaEstados = ubicacion.ConsultarEstados();
-            listaTipoSen = transito.ConsultarTipos();
+            listaEstados = ubicacion.GetEstados();
+            listaTipoSen = transito.GetTipoSenal();
 
             foreach (Ubicacion.Entidad edo in listaEstados)
             {
-                this.comboEstado.Items.Add(edo.descripcion);
+                this.comboEntidad.Items.Add(edo.descripcion);
             }
 
             foreach (Transito.Indicador edo in listaTipoSen)
             {
                 this.comboTipo.Items.Add(edo.descripcion);
             }
+            // En los comboboxes se coloca la opción TODOS como predeterminada 
             comboTipo.SelectedIndex = 0;
-            comboCategoria.SelectedIndex = 0;
-            comboSenal.SelectedIndex = 0;
-            comboEstado.SelectedIndex = 0;
-            comboMunicipio.SelectedIndex = 0;
-            comboParroquia.SelectedIndex = 0;
+            //comboCategoria.SelectedIndex = 0;
+            //comboSenal.SelectedIndex = 0;
+            comboEntidad.SelectedIndex = 0;
+            //comboMunicipio.SelectedIndex = 0;
+            //comboParroquia.SelectedIndex = 0;
+
+            
         }
 
         private void comboTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,13 +69,17 @@ namespace RSTmobile
             comboSenal.Items.Add("TODOS");
             comboCategoria.SelectedIndex = 0;
             comboSenal.SelectedIndex = 0;
+            idCategSenalActual = "";
+            idSenalTransitoActual = "";
+
             selectedIndex = comboTipo.SelectedIndex;
-            if (selectedIndex != 0)
+            if (selectedIndex != 0) 
             {
+                // comboTipo NO esta en la opcion TODOS
                 // listaTipoSen no contiene opcion TODOS => selectedIndex - 1
                 aux = (Transito.Indicador)listaTipoSen[selectedIndex - 1];
                 idTipoSenalActual = aux.id;
-                listaCategSen = transito.ConsultarCategorias(idTipoSenalActual);
+                listaCategSen = transito.GetCategoriaSenal(idTipoSenalActual);
 
                 foreach (Transito.Indicador data in listaCategSen)
                 {
@@ -81,6 +88,7 @@ namespace RSTmobile
             }
             else
             {
+                // comboTipo esta en la opcion TODOS
                 idTipoSenalActual = "";
             }
         }
@@ -93,14 +101,19 @@ namespace RSTmobile
             comboSenal.Items.Clear();
             comboSenal.Items.Add("TODOS");
             comboSenal.SelectedIndex = 0;
-            if (listaCategSen != null && idTipoSenalActual != "")
+            idSenalTransitoActual = "";
+           
+            if (!idTipoSenalActual.Equals(""))
             {
+                if (listaCategSen == null)
+                    listaCategSen = transito.GetCategoriaSenal(idTipoSenalActual);
+            
                 selectedIndex = comboCategoria.SelectedIndex;
-                if (selectedIndex != 0)
+                 if (selectedIndex != 0)
                 {
                     aux = (Transito.Indicador)listaCategSen[selectedIndex - 1];
                     idCategSenalActual = aux.id;
-                    listaSenalesTra = transito.ConsultarSenales(idTipoSenalActual, idCategSenalActual);
+                    listaSenalesTra = transito.GetSenales(idTipoSenalActual, idCategSenalActual);
 
                     foreach (Transito.Indicador data in listaSenalesTra)
                     {
@@ -108,15 +121,22 @@ namespace RSTmobile
                     }
                     return;
                 }
-            }
-            idCategSenalActual = "";
+                else
+                    idCategSenalActual = "";
+            } 
+            
         }
 
         private void comboSenal_SelectedIndexChanged(object sender, EventArgs e)
         {
             Transito.Indicador aux;
-            if (listaSenalesTra != null)
-            {
+            transito = Transito.Senal.GetInstance();
+
+            if ( !idTipoSenalActual.Equals("") && !idCategSenalActual.Equals("") ) {
+
+                if (listaSenalesTra == null)
+                    listaSenalesTra = transito.GetSenales(idTipoSenalActual, idCategSenalActual);
+
                 if (comboSenal.SelectedIndex != 0)
                 {
                     aux = (Transito.Indicador)listaSenalesTra[comboSenal.SelectedIndex-1];
@@ -125,51 +145,63 @@ namespace RSTmobile
                 }
             }
             idSenalTransitoActual = "";
-
         }
 
         private void comboEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int selectedIndex = 0;
+            Ubicacion.Entidad aux;
+
             comboMunicipio.Items.Clear();
             comboParroquia.Items.Clear();
             comboParroquia.Items.Add("TODOS");
             comboMunicipio.Items.Add("TODOS");
             comboMunicipio.SelectedIndex = 0;
             comboParroquia.SelectedIndex = 0;
-            int selectedIndex = 0;
-            Ubicacion.Entidad aux;
-            Ubicacion.Ubicacion datos;
-            selectedIndex = comboEstado.SelectedIndex;
+            
+            selectedIndex = comboEntidad.SelectedIndex;
+
+            if (listaEstados == null)
+                listaEstados = ubicacion.GetEstados();
+            
             if (selectedIndex != 0)
             {
                 aux = (Ubicacion.Entidad)listaEstados[selectedIndex-1];
-                datos = Ubicacion.Ubicacion.GetInstance();
-                listaMunicipios = datos.ConsultarMunicipios(aux.id);
+                codEstado = aux.id;
+                listaMunicipios = ubicacion.GetMunicipios(codEstado);
 
                 foreach (Ubicacion.Entidad data in listaMunicipios)
                 {
                     this.comboMunicipio.Items.Add(data.descripcion);
                 }
             }
+            else
+            {
+                codEstado = "";
+            }
         }
 
         private void comboMunicipio_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             int selectedIndex = 0;
             Ubicacion.Entidad aux;
-            Ubicacion.Ubicacion datos;
 
             comboParroquia.Items.Clear();
             comboParroquia.Items.Add("TODOS");
             comboParroquia.SelectedIndex = 0;
-            if (listaMunicipios != null)
+            
+            if (!codEstado.Equals(""))
             {
+                if (listaMunicipios == null)
+                    listaMunicipios = ubicacion.GetMunicipios(codEstado);
+
                 selectedIndex = comboMunicipio.SelectedIndex;
+
                 if (selectedIndex != 0)
                 {
-                    aux = (Ubicacion.Entidad)listaMunicipios[selectedIndex-1];
-                    datos = Ubicacion.Ubicacion.GetInstance();
-                    listaParroquias = datos.ConsultarParroquias(aux.id);
+                    aux = (Ubicacion.Entidad)listaMunicipios[selectedIndex - 1];
+                    listaParroquias = ubicacion.GetParroquias(aux.id);
 
                     foreach (Ubicacion.Entidad data in listaParroquias)
                     {
@@ -177,6 +209,7 @@ namespace RSTmobile
                     }
                 }
             }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -186,7 +219,6 @@ namespace RSTmobile
             Ubicacion.Entidad par;
             // Datos obtenidos del form3
             string login = "";
-            string codEstado = "";
             string codMunicipio = "";
             string codParroquia = "";
             string idTipoSen = "";
@@ -205,9 +237,9 @@ namespace RSTmobile
             login = user.GetLogin();
             domainName = user.GetServer();
 
-            if (comboEstado.SelectedIndex != 0)
+            if (comboEntidad.SelectedIndex != 0)
             {
-                edo = (Ubicacion.Entidad)listaEstados[comboEstado.SelectedIndex-1];
+                edo = (Ubicacion.Entidad)listaEstados[comboEntidad.SelectedIndex-1];
                 codEstado = edo.id;
                 if (listaMunicipios != null && comboMunicipio.SelectedIndex != 0)
                 {
@@ -323,7 +355,9 @@ namespace RSTmobile
                     {
                         MessageBox.Show("El formato del XML recibido no es valido");
 
-                        new FMenu().Show();
+                        RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                        FMenu fmenu = rstapp.GetMenu();
+                        fmenu.Show();
                         this.Hide();
                     }
                     catch (WebException)
@@ -339,9 +373,9 @@ namespace RSTmobile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (menu == null)
-                menu = new FMenu();
-            menu.Show();    
+            RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+            FMenu fmenu = rstapp.GetMenu();
+            fmenu.Show();
             this.Hide();
         }
 
