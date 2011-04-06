@@ -7,6 +7,7 @@
 */
 
 @include_once('../model/MobileSenal.php');
+//@include_once('../model/MobileAveria.php');
 
 date_default_timezone_set("America/Caracas");
 @session_start();
@@ -80,6 +81,19 @@ switch ($id_op) {
 		fclose($fe);
 	}
 	
+	break;
+	case 3: // Notificar Averia
+		$id_senal		= $_POST['id_senal'];
+		$fecha_averia	= $_POST['fechaAveria'];
+		$login_registro	= $_POST['loginRegistro'];	// 1
+		//$login_reparac	= $_POST['loginReparacion'];
+		//$fecha_reparac	= $_POST['fechaReparacion'];
+		$id_motivo		= $_POST['idMotivo'];
+		//$id_status		= $_POST['idStatus'];
+		$observaciones	= $_POST['observaciones'];
+		
+		echo "OK";
+		
 	break;
   default:
     break;  
