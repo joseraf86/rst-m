@@ -13,7 +13,9 @@ namespace RSTmobile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new FConsultarSenal().Show();
+            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            FConsultarSenal fcsenal = rst.GetConsultarSenal();
+            fcsenal.Show();
             this.Hide();
         }
 

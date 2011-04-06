@@ -57,9 +57,11 @@ namespace RSTmobile
                 
                 if (respuesta == "OK")
                 {
+                    RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
                     user.SetLogin(login);
                     user.SetPassword(hashedPassword);
-                    new FMenu().Show();
+                    FMenu fmenu = rstapp.GetMenu();
+                    fmenu.Show();
                     this.Hide();
                 }
                 else

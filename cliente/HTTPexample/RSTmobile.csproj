@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\Averia.cs" />
     <Compile Include="EnlaceHTTP.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="FAveria.cs">
@@ -141,6 +142,7 @@
       <DependentUpon>ubicacionDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs" />
+    <Compile Include="view\RSTApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="db_rst.sdf">

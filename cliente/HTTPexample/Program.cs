@@ -13,7 +13,9 @@ namespace RSTmobile
         [MTAThread]
         static void Main()
         {
-            Application.Run(new FMain());
+            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            FMain fmain = rst.GetMain();
+            Application.Run(fmain);
         }
     }
 }
