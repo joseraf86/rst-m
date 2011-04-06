@@ -266,20 +266,20 @@ namespace RSTmobile
                                                 break;
                                             case "senal":
                                                 break;
-                                            case "x":
-                                                senal.setX(Convert.ToDouble(""+xmlReader.Value));
+                                            case "x"://Convert.ToDouble
+                                                senal.setX(xmlReader.Value);
                                                 break;
                                             case "y":
-                                                senal.setY(Convert.ToDouble(""+xmlReader.Value));
+                                                senal.setY(xmlReader.Value);
                                                 break;
-                                            case "tipo":
-                                                senal.setIDTipo(Convert.ToInt32(xmlReader.Value.ToString()));
+                                            case "tipo"://Convert.ToInt32(
+                                                senal.setIDTipo(xmlReader.Value);
                                                 break;
                                             case "categoria":
-                                                senal.setIDCategoria(Convert.ToInt32(xmlReader.Value.ToString()));
+                                                senal.setIDCategoria(xmlReader.Value);
                                                 break;
                                             case "descripcion":
-                                                senal.setIDSenal(Convert.ToInt32(xmlReader.Value.ToString()));
+                                                senal.setIDSenal(xmlReader.Value);
                                                 break;
                                             case "estado":
                                                 senal.setIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));

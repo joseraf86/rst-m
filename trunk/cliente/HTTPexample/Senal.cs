@@ -19,12 +19,12 @@ namespace Transito
     {
         private int id;
 
-        private double x;
-        private double y;
+        private string x;
+        private string y;
 
-        private int idTipo;
-        private int idCategoria;
-        private int idSenal;
+        private string idTipo;
+        private string idCategoria;
+        private string idSenal;
 
         private int idEstado;
         private string idEstatus;
@@ -40,23 +40,23 @@ namespace Transito
         {
             this.id = id;
         }
-        public void setX(double x)
+        public void setX(string x)
         {
             this.x = x;
         }
-        public void setY(double y)
+        public void setY(string y)
         {
             this.y = y;
         }
-        public void setIDTipo(int idTipo)
+        public void setIDTipo(string idTipo)
         {
             this.idTipo = idTipo;
         }
-        public void setIDCategoria(int idCategoria)
+        public void setIDCategoria(string idCategoria)
         {
             this.idCategoria = idCategoria;
         }
-        public void setIDSenal(int idSenal)
+        public void setIDSenal(string idSenal)
         {
             this.idSenal = idSenal;
         }
@@ -90,23 +90,23 @@ namespace Transito
         {
             return this.id;
         }
-        public double GetX()
+        public string GetX()
         {
             return this.x;
         }
-        public double GetY()
+        public string GetY()
         {
             return this.y;
         }
-        public int GetIDTipo()
+        public string GetIDTipo()
         {
             return this.idTipo;
         }
-        public int GetIDCategoria()
+        public string GetIDCategoria()
         {
             return this.idCategoria;
         }
-        public int GetIDSenal()
+        public string GetIDSenal()
         {
             return this.idSenal;
         }

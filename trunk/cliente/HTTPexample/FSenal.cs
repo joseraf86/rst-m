@@ -14,6 +14,7 @@ namespace RSTmobile
         private ArrayList listaMunicipios;
         private ArrayList listaParroquias;
         private int tipoActual;
+        private int entidadActual;
 
         public FSenal()
         {
@@ -37,7 +38,7 @@ namespace RSTmobile
             foreach (Transito.Indicador aux in listaSenalesTra)
             {
                 comboSenal.Items.Add(aux.descripcion);
-                if (aux.id.Equals(""+senal.GetIDSenal()))
+                if (aux.id.Equals(senal.GetIDSenal()))
                     comboSenal.SelectedIndex = i;
                 i++;
             }
@@ -45,7 +46,7 @@ namespace RSTmobile
             foreach (Transito.Indicador aux in listaCategSen)
             {
                 comboCategoria.Items.Add(aux.descripcion);
-                if (aux.id.Equals("" + senal.GetIDCategoria()))
+                if (aux.id.Equals(senal.GetIDCategoria()))
                     comboCategoria.SelectedIndex = i;
                 i++;
             }
@@ -53,7 +54,7 @@ namespace RSTmobile
             foreach (Transito.Indicador aux in listaTipoSen)
             {
                 comboTipo.Items.Add(aux.descripcion);
-                if (aux.id.Equals("" + senal.GetIDTipo()))
+                if (aux.id.Equals(senal.GetIDTipo()))
                 {
                     tipoActual = i;
                     comboTipo.SelectedIndex = i;
@@ -65,7 +66,10 @@ namespace RSTmobile
             {
                 comboEntidad.Items.Add(aux.descripcion);
                 if (aux.id.Equals(senal.GetCodEstado()))
+                {
                     comboEntidad.SelectedIndex = i;
+                    entidadActual = i;
+                }
                 i++;
             }
             i = 0;
@@ -107,25 +111,23 @@ namespace RSTmobile
 
         private void comboEntidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboMunicipio.Items.Clear();
-            comboParroquia.Items.Clear();
-            int selectedIndex = 0;
             int i = 0;
             Ubicacion.Entidad aux;
             Ubicacion.Ubicacion ubicacion;
 
-            ubicacion = Ubicacion.Ubicacion.GetInstance();            
-            selectedIndex = comboEntidad.SelectedIndex;
+            comboMunicipio.Items.Clear();
+            comboParroquia.Items.Clear();
+            ubicacion = Ubicacion.Ubicacion.GetInstance();
+            entidadActual = comboEntidad.SelectedIndex;
             listaEstados = ubicacion.GetEstados();
-            aux = (Ubicacion.Entidad)listaEstados[selectedIndex];
-
+            aux = (Ubicacion.Entidad)listaEstados[entidadActual];
             listaMunicipios = ubicacion.GetMunicipios(aux.id);
 
             foreach (Ubicacion.Entidad data in listaMunicipios)
             {
                 this.comboMunicipio.Items.Add(data.descripcion);
-                //if (("" + senal.GetCodMunicipio()).Equals(data.id))
-                //    comboEntidad.SelectedIndex = i;
+                if ((senal.GetCodMunicipio()).Equals(data.id))
+                    comboMunicipio.SelectedIndex = i;
                 i++;
             }
 
@@ -171,7 +173,7 @@ namespace RSTmobile
             foreach ( Transito.Indicador data in listaCategSen)
             {
                 comboCategoria.Items.Add(data.descripcion);
-                if ( ("" + senal.GetIDCategoria()).Equals(data.id) )
+                if ( senal.GetIDCategoria().Equals(data.id) )
                 {
                     comboCategoria.SelectedIndex = i;
                 }
@@ -197,7 +199,7 @@ namespace RSTmobile
             foreach (Transito.Indicador data in listaSenalesTra)
             {
                 comboSenal.Items.Add(data.descripcion);
-                if (("" + senal.GetIDSenal()).Equals(data.id) )
+                if (senal.GetIDSenal().Equals(data.id) )
                 {
                     comboSenal.SelectedIndex = i;
                 }

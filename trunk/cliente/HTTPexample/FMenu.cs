@@ -21,7 +21,9 @@ namespace RSTmobile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new FRegistrarSenal().Show();
+            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            FRegistrarSenal frsenal = rst.GetRegistrarSenal();
+            frsenal.Show();
             this.Hide();
         }
     }
