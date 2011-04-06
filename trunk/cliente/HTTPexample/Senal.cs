@@ -374,5 +374,41 @@ namespace Transito
             }
         }
 
+        public ArrayList ConsultarMotivo() {
+            string sdf_path;
+            SqlCeEngine engine;
+            ArrayList list = new ArrayList();
+            Indicador aux;
+            //int entero;
+            try
+            {
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
+                engine = new SqlCeEngine(sdf_path);
+
+                conn = new SqlCeConnection(sdf_path);
+                conn.Open();
+                cmd = conn.CreateCommand();
+
+                cmd.CommandText = "SELECT id_motiv_ave, descripcion FROM rst_motiv_ave";
+                cmd.ExecuteNonQuery();
+
+                SqlCeDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    aux.id = "" + rdr.GetDecimal(0);
+                    aux.descripcion = rdr.GetString(1);
+                    list.Add(aux);
+                }
+
+            }
+            catch (SqlCeException e)
+            {
+                e.ToString();
+                //ShowErrors(e);
+            }
+
+            return list;
+        }
+
     }
 }
