@@ -7,7 +7,7 @@
 */
 
 @include_once('../model/MobileSenal.php');
-//@include_once('../model/MobileAveria.php');
+@include_once('../model/MobileAveria.php');
 
 date_default_timezone_set("America/Caracas");
 @session_start();
@@ -91,6 +91,9 @@ switch ($id_op) {
 		$id_motivo		= $_POST['idMotivo'];
 		//$id_status		= $_POST['idStatus'];
 		$observaciones	= $_POST['observaciones'];
+		
+		$averia = new MobileAveria;
+		$averia->registrar( $id_senal, $id_motivo, $observaciones, $login_registro, $fecha_averia);
 		
 		echo "OK";
 		
