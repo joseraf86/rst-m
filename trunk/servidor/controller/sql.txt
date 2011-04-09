@@ -10,3 +10,9 @@ INSERT INTO db_rst.rst_datos_sen
 				VALUES 
 				( 	'10.4873291', '-66.8151324', 1, 6, 28, 01, 'A', 'N', 'MI', 'MI-BA', 
 					'MI-BA-02', 'CECF285319', NOW(), '', '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '//', 'CECF285319', NOW(), 2, 1, 'P R U E B A' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '//', 'CECF285319', NOW(), 3, 1, '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '11/04/08', 'CECF285319', NOW(), 3, 1, '' )

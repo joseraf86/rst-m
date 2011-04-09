@@ -35,7 +35,7 @@ class MobileAveria {
 		
 	}
 	
-	public function registrar( $id_senal, $id_motiv_ave, $observaciones, $login ) {
+	public function registrar( $id_senal, $id_motiv_ave, $observaciones, $login, $fecha_averia ) {
 		
 		$conexion 	= new EnlaceBD;
 		$var 		= $conexion->conectar( $_SESSION['db_rst'] );		
