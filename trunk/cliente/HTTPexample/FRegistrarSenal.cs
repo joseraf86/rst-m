@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Web;
 
 namespace RSTmobile
 {
@@ -165,7 +166,7 @@ namespace RSTmobile
                 idCategSen = idCategSenalActual;
                 idSenalTra = idSenalTransitoActual;
                 idEstadSen = "" + comboBox6.SelectedIndex + 1;
-                observaciones = textBox3.Text;
+                observaciones = HttpUtility.UrlEncode(textBox3.Text);
 
                 if (statusSen == 0)
                     idStatusSen = "A";

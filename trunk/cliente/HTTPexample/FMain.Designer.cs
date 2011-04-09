@@ -67,7 +67,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(7, 134);
+            this.label2.Location = new System.Drawing.Point(8, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 23);
             this.label2.Text = "Servidor";
@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(7, 159);
+            this.label3.Location = new System.Drawing.Point(8, 159);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 21);
             this.label3.Text = "Usuario";
@@ -93,7 +93,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(7, 184);
+            this.label4.Location = new System.Drawing.Point(8, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 21);
             this.label4.Text = "Contraseña";

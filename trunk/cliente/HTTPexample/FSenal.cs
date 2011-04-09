@@ -14,9 +14,6 @@ namespace RSTmobile
         private ArrayList listaEstados;
         private ArrayList listaMunicipios;
         private ArrayList listaParroquias;
-        private string entidadActual;
-        private string municipioActual;
-        private string parroquiaActual;
         private Ubicacion.Ubicacion ubicacion;
         private Transito.Senal senales;
 
@@ -27,15 +24,9 @@ namespace RSTmobile
             senales = Transito.Senal.GetInstance();
             stActual = new Transito.SenalTransito();
             init();
-
         }
 
         public void init() {
-            
-            //Valores iniciales por defecto SELECCIONE
-            entidadActual = "";
-            municipioActual = "";
-            parroquiaActual = "";
             
             listaEstados = ubicacion.GetEstados();
             listaTiposSen = senales.GetTipos();
@@ -130,23 +121,20 @@ namespace RSTmobile
                     i++;
                 }
                 i = 1;
-                municipioActual = senalXML.GetCodMunicipio();
                 foreach (Ubicacion.Entidad aux in listaMunicipios)
                 {
                     comboMunicipio.Items.Add(aux.descripcion);
                     if (aux.id.Equals(senalXML.GetCodMunicipio()))
                     {
                         comboMunicipio.SelectedIndex = i;
-                        MessageBox.Show("" + i);
                     }
                     i++;
                 }
                 i = 1;
-                parroquiaActual = senalXML.GetCodParroquia();
                 foreach (Ubicacion.Entidad aux in listaParroquias)
                 {
                     comboParroquia.Items.Add(aux.descripcion);
-                    if (aux.id.Equals(parroquiaActual))
+                    if (aux.id.Equals(senalXML.GetCodParroquia()))
                         comboParroquia.SelectedIndex = i;
                     i++;
                 }
@@ -161,7 +149,6 @@ namespace RSTmobile
                 comboEstatus.Items.Add("ACTIVO");
                 comboEstatus.Items.Add("INACTIVO");
                 comboEstatus.SelectedIndex = 0;
-            
         }
         
 //****************** Metodos Manejadores de Eventos **************************//
@@ -267,17 +254,18 @@ namespace RSTmobile
         {
             Ubicacion.Entidad aux;
             int selectedIndex;
+            string codEntidad = "";
 
             selectedIndex = comboEntidad.SelectedIndex;
             if (selectedIndex != 0) {
                 listaEstados = ubicacion.GetEstados();
                 aux = (Ubicacion.Entidad)listaEstados[selectedIndex-1];
-                entidadActual = aux.id;
+                codEntidad = aux.id;
             }
 
-            if ( !stActual.GetCodEstado().Equals(entidadActual) )
+            if (!stActual.GetCodEstado().Equals(codEntidad))
             {
-                stActual.SetCodEstado(entidadActual);
+                stActual.SetCodEstado(codEntidad);
                 stActual.SetCodMunicipio("");
                 stActual.SetCodParroquia("");
 
@@ -287,12 +275,10 @@ namespace RSTmobile
                 comboParroquia.Items.Add("SELECCIONE");
                 comboMunicipio.SelectedIndex = 0;
                 comboParroquia.SelectedIndex = 0;
-                municipioActual = "";
-                parroquiaActual = "";
 
-                if (!entidadActual.Equals(""))
+                if (!codEntidad.Equals(""))
                 {
-                    listaMunicipios = ubicacion.GetMunicipios(entidadActual);
+                    listaMunicipios = ubicacion.GetMunicipios(codEntidad);
 
                     foreach (Ubicacion.Entidad data in listaMunicipios)
                     {
@@ -306,27 +292,27 @@ namespace RSTmobile
         { 
             int selectedIndex = 0;
             Ubicacion.Entidad aux;
+            string codMunicipio = "";
             
             selectedIndex = comboMunicipio.SelectedIndex;
             if (selectedIndex != 0)
             {
                 aux = (Ubicacion.Entidad)listaMunicipios[selectedIndex - 1];
-                municipioActual = aux.id;
+                codMunicipio = aux.id;
             }
 
-            if (!stActual.GetCodMunicipio().Equals(municipioActual))
+            if (!stActual.GetCodMunicipio().Equals(codMunicipio))
             {
-                stActual.SetCodMunicipio(municipioActual);
+                stActual.SetCodMunicipio(codMunicipio);
                 stActual.SetCodParroquia("");
 
                 comboParroquia.Items.Clear();
                 comboParroquia.Items.Add("SELECCIONE");
                 comboParroquia.SelectedIndex = 0;
-                parroquiaActual = "";
 
-                if (!municipioActual.Equals(""))
+                if (!codMunicipio.Equals(""))
                 {
-                    listaParroquias = ubicacion.GetParroquias(municipioActual);
+                    listaParroquias = ubicacion.GetParroquias(codMunicipio);
                     foreach (Ubicacion.Entidad data in listaParroquias)
                     {
                         comboParroquia.Items.Add(data.descripcion);
@@ -339,20 +325,16 @@ namespace RSTmobile
         {
             Ubicacion.Entidad aux;
             int selectedIndex;
+            string codParroquia = "";
 
             selectedIndex = comboParroquia.SelectedIndex;
             if (selectedIndex != 0)
             {
                 aux = (Ubicacion.Entidad)listaParroquias[selectedIndex - 1];
-                parroquiaActual = aux.id;
+                codParroquia = aux.id;
             }
-
-            if (!parroquiaActual.Equals(""))
-            {
-                stActual.SetCodParroquia(parroquiaActual);
-            }
+            stActual.SetCodParroquia(codParroquia);
         }
-
 
         private void botonAveria_Click(object sender, EventArgs e)
         {
