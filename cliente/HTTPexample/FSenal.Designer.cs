@@ -187,7 +187,7 @@
             // 
             this.label8.Location = new System.Drawing.Point(10, 303);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(61, 18);
+            this.label8.Size = new System.Drawing.Size(60, 22);
             this.label8.Text = "Entidad";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 

@@ -31,6 +31,8 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.observaciones = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.comboMotivos = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fechaAveria = new System.Windows.Forms.DateTimePicker();
@@ -40,8 +42,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.observaciones = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,6 +62,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(239, 265);
             // 
+            // observaciones
+            // 
+            this.observaciones.Location = new System.Drawing.Point(14, 150);
+            this.observaciones.Multiline = true;
+            this.observaciones.Name = "observaciones";
+            this.observaciones.Size = new System.Drawing.Size(203, 49);
+            this.observaciones.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(10, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 21);
+            this.label4.Text = "Observaciones";
+            // 
             // comboMotivos
             // 
             this.comboMotivos.Location = new System.Drawing.Point(78, 93);
@@ -80,12 +95,13 @@
             // fechaAveria
             // 
             this.fechaAveria.CustomFormat = "dd/MM/yyyy";
-            this.fechaAveria.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.fechaAveria.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fechaAveria.Location = new System.Drawing.Point(78, 64);
             this.fechaAveria.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.fechaAveria.Name = "fechaAveria";
             this.fechaAveria.Size = new System.Drawing.Size(141, 22);
             this.fechaAveria.TabIndex = 3;
+            this.fechaAveria.ValueChanged += new System.EventHandler(this.fechaAveria_ValueChanged);
             // 
             // label2
             // 
@@ -142,21 +158,6 @@
             this.label1.Size = new System.Drawing.Size(187, 24);
             this.label1.Text = "Registro de Averia";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(10, 127);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 21);
-            this.label4.Text = "Observaciones";
-            // 
-            // observaciones
-            // 
-            this.observaciones.Location = new System.Drawing.Point(14, 150);
-            this.observaciones.Multiline = true;
-            this.observaciones.Name = "observaciones";
-            this.observaciones.Size = new System.Drawing.Size(203, 49);
-            this.observaciones.TabIndex = 11;
             // 
             // FAveria
             // 
