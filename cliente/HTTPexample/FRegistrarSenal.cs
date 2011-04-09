@@ -27,7 +27,7 @@ namespace RSTmobile
             ubicacion = Ubicacion.Ubicacion.GetInstance();
             transito    = Transito.Senal.GetInstance();
             listaEstados = ubicacion.GetEstados();
-            listaTipoSen = transito.GetTipoSenal();
+            listaTipoSen = transito.GetTipos();
 
             foreach (Ubicacion.Entidad edo in listaEstados)
             {
@@ -57,7 +57,7 @@ namespace RSTmobile
             selectedIndex = comboTipo.SelectedIndex;
             aux = (Transito.Indicador)listaTipoSen[selectedIndex];
             idTipoSenalActual = aux.id;
-            listaCategSen = transito.GetCategoriaSenal(idTipoSenalActual);
+            listaCategSen = transito.GetCategorias(idTipoSenalActual);
 
             foreach (Transito.Indicador data in listaCategSen)
             {

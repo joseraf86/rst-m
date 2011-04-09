@@ -36,7 +36,7 @@ namespace RSTmobile
             
             // Preparar lista cache de tipo de señal
             Transito.Senal senales = Transito.Senal.GetInstance();
-            senales.GetTipoSenal();
+            senales.GetTipos();
 
             cifrado = new HTTP.Cifrado();
             enlace = new HTTP.EnlaceHTTP();
