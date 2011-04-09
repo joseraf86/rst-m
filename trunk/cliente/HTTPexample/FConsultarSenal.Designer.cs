@@ -29,10 +29,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FConsultarSenal));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.botonReset = new System.Windows.Forms.PictureBox();
+            this.boVolver = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.comboParroquia = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -75,30 +77,36 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.IndianRed;
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.botonReset);
+            this.panel2.Controls.Add(this.boVolver);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Location = new System.Drawing.Point(1, 224);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 35);
             // 
-            // button2
+            // botonReset
             // 
-            this.button2.BackColor = System.Drawing.Color.PapayaWhip;
-            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(4, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 20);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Volver";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.botonReset.Image = ((System.Drawing.Image)(resources.GetObject("botonReset.Image")));
+            this.botonReset.Location = new System.Drawing.Point(47, 3);
+            this.botonReset.Name = "botonReset";
+            this.botonReset.Size = new System.Drawing.Size(31, 30);
+            this.botonReset.Click += new System.EventHandler(this.botonReset_Click);
+            // 
+            // boVolver
+            // 
+            this.boVolver.Image = ((System.Drawing.Image)(resources.GetObject("boVolver.Image")));
+            this.boVolver.Location = new System.Drawing.Point(8, 3);
+            this.boVolver.Name = "boVolver";
+            this.boVolver.Size = new System.Drawing.Size(20, 30);
+            this.boVolver.Click += new System.EventHandler(this.boVolver_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.PapayaWhip;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(149, 8);
+            this.button1.Location = new System.Drawing.Point(150, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 20);
+            this.button1.Size = new System.Drawing.Size(86, 30);
             this.button1.TabIndex = 13;
             this.button1.Text = "Consultar";
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -110,6 +118,7 @@
             this.comboParroquia.Name = "comboParroquia";
             this.comboParroquia.Size = new System.Drawing.Size(165, 22);
             this.comboParroquia.TabIndex = 12;
+            this.comboParroquia.SelectedIndexChanged += new System.EventHandler(this.comboParroquia_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -253,10 +262,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboSenal;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboParroquia;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox boVolver;
+        private System.Windows.Forms.PictureBox botonReset;
 
     }
 }

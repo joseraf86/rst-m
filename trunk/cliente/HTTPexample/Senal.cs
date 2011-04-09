@@ -35,8 +35,24 @@ namespace Transito
 
         private string idAveria;
 
+        public SenalTransito()
+        {
+            idTipo = "";
+            idCategoria = "";
+            idSenal = "";
+
+            idEstado = 0;
+            idEstatus = "";
+
+            codEstado = "";
+            codMunicipio = "";
+            codParroquia = "";
+
+            idAveria = "";
+        }
+
         //********** SETTERS ***********
-        public void setID(int id)
+        public void SetID(int id)
         {
             this.id = id;
         }
@@ -48,35 +64,35 @@ namespace Transito
         {
             this.y = y;
         }
-        public void setIDTipo(string idTipo)
+        public void SetIDTipo(string idTipo)
         {
             this.idTipo = idTipo;
         }
-        public void setIDCategoria(string idCategoria)
+        public void SetIDCategoria(string idCategoria)
         {
             this.idCategoria = idCategoria;
         }
-        public void setIDSenal(string idSenal)
+        public void SetIDSenal(string idSenal)
         {
             this.idSenal = idSenal;
         }
-        public void setIDEstado(int idEstado)
+        public void SetIDEstado(int idEstado)
         {
             this.idEstado = idEstado;
         }
-        public void setIDEstatus(string idEstatus)
+        public void SetIDEstatus(string idEstatus)
         {
             this.idEstatus = idEstatus;
         }
-        public void setCodEstado(string codEstado)
+        public void SetCodEstado(string codEstado)
         {
             this.codEstado = codEstado;
         }
-        public void setCodMunicipio(string codMunicipio)
+        public void SetCodMunicipio(string codMunicipio)
         {
             this.codMunicipio = codMunicipio;
         }
-        public void setCodParroquia(string codParroquia)
+        public void SetCodParroquia(string codParroquia)
         {
             this.codParroquia = codParroquia;
         }
@@ -114,7 +130,7 @@ namespace Transito
         {
             return this.idEstado;
         }
-        public string getIDEstatus()
+        public string GetIDEstatus()
         {
             return this.idEstatus;
         }
@@ -179,7 +195,7 @@ namespace Transito
         {
         }
 
-        public ArrayList GetTipoSenal()
+        public ArrayList GetTipos()
         {
             if (listaTipoSenal == null)
             // Consultar Tipo de Señales 
@@ -189,7 +205,7 @@ namespace Transito
             return listaTipoSenal;
         }
 
-        public ArrayList GetCategoriaSenal( string idTipo )
+        public ArrayList GetCategorias( string idTipo )
         {
             if (listaCategoria == null)
             // Consultar Tipo de Señales 
@@ -235,6 +251,7 @@ namespace Transito
             SqlCeEngine engine;
             ArrayList list = new ArrayList();
             Indicador aux;
+            SqlCeDataReader rdr;
             try
             {
                 sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
@@ -247,7 +264,7 @@ namespace Transito
                 cmd.CommandText = "SELECT id_senal_tra, descripcion FROM rst_senal_tra " +
                     "WHERE id_categ_sen=" + id_categ_sen + " and id_tipo_sen="+id_tipo_sen;
 
-                SqlCeDataReader rdr = cmd.ExecuteReader();
+                rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
                     aux.id = "" + rdr.GetDecimal(0);
@@ -261,7 +278,10 @@ namespace Transito
                 e.ToString();
                 //ShowErrors(e);
             }
+            catch (TypeLoadException)
+            {
 
+            }
             return list;
         }
 
@@ -271,6 +291,7 @@ namespace Transito
             SqlCeEngine engine;
             ArrayList list = new ArrayList();
             Indicador aux;
+            SqlCeDataReader rdr;
             try
             {
                 sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
@@ -284,7 +305,7 @@ namespace Transito
                     "WHERE id_tipo_sen = " + id + "";
                 cmd.ExecuteNonQuery();
 
-                SqlCeDataReader rdr = cmd.ExecuteReader();
+                rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
                     aux.id = "" + rdr.GetDecimal(0);
@@ -298,7 +319,10 @@ namespace Transito
                 e.ToString();
                 //ShowErrors(e);
             }
+            catch (TypeLoadException)
+            {
 
+            }
             return list;
         }
 
@@ -334,6 +358,10 @@ namespace Transito
             {
                 e.ToString();
                 //ShowErrors(e);
+            }
+            catch (TypeLoadException)
+            {
+ 
             }
 
             return list;

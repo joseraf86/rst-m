@@ -13,6 +13,8 @@ namespace RSTmobile
         private string idCategSenalActual;
         private string idSenalTransitoActual;
         private string codEstado;
+        private string codMunicipio;
+        private string codParroquia;
         private Ubicacion.Ubicacion ubicacion;
         private Transito.Senal transito;
         private ArrayList listaEstados;
@@ -29,6 +31,8 @@ namespace RSTmobile
             idCategSenalActual = "";
             idSenalTransitoActual = "";
             codEstado = "";
+            codMunicipio = "";
+            codParroquia = "";
             ubicacion = Ubicacion.Ubicacion.GetInstance();
             transito = Transito.Senal.GetInstance();
         }
@@ -36,7 +40,7 @@ namespace RSTmobile
         private void FConsultarSenal_Load(object sender, EventArgs e)
         {
             listaEstados = ubicacion.GetEstados();
-            listaTipoSen = transito.GetTipoSenal();
+            listaTipoSen = transito.GetTipos();
 
             foreach (Ubicacion.Entidad edo in listaEstados)
             {
@@ -79,7 +83,7 @@ namespace RSTmobile
                 // listaTipoSen no contiene opcion TODOS => selectedIndex - 1
                 aux = (Transito.Indicador)listaTipoSen[selectedIndex - 1];
                 idTipoSenalActual = aux.id;
-                listaCategSen = transito.GetCategoriaSenal(idTipoSenalActual);
+                listaCategSen = transito.GetCategorias(idTipoSenalActual);
 
                 foreach (Transito.Indicador data in listaCategSen)
                 {
@@ -106,7 +110,7 @@ namespace RSTmobile
             if (!idTipoSenalActual.Equals(""))
             {
                 if (listaCategSen == null)
-                    listaCategSen = transito.GetCategoriaSenal(idTipoSenalActual);
+                    listaCategSen = transito.GetCategorias(idTipoSenalActual);
             
                 selectedIndex = comboCategoria.SelectedIndex;
                  if (selectedIndex != 0)
@@ -158,12 +162,13 @@ namespace RSTmobile
             comboMunicipio.Items.Add("TODOS");
             comboMunicipio.SelectedIndex = 0;
             comboParroquia.SelectedIndex = 0;
-            
-            selectedIndex = comboEntidad.SelectedIndex;
+            codMunicipio = "";
+            codParroquia = "";
 
             if (listaEstados == null)
                 listaEstados = ubicacion.GetEstados();
-            
+
+            selectedIndex = comboEntidad.SelectedIndex;
             if (selectedIndex != 0)
             {
                 aux = (Ubicacion.Entidad)listaEstados[selectedIndex-1];
@@ -190,7 +195,8 @@ namespace RSTmobile
             comboParroquia.Items.Clear();
             comboParroquia.Items.Add("TODOS");
             comboParroquia.SelectedIndex = 0;
-            
+            codParroquia = "";
+
             if (!codEstado.Equals(""))
             {
                 if (listaMunicipios == null)
@@ -201,92 +207,85 @@ namespace RSTmobile
                 if (selectedIndex != 0)
                 {
                     aux = (Ubicacion.Entidad)listaMunicipios[selectedIndex - 1];
-                    listaParroquias = ubicacion.GetParroquias(aux.id);
+                    codMunicipio = aux.id;
+                    listaParroquias = ubicacion.GetParroquias(codMunicipio);
 
                     foreach (Ubicacion.Entidad data in listaParroquias)
                     {
                         this.comboParroquia.Items.Add(data.descripcion);
                     }
                 }
+                else
+                    codMunicipio = "";
             }
             
         }
 
+        private void comboParroquia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex;
+            Ubicacion.Entidad aux;
+
+            if (!codEstado.Equals("") && !codMunicipio.Equals(""))
+            {
+                if (listaParroquias == null)
+                    listaParroquias = ubicacion.GetParroquias(codMunicipio);
+
+                selectedIndex = comboParroquia.SelectedIndex;
+
+                if (selectedIndex != 0)
+                {
+                    aux = (Ubicacion.Entidad)listaParroquias[selectedIndex - 1];
+                    codParroquia = aux.id;
+                }
+                else
+                    codParroquia = "";
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Ubicacion.Entidad edo;
-            Ubicacion.Entidad mun;
-            Ubicacion.Entidad par;
-            // Datos obtenidos del form3
-            string login = "";
-            string codMunicipio = "";
-            string codParroquia = "";
-            string idTipoSen = "";
-            string idCategSen = "";
-            string idSenalTra = "";
             string vars;
             rst.Usuario user;
             string domainName;
             string path = "RSTmobile/servidor/controller/MobileSenalController.php";
             Stream stream;
-            //string xml = "";
             string currentNode = "";
             HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
-
-            user = rst.Usuario.GetInstance();
-            login = user.GetLogin();
-            domainName = user.GetServer();
-
-            if (comboEntidad.SelectedIndex != 0)
-            {
-                edo = (Ubicacion.Entidad)listaEstados[comboEntidad.SelectedIndex-1];
-                codEstado = edo.id;
-                if (listaMunicipios != null && comboMunicipio.SelectedIndex != 0)
-                {
-                    mun = (Ubicacion.Entidad)listaMunicipios[comboMunicipio.SelectedIndex-1];
-                    codMunicipio = mun.id;
-                    if (listaParroquias != null && comboParroquia.SelectedIndex != 0)
-                    {
-                        par = (Ubicacion.Entidad)listaParroquias[comboParroquia.SelectedIndex-1];
-                        codParroquia = par.id;
-                    }
-                }
-            }
-            idTipoSen = idTipoSenalActual;
-            idCategSen = idCategSenalActual;
-            idSenalTra = idSenalTransitoActual;
-
             XmlTextReader xmlReader;
 
+            user = rst.Usuario.GetInstance();
+            domainName = user.GetServer();
+            
             //MessageBox.Show(codEstado + " " + codMunicipio + " " + codParroquia + " " + idTipoSen + " " + idCategSen + " " + idSenalTra);
 
-            //if (idTipoSen != "" && idCategSen != "" && idSenalTra != "" && codEstado != "" && codMunicipio != "" &&
-            //   ((codParroquia == "" && codEstado == "DF") || (codParroquia != "" && codEstado != "DF")) ) 
-            //    {
-                    vars = "id_op=1&id_tipo_sen=" + idTipoSen +
-                        "&id_categ_sen=" + idCategSen + "&id_senal_tra=" + idSenalTra +
-                        "&cod_estado=" + codEstado + "&cod_municipio=" + codMunicipio +
-                        "&cod_parroquia=" + codParroquia + "&login="+login;
+            vars = "id_op=1&id_tipo_sen=" + idTipoSenalActual +
+                   "&id_categ_sen=" + idCategSenalActual +
+                   "&id_senal_tra=" + idSenalTransitoActual +
+                   "&cod_estado=" + codEstado + 
+                   "&cod_municipio=" + codMunicipio +
+                   "&cod_parroquia=" + codParroquia + 
+                   "&login="+user.GetLogin();
                     
-                    Transito.SenalTransito senal = new Transito.SenalTransito();
-                    try
-                    {
-                        stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
-                        if (stream != null)
-                        {
-                            xmlReader = new XmlTextReader(stream);
+            Transito.SenalTransito senal = new Transito.SenalTransito();
+            try
+            {
+                stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
+                if (stream != null)
+                {
+                    xmlReader = new XmlTextReader(stream);
 
-                            while (xmlReader.Read())
-                            {
-                                switch (xmlReader.NodeType)
+                    while (xmlReader.Read())
+                    {
+                        switch (xmlReader.NodeType)
+                        {
+                            case XmlNodeType.Element:
+                                // i.e. <rst>
+                                currentNode = xmlReader.LocalName;
+                                if (currentNode == "senal")
                                 {
-                                    case XmlNodeType.Element:
-                                        // i.e. <rst>
-                                        currentNode = xmlReader.LocalName;
-                                        if (currentNode == "senal")
-                                        {
-                                            senal.setID(Convert.ToInt32(xmlReader.GetAttribute(0)));
-                                        }
+                                    senal.SetID(Convert.ToInt32(xmlReader.GetAttribute(0)));
+                                }
                                         break;
                                     case XmlNodeType.EndElement:
                                         // i.e. </rst>
@@ -305,28 +304,28 @@ namespace RSTmobile
                                                 senal.setY(xmlReader.Value);
                                                 break;
                                             case "tipo"://Convert.ToInt32(
-                                                senal.setIDTipo(xmlReader.Value);
+                                                senal.SetIDTipo(xmlReader.Value);
                                                 break;
                                             case "categoria":
-                                                senal.setIDCategoria(xmlReader.Value);
+                                                senal.SetIDCategoria(xmlReader.Value);
                                                 break;
                                             case "descripcion":
-                                                senal.setIDSenal(xmlReader.Value);
+                                                senal.SetIDSenal(xmlReader.Value);
                                                 break;
                                             case "estado":
-                                                senal.setIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
+                                                senal.SetIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
                                                 break;
                                             case "estatus":
-                                                senal.setIDEstatus(xmlReader.Value.ToString());
+                                                senal.SetIDEstatus(xmlReader.Value.ToString());
                                                 break;
                                             case "entidad":
-                                                senal.setCodEstado(xmlReader.Value.ToString());
+                                                senal.SetCodEstado(xmlReader.Value.ToString());
                                                 break;
                                             case "municipio":
-                                                senal.setCodMunicipio(xmlReader.Value.ToString());
+                                                senal.SetCodMunicipio(xmlReader.Value.ToString());
                                                 break;
                                             case "parroquia":
-                                                senal.setCodParroquia(xmlReader.Value.ToString());
+                                                senal.SetCodParroquia(xmlReader.Value.ToString());
                                                 break;
                                             case "averia":
                                                 senal.setIDAveria(xmlReader.Value.ToString());
@@ -336,7 +335,6 @@ namespace RSTmobile
                                         } 
                                         break;
                                     default:
-                                        //xml += "" + xmlReader.NodeType;
                                         break;
                                 }
                             }
@@ -368,15 +366,53 @@ namespace RSTmobile
               //  }
               //  return;
             }
-           
-        
 
-        private void button2_Click(object sender, EventArgs e)
+        private void boVolver_Click(object sender, EventArgs e)
         {
             RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
             FMenu fmenu = rstapp.GetMenu();
             fmenu.Show();
             this.Hide();
+        }
+
+        private void botonReset_Click(object sender, EventArgs e)
+        {
+            comboTipo.Items.Clear();
+            comboCategoria.Items.Clear();
+            comboSenal.Items.Clear();
+            comboTipo.Items.Add("TODOS");
+            comboCategoria.Items.Add("TODOS");
+            comboSenal.Items.Add("TODOS");
+            
+            comboEntidad.Items.Clear();
+            comboMunicipio.Items.Clear();
+            comboParroquia.Items.Clear();
+            comboEntidad.Items.Add("TODOS");
+            comboMunicipio.Items.Add("TODOS");
+            comboParroquia.Items.Add("TODOS");
+
+
+            listaEstados = ubicacion.GetEstados();
+            listaTipoSen = transito.GetTipos();
+
+            foreach (Ubicacion.Entidad edo in listaEstados)
+            {
+                this.comboEntidad.Items.Add(edo.descripcion);
+            }
+
+            foreach (Transito.Indicador edo in listaTipoSen)
+            {
+                this.comboTipo.Items.Add(edo.descripcion);
+            }
+
+
+            comboTipo.SelectedIndex = 0;
+            comboCategoria.SelectedIndex = 0;
+            comboSenal.SelectedIndex = 0;
+
+            comboEntidad.SelectedIndex = 0;
+            comboMunicipio.SelectedIndex = 0;
+            comboParroquia.SelectedIndex = 0;
         }
 
     }
