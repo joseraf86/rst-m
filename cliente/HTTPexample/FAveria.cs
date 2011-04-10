@@ -33,6 +33,7 @@ namespace RSTmobile
                 this.comboMotivos.Items.Add(data.descripcion);
             }
             comboMotivos.SelectedIndex = 0;
+            averia.SetFechaAveria(fechaAveria.Value.ToString("dd/MM/yyyy"));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace RSTmobile
 
         private void fechaAveria_ValueChanged(object sender, EventArgs e)
         {
-            averia.SetFechaAveria(fechaAveria.Value.ToShortDateString());
+            averia.SetFechaAveria(fechaAveria.Value.ToString("dd/MM/yyyy"));
         }
 
         private void botonNotificar_Click(object sender, EventArgs e)
@@ -54,9 +55,7 @@ namespace RSTmobile
             string path;
             rst.Usuario user;
             HTTP.EnlaceHTTP enlace;
-            string fecha = HttpUtility.UrlEncode(averia.GetFechaAveria());
-
-            MessageBox.Show(fecha);
+            //string fecha = HttpUtility.UrlEncode(averia.GetFechaAveria());
 
             enlace = new HTTP.EnlaceHTTP();
             user = rst.Usuario.GetInstance();
