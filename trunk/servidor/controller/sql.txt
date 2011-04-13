@@ -16,3 +16,25 @@ insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha
 				values ( 49, '//', 'CECF285319', NOW(), 3, 1, '' )
 insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
 				values ( 49, '11/04/08', 'CECF285319', NOW(), 3, 1, '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '//', 'CECF285319', NOW(), 1, 1, 'NO APLICA' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '11/04/06', 'CECF285319', NOW(), 1, 1, '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '//', 'CECF285319', NOW(), 1, 1, 'VACIO' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '2011/04/06', 'CECF285319', NOW(), 1, 1, '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '//', 'CECF285319', NOW(), 2, 1, 'TYU' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '2011/04/07', 'CECF285319', NOW(), 2, 1, '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '//', 'CECF285319', NOW(), 1, 1, '' )
+insert into db_rst.rst_datos_ave ( id_senal, fecha_averia, login_registro, fecha_registro, id_motiv_ave, id_status_ave, observaciones ) 
+				values ( 49, '2011/04/09', 'CECF285319', NOW(), 3, 1, '' )
+INSERT INTO db_rst.rst_datos_sen 
+				( 	coord_x, coord_y, id_tipo_sen, id_categ_sen, id_senal_tra, id_estad_sen, id_status_sen, averia, cod_estado, cod_municipio, 
+					cod_parroquia, login, fecha_registro, observaciones, desc_image_sen ) 
+				VALUES 
+				( 	'10.4873291', '-66.8151324', 2, 14, 56, 01, 'A', 'N', 'VA', 'VA-VA', 
+					'VA-VA-04', 'CECF285319', NOW(), '', '' )

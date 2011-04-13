@@ -98,6 +98,9 @@ switch ($id_op) {
 		echo "OK";
 		
 	break;
+	case 4: //actualizar señal
+			echo 'OK';
+	break;
   default:
     break;  
 }
