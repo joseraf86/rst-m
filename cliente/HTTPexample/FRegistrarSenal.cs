@@ -191,14 +191,17 @@ namespace RSTmobile
                         enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
                         MessageBox.Show("Señal registrada exitosamente");
 
+                        RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                        FMenu fmenu = rstapp.GetMenu();
+                        fmenu.Show();
+                        this.Hide();
+
                     }
                     catch //(WebException)
                     {
                         MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
                     }
 
-                    new FMenu().Show();
-                    this.Hide();
                 }
                 return;
             }
