@@ -1,0 +1,15 @@
+C:\wamp\www\RSTmobile\cliente\HTTPexample\bin\Release\db_rst.sdf
+C:\wamp\www\RSTmobile\cliente\HTTPexample\bin\Release\RSTmobile.exe
+C:\wamp\www\RSTmobile\cliente\HTTPexample\bin\Release\RSTmobile.pdb
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\ResolveAssemblyReference.cache
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.FAveria.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.FConsultarSenal.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.FMain.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.FMenu.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.FRegistrarSenal.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.FSenal.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.Properties.Resources.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.csproj.GenerateResource.Cache
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.exe
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.pdb
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FConfirmarSenal.resources

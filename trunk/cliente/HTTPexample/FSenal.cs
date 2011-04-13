@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections;
+using RSTmobile.view;
 
 namespace RSTmobile
 {
@@ -359,6 +360,14 @@ namespace RSTmobile
                 init();
                 SetSenal(senalXML);
             }
+        }
+
+        private void botonGuardar_Click(object sender, EventArgs e)
+        {
+            FConfirmarSenal fconfirmar = new FConfirmarSenal();
+            fconfirmar.SetSenal(stActual);
+            fconfirmar.Show();
+            this.Hide();
         }
 
     }

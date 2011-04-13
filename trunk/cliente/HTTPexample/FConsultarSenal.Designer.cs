@@ -49,6 +49,7 @@
             this.comboTipo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.titulo = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@
             this.panel1.Controls.Add(this.comboTipo);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.titulo);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 268);
@@ -80,14 +82,14 @@
             this.panel2.Controls.Add(this.botonReset);
             this.panel2.Controls.Add(this.boVolver);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(1, 224);
+            this.panel2.Location = new System.Drawing.Point(1, 227);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(238, 35);
+            this.panel2.Size = new System.Drawing.Size(238, 34);
             // 
             // botonReset
             // 
             this.botonReset.Image = ((System.Drawing.Image)(resources.GetObject("botonReset.Image")));
-            this.botonReset.Location = new System.Drawing.Point(47, 3);
+            this.botonReset.Location = new System.Drawing.Point(47, 2);
             this.botonReset.Name = "botonReset";
             this.botonReset.Size = new System.Drawing.Size(31, 30);
             this.botonReset.Click += new System.EventHandler(this.botonReset_Click);
@@ -95,7 +97,7 @@
             // boVolver
             // 
             this.boVolver.Image = ((System.Drawing.Image)(resources.GetObject("boVolver.Image")));
-            this.boVolver.Location = new System.Drawing.Point(8, 3);
+            this.boVolver.Location = new System.Drawing.Point(8, 2);
             this.boVolver.Name = "boVolver";
             this.boVolver.Size = new System.Drawing.Size(20, 30);
             this.boVolver.Click += new System.EventHandler(this.boVolver_Click);
@@ -104,7 +106,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.PapayaWhip;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(150, 3);
+            this.button1.Location = new System.Drawing.Point(150, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(86, 30);
             this.button1.TabIndex = 13;
@@ -114,7 +116,7 @@
             // comboParroquia
             // 
             this.comboParroquia.Items.Add("TODOS");
-            this.comboParroquia.Location = new System.Drawing.Point(72, 188);
+            this.comboParroquia.Location = new System.Drawing.Point(72, 194);
             this.comboParroquia.Name = "comboParroquia";
             this.comboParroquia.Size = new System.Drawing.Size(165, 22);
             this.comboParroquia.TabIndex = 12;
@@ -123,7 +125,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(5, 190);
+            this.label6.Location = new System.Drawing.Point(5, 195);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 20);
             this.label6.Text = "Parroquia";
@@ -132,7 +134,7 @@
             // comboMunicipio
             // 
             this.comboMunicipio.Items.Add("TODOS");
-            this.comboMunicipio.Location = new System.Drawing.Point(72, 159);
+            this.comboMunicipio.Location = new System.Drawing.Point(72, 167);
             this.comboMunicipio.Name = "comboMunicipio";
             this.comboMunicipio.Size = new System.Drawing.Size(165, 22);
             this.comboMunicipio.TabIndex = 10;
@@ -141,7 +143,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(3, 159);
+            this.label5.Location = new System.Drawing.Point(3, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 22);
             this.label5.Text = "Municipio";
@@ -150,7 +152,7 @@
             // comboEntidad
             // 
             this.comboEntidad.Items.Add("TODOS");
-            this.comboEntidad.Location = new System.Drawing.Point(72, 130);
+            this.comboEntidad.Location = new System.Drawing.Point(72, 140);
             this.comboEntidad.Name = "comboEntidad";
             this.comboEntidad.Size = new System.Drawing.Size(165, 22);
             this.comboEntidad.TabIndex = 8;
@@ -159,16 +161,17 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(4, 132);
+            this.label4.Location = new System.Drawing.Point(4, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 20);
             this.label4.Text = "Estado";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label4.ParentChanged += new System.EventHandler(this.label4_ParentChanged);
             // 
             // comboSenal
             // 
             this.comboSenal.Items.Add("TODOS");
-            this.comboSenal.Location = new System.Drawing.Point(72, 102);
+            this.comboSenal.Location = new System.Drawing.Point(72, 104);
             this.comboSenal.Name = "comboSenal";
             this.comboSenal.Size = new System.Drawing.Size(165, 22);
             this.comboSenal.TabIndex = 6;
@@ -177,7 +180,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(5, 104);
+            this.label3.Location = new System.Drawing.Point(5, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 20);
             this.label3.Text = "Señal";
@@ -186,7 +189,7 @@
             // comboCategoria
             // 
             this.comboCategoria.Items.Add("TODOS");
-            this.comboCategoria.Location = new System.Drawing.Point(72, 73);
+            this.comboCategoria.Location = new System.Drawing.Point(72, 76);
             this.comboCategoria.Name = "comboCategoria";
             this.comboCategoria.Size = new System.Drawing.Size(165, 22);
             this.comboCategoria.TabIndex = 4;
@@ -195,7 +198,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(4, 73);
+            this.label2.Location = new System.Drawing.Point(4, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 22);
             this.label2.Text = "Categoría";
@@ -204,7 +207,7 @@
             // comboTipo
             // 
             this.comboTipo.Items.Add("TODOS");
-            this.comboTipo.Location = new System.Drawing.Point(72, 44);
+            this.comboTipo.Location = new System.Drawing.Point(72, 49);
             this.comboTipo.Name = "comboTipo";
             this.comboTipo.Size = new System.Drawing.Size(164, 22);
             this.comboTipo.TabIndex = 2;
@@ -213,22 +216,29 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 44);
+            this.label1.Location = new System.Drawing.Point(4, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 22);
+            this.label1.Size = new System.Drawing.Size(61, 22);
             this.label1.Text = "Tipo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // titulo
             // 
             this.titulo.BackColor = System.Drawing.Color.IndianRed;
-            this.titulo.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
+            this.titulo.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold);
             this.titulo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.titulo.Location = new System.Drawing.Point(0, 7);
+            this.titulo.Location = new System.Drawing.Point(0, 14);
             this.titulo.Name = "titulo";
-            this.titulo.Size = new System.Drawing.Size(240, 25);
+            this.titulo.Size = new System.Drawing.Size(240, 20);
             this.titulo.Text = "Consultar Señal";
             this.titulo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.IndianRed;
+            this.panel3.Location = new System.Drawing.Point(0, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(240, 34);
             // 
             // FConsultarSenal
             // 
@@ -267,6 +277,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox boVolver;
         private System.Windows.Forms.PictureBox botonReset;
+        private System.Windows.Forms.Panel panel3;
 
     }
 }

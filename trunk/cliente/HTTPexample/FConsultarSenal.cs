@@ -256,18 +256,19 @@ namespace RSTmobile
 
             user = rst.Usuario.GetInstance();
             domainName = user.GetServer();
-            
+
             //MessageBox.Show(codEstado + " " + codMunicipio + " " + codParroquia + " " + idTipoSen + " " + idCategSen + " " + idSenalTra);
 
             vars = "id_op=1&id_tipo_sen=" + idTipoSenalActual +
                    "&id_categ_sen=" + idCategSenalActual +
                    "&id_senal_tra=" + idSenalTransitoActual +
-                   "&cod_estado=" + codEstado + 
+                   "&cod_estado=" + codEstado +
                    "&cod_municipio=" + codMunicipio +
-                   "&cod_parroquia=" + codParroquia + 
-                   "&login="+user.GetLogin();
-                    
-            Transito.SenalTransito senal = new Transito.SenalTransito();
+                   "&cod_parroquia=" + codParroquia +
+                   "&login=" + user.GetLogin();
+
+            Transito.SenalTransito senal = null;
+            ArrayList senales = new ArrayList();
             try
             {
                 stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
@@ -284,88 +285,94 @@ namespace RSTmobile
                                 currentNode = xmlReader.LocalName;
                                 if (currentNode == "senal")
                                 {
+                                    senal = new Transito.SenalTransito();
                                     senal.SetID(Convert.ToInt32(xmlReader.GetAttribute(0)));
                                 }
+                                break;
+                            case XmlNodeType.EndElement:
+                                // i.e. </rst>
+                                currentNode = xmlReader.LocalName;
+                                if (currentNode == "senal")
+                                {
+                                    MessageBox.Show(senal.ToString());
+                                    senales.Add(senal);
+                                }
+                                break;
+                            case XmlNodeType.Text:
+                                switch (currentNode)
+                                {
+                                    case "rst":
                                         break;
-                                    case XmlNodeType.EndElement:
-                                        // i.e. </rst>
+                                    case "senal":
                                         break;
-                                    case XmlNodeType.Text:
-                                        switch (currentNode)
-                                        {
-                                            case "rst":
-                                                break;
-                                            case "senal":
-                                                break;
-                                            case "x"://Convert.ToDouble
-                                                senal.setX(xmlReader.Value);
-                                                break;
-                                            case "y":
-                                                senal.setY(xmlReader.Value);
-                                                break;
-                                            case "tipo"://Convert.ToInt32(
-                                                senal.SetIDTipo(xmlReader.Value);
-                                                break;
-                                            case "categoria":
-                                                senal.SetIDCategoria(xmlReader.Value);
-                                                break;
-                                            case "descripcion":
-                                                senal.SetIDSenal(xmlReader.Value);
-                                                break;
-                                            case "estado":
-                                                senal.SetIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
-                                                break;
-                                            case "estatus":
-                                                senal.SetIDEstatus(xmlReader.Value.ToString());
-                                                break;
-                                            case "entidad":
-                                                senal.SetCodEstado(xmlReader.Value.ToString());
-                                                break;
-                                            case "municipio":
-                                                senal.SetCodMunicipio(xmlReader.Value.ToString());
-                                                break;
-                                            case "parroquia":
-                                                senal.SetCodParroquia(xmlReader.Value.ToString());
-                                                break;
-                                            case "averia":
-                                                senal.setIDAveria(xmlReader.Value.ToString());
-                                                break;
-                                            default:
-                                                break;
-                                        } 
+                                    case "x"://Convert.ToDouble
+                                        senal.setX(xmlReader.Value);
+                                        break;
+                                    case "y":
+                                        senal.setY(xmlReader.Value);
+                                        break;
+                                    case "tipo"://Convert.ToInt32(
+                                        senal.SetIDTipo(xmlReader.Value);
+                                        break;
+                                    case "categoria":
+                                        senal.SetIDCategoria(xmlReader.Value);
+                                        break;
+                                    case "descripcion":
+                                        senal.SetIDSenal(xmlReader.Value);
+                                        break;
+                                    case "estado":
+                                        senal.SetIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
+                                        break;
+                                    case "estatus":
+                                        senal.SetIDEstatus(xmlReader.Value.ToString());
+                                        break;
+                                    case "entidad":
+                                        senal.SetCodEstado(xmlReader.Value.ToString());
+                                        break;
+                                    case "municipio":
+                                        senal.SetCodMunicipio(xmlReader.Value.ToString());
+                                        break;
+                                    case "parroquia":
+                                        senal.SetCodParroquia(xmlReader.Value.ToString());
+                                        break;
+                                    case "averia":
+                                        senal.setIDAveria(xmlReader.Value.ToString());
                                         break;
                                     default:
                                         break;
                                 }
-                            }
-                            
-                            FSenal fsenal = new FSenal();
-                            fsenal.SetSenal(senal);
-                            fsenal.Show();
-                            this.Hide();
-                            
-                            //    MessageBox.Show("No se encontraron señales");
-                        
+                                break;
+                            default:
+                                break;
                         }
-                        
                     }
-                    catch (FormatException)
+                    if (senal != null)
                     {
-                        MessageBox.Show("El formato del XML recibido no es valido");
-
-                        RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
-                        FMenu fmenu = rstapp.GetMenu();
-                        fmenu.Show();
+                        FSenal fsenal = new FSenal();
+                        fsenal.SetSenal(senal);
+                        fsenal.Show();
                         this.Hide();
                     }
-                    catch (WebException)
-                    {
-                        MessageBox.Show("Asegurese de estar en un lugar con buena señal e intente de nuevo");
-                    }
-                    
-              //  }
-              //  return;
+                    //    MessageBox.Show("No se encontraron señales");
+
+                }
+
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("El formato del XML recibido no es valido");
+
+                RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                FMenu fmenu = rstapp.GetMenu();
+                fmenu.Show();
+                this.Hide();
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("Asegúrese de estar en un lugar con buena señal e intente de nuevo");
+            }
+
+        }
 
         private void boVolver_Click(object sender, EventArgs e)
         {
@@ -413,6 +420,11 @@ namespace RSTmobile
             comboEntidad.SelectedIndex = 0;
             comboMunicipio.SelectedIndex = 0;
             comboParroquia.SelectedIndex = 0;
+        }
+
+        private void label4_ParentChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
