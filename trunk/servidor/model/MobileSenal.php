@@ -127,5 +127,38 @@ class MobileSenal {
 		$auditoria->insertar( "707" );
 	}
 
+	public function actualizar( $id_senal, $coord_x, $coord_y, $id_tipo_sen, $id_categ_sen, $id_senal_tra, $id_estad_sen, $id_status_sen, $averia, 
+		$cod_estado, $cod_municipio, $cod_parroquia, $login, $observaciones ) {
+		
+		$conexion 	= new EnlaceBD;
+		$var 		= $conexion->conectar( $_SESSION['db_rst'] );		
+		$fecha_reg 	= $conexion->getSQLTimeStamp();
+		
+		//$conexion->activarModoDebug();
+		
+		$sql = "update ".$_SESSION['db_rst'].$_SESSION['schema_db'].".$this->trst_datos_sen set 
+					coord_x = '$coord_x', 
+					coord_y = '$coord_y', 
+					id_tipo_sen = '$id_tipo_sen', 
+					id_categ_sen = '$id_categ_sen',
+					id_senal_tra = '$id_senal_tra',
+					id_estad_sen = '$id_estad_sen',
+					averia = '$averia',
+					cod_estado = '$cod_estado',
+					cod_municipio = '$cod_municipio',
+					cod_parroquia = '$cod_parroquia',
+					login = '$login',
+					observaciones = '$observaciones'
+				where id_senal = '$id_senal'";
+		
+		$this->respuesta = $conexion->consultar($sql) 
+			or die("No se pudo registrar la Señal de Tránsito");
+			
+		$conexion->desconectar();
+		
+		$auditoria 	= new Auditoria;
+		$auditoria->insertar( "709" );
+	}
+	
 } // End Class
 ?>
