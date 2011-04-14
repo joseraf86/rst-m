@@ -99,7 +99,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 392);
+            this.panel1.Size = new System.Drawing.Size(224, 392);
             // 
             // labelCategoria
             // 
@@ -255,9 +255,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.IndianRed;
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(1, 9);
+            this.panel2.Location = new System.Drawing.Point(0, 9);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(238, 34);
+            this.panel2.Size = new System.Drawing.Size(225, 34);
             // 
             // label1
             // 
@@ -265,7 +265,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(-1, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 24);
+            this.label1.Size = new System.Drawing.Size(224, 24);
             this.label1.Text = "Señal de Tránsito";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -293,6 +293,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.PapayaWhip;
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.panel1);
             this.Menu = this.mainMenu1;

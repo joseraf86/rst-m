@@ -289,7 +289,7 @@ namespace RSTmobile
                                 currentNode = xmlReader.LocalName;
                                 if (currentNode == "senal")
                                 {
-                                    MessageBox.Show(senal.ToString());
+                                    //MessageBox.Show(senal.ToString());
                                     senales.Add(senal);
                                 }
                                 break;
@@ -344,6 +344,19 @@ namespace RSTmobile
                                 break;
                         }
                     }
+
+                    if (senales.Count > 0)
+                    {
+                        view.RSTApp rstapp = view.RSTApp.GetInstance();
+                        view.FSenales fsenales = rstapp.GetSenales();
+                        fsenales.SetSenales(senales);
+                        fsenales.Show();
+                        this.Hide();
+                    }
+                    else 
+                        MessageBox.Show("No se encontraron señales con las opciones especificadas");
+    
+                    /*
                     if (senal != null)
                     {
                         view.RSTApp rstapp = view.RSTApp.GetInstance();
@@ -352,6 +365,7 @@ namespace RSTmobile
                         fsenal.Show();
                         this.Hide();
                     }
+                     */
                     //    MessageBox.Show("No se encontraron señales");
 
                 }

@@ -183,6 +183,13 @@ namespace Transito
 
     public class Senal
     {
+        public static int CUALQUIER_TIPO = 100000;
+        public static int CUALQUIER_CATEGORIA = 10000;
+        public static int CUALQUIER_SENAL = 1000;
+        public static int CUALQUIER_ENTIDAD = 100;
+        public static int CUALQUIER_MUNICIPIO = 10;
+        public static int CUALQUIER_PARROQUIA = 1;
+
         private SqlCeConnection conn = null;
         private SqlCeCommand cmd;
         private ArrayList listaTipoSenal;
