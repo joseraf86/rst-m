@@ -99,7 +99,25 @@ switch ($id_op) {
 		
 	break;
 	case 4: //actualizar señal
-			echo 'OK';
+		$id_senal 		= $_POST['id_senal'];
+		$coord_x		= $_POST['coord_x'];
+		$coord_y		= $_POST['coord_y'];
+		$id_tipo_sen	= $_POST['id_tipo_sen'];
+		$id_categ_sen	= $_POST['id_categ_sen'];
+		$id_senal_tra	= $_POST['id_senal_tra'];
+		$id_estad_sen	= $_POST['id_estad_sen'];	// 1
+		$id_status_sen	= $_POST['id_status_sen'];	// 'I'
+		$averia			= 'N';
+		$cod_estado		= $_POST['cod_estado'];
+		$cod_municipio	= $_POST['cod_municipio'];
+		$cod_parroquia	= $_POST['cod_parroquia'];
+		$login			= $_POST['login'];
+		$observaciones	= $_POST['observaciones'];
+		$desc_image_sen	= '';
+		$senal = new MobileSenal;
+		$senal->actualizar( $id_senal, $coord_x, $coord_y, $id_tipo_sen, $id_categ_sen, $id_senal_tra, $id_estad_sen, $id_status_sen, $averia, $cod_estado, $cod_municipio, 
+			$cod_parroquia, $login, $observaciones, $desc_image_sen );
+		echo 'OK';
 	break;
   default:
     break;  
