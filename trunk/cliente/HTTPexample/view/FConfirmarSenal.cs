@@ -55,13 +55,16 @@ namespace RSTmobile.view
             user = rst.Usuario.GetInstance();
             enlace = new HTTP.EnlaceHTTP();
  
-            vars = "id_op=4&coord_x=" + senal.GetX() + "&coord_y=" + senal.GetY() + "&id_tipo_sen=" + senal.GetIDTipo() +
+            vars = "id_op=4&id_senal="+senal.GetID()+
+                   "&coord_x=" + senal.GetX() + "&coord_y=" + senal.GetY() + "&id_tipo_sen=" + senal.GetIDTipo() +
                    "&id_categ_sen=" + senal.GetIDCategoria() + "&id_senal_tra=" + senal.GetIDSenal() + 
                    "&id_estad_sen=" + senal.GetIDEstado() +
                    "&id_status_sen=" + senal.GetIDEstatus() + "&averia=N&cod_estado=" + senal.GetCodEstado() + 
                    "&cod_municipio=" + senal.GetCodMunicipio() + "&cod_parroquia=" + senal.GetCodParroquia() +
-                   "&login=" + user.GetLogin();
-                   //+ "&observaciones=" + observaciones;
+                   "&login=" + user.GetLogin() + "&observaciones=" + senal.GetObservaciones();
+
+
+            MessageBox.Show(vars);
 
             try
             {

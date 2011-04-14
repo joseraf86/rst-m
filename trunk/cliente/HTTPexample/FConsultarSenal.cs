@@ -53,12 +53,7 @@ namespace RSTmobile
             }
             // En los comboboxes se coloca la opción TODOS como predeterminada 
             comboTipo.SelectedIndex = 0;
-            //comboCategoria.SelectedIndex = 0;
-            //comboSenal.SelectedIndex = 0;
             comboEntidad.SelectedIndex = 0;
-            //comboMunicipio.SelectedIndex = 0;
-            //comboParroquia.SelectedIndex = 0;
-
             
         }
 
@@ -306,10 +301,10 @@ namespace RSTmobile
                                     case "senal":
                                         break;
                                     case "x"://Convert.ToDouble
-                                        senal.setX(xmlReader.Value);
+                                        senal.SetX(xmlReader.Value);
                                         break;
                                     case "y":
-                                        senal.setY(xmlReader.Value);
+                                        senal.SetY(xmlReader.Value);
                                         break;
                                     case "tipo"://Convert.ToInt32(
                                         senal.SetIDTipo(xmlReader.Value);
@@ -338,6 +333,9 @@ namespace RSTmobile
                                     case "averia":
                                         senal.setIDAveria(xmlReader.Value.ToString());
                                         break;
+                                    case "observaciones":
+                                        senal.SetObservaciones(xmlReader.Value.ToString());
+                                        break;
                                     default:
                                         break;
                                 }
@@ -348,7 +346,8 @@ namespace RSTmobile
                     }
                     if (senal != null)
                     {
-                        FSenal fsenal = new FSenal();
+                        view.RSTApp rstapp = view.RSTApp.GetInstance();
+                        FSenal fsenal = rstapp.GetSenal();
                         fsenal.SetSenal(senal);
                         fsenal.Show();
                         this.Hide();

@@ -66,6 +66,8 @@ namespace RSTmobile
         public void SetSenal(Transito.SenalTransito senal) {
             senalXML = senal;
             stActual = new Transito.SenalTransito();
+            stActual.SetX(senal.GetX());
+            stActual.SetY(senal.GetY());
             stActual.SetID(senal.GetID());
             stActual.SetIDTipo(senal.GetIDTipo());
             stActual.SetIDCategoria(senal.GetIDCategoria());
@@ -75,6 +77,7 @@ namespace RSTmobile
             stActual.SetCodEstado(senal.GetCodEstado());
             stActual.SetCodMunicipio(senal.GetCodMunicipio());
             stActual.SetCodParroquia(senal.GetCodParroquia());
+            stActual.SetObservaciones("");
             int i = 0;
 
             //init();
@@ -150,6 +153,7 @@ namespace RSTmobile
                 comboEstatus.Items.Add("ACTIVO");
                 comboEstatus.Items.Add("INACTIVO");
                 comboEstatus.SelectedIndex = 0;
+                textBoxObservaciones.Text = "";
         }
         
 //****************** Metodos Manejadores de Eventos **************************//
@@ -368,6 +372,21 @@ namespace RSTmobile
             fconfirmar.SetSenal(stActual);
             fconfirmar.Show();
             this.Hide();
+        }
+
+        private void textBoxObservaciones_TextChanged(object sender, EventArgs e)
+        {
+            stActual.SetObservaciones(textBoxObservaciones.Text);
+        }
+
+        private void textBoxX_TextChanged(object sender, EventArgs e)
+        {
+            stActual.SetX(textBoxX.Text);
+        }
+
+        private void textBoxY_TextChanged(object sender, EventArgs e)
+        {
+            stActual.SetY(textBoxY.Text);
         }
 
     }
