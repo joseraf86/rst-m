@@ -13,8 +13,10 @@ namespace RSTmobile.view
         private FConsultarSenal fconsultars;
         private FRegistrarSenal fregistrars;
         private FSenal fsenal;
+        private FSenales fsenales;
         private FAveria faveria;
         private static RSTApp instance;
+        
 
         private RSTApp() { }
 
@@ -64,6 +66,12 @@ namespace RSTmobile.view
             if (fsenal == null)
                 fsenal = new FSenal();
             return fsenal;
+        }
+        public FSenales GetSenales()
+        {
+            if (fsenales == null)
+                fsenales = new FSenales();
+            return fsenales;
         }
         public FAveria GetAveria()
         {

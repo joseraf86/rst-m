@@ -63,9 +63,6 @@ namespace RSTmobile.view
                    "&cod_municipio=" + senal.GetCodMunicipio() + "&cod_parroquia=" + senal.GetCodParroquia() +
                    "&login=" + user.GetLogin() + "&observaciones=" + senal.GetObservaciones();
 
-
-            MessageBox.Show(vars);
-
             try
             {
                 enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
