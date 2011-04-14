@@ -33,6 +33,7 @@ namespace Transito
         private string codMunicipio;
         private string codParroquia;
 
+        private string observaciones;
         private string idAveria;
 
         public SenalTransito()
@@ -56,11 +57,11 @@ namespace Transito
         {
             this.id = id;
         }
-        public void setX(string x)
+        public void SetX(string x)
         {
             this.x = x;
         }
-        public void setY(string y)
+        public void SetY(string y)
         {
             this.y = y;
         }
@@ -95,6 +96,10 @@ namespace Transito
         public void SetCodParroquia(string codParroquia)
         {
             this.codParroquia = codParroquia;
+        }
+        public void SetObservaciones(string observaciones)
+        {
+            this.observaciones = observaciones;
         }
         public void setIDAveria(string idAveria)
         {
@@ -145,6 +150,10 @@ namespace Transito
         public string GetCodParroquia()
         {
             return this.codParroquia;
+        }
+        public string GetObservaciones()
+        {
+            return observaciones;
         }
         public override string ToString()
         {

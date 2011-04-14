@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FSenal));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxObservaciones = new System.Windows.Forms.TextBox();
+            this.labelObs = new System.Windows.Forms.Label();
             this.comboEstatus = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboEstado = new System.Windows.Forms.ComboBox();
@@ -39,6 +41,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.botonGuardar = new System.Windows.Forms.PictureBox();
             this.botonReset = new System.Windows.Forms.PictureBox();
             this.boVolver = new System.Windows.Forms.PictureBox();
             this.botonAveria = new System.Windows.Forms.Button();
@@ -60,9 +63,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.botonGuardar = new System.Windows.Forms.PictureBox();
-            this.labelObs = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -71,7 +71,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PapayaWhip;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxObservaciones);
             this.panel1.Controls.Add(this.labelObs);
             this.panel1.Controls.Add(this.comboEstatus);
             this.panel1.Controls.Add(this.label11);
@@ -100,6 +100,22 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(239, 568);
+            // 
+            // textBoxObservaciones
+            // 
+            this.textBoxObservaciones.Location = new System.Drawing.Point(14, 414);
+            this.textBoxObservaciones.Multiline = true;
+            this.textBoxObservaciones.Name = "textBoxObservaciones";
+            this.textBoxObservaciones.Size = new System.Drawing.Size(200, 65);
+            this.textBoxObservaciones.TabIndex = 46;
+            this.textBoxObservaciones.TextChanged += new System.EventHandler(this.textBoxObservaciones_TextChanged);
+            // 
+            // labelObs
+            // 
+            this.labelObs.Location = new System.Drawing.Point(4, 391);
+            this.labelObs.Name = "labelObs";
+            this.labelObs.Size = new System.Drawing.Size(100, 20);
+            this.labelObs.Text = "Observaciones";
             // 
             // comboEstatus
             // 
@@ -155,6 +171,14 @@
             this.panel3.Location = new System.Drawing.Point(1, 492);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(227, 60);
+            // 
+            // botonGuardar
+            // 
+            this.botonGuardar.BackColor = System.Drawing.Color.DarkGreen;
+            this.botonGuardar.Location = new System.Drawing.Point(80, 15);
+            this.botonGuardar.Name = "botonGuardar";
+            this.botonGuardar.Size = new System.Drawing.Size(28, 30);
+            this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
             // botonReset
             // 
@@ -285,6 +309,7 @@
             this.textBoxY.Name = "textBoxY";
             this.textBoxY.Size = new System.Drawing.Size(148, 21);
             this.textBoxY.TabIndex = 7;
+            this.textBoxY.TextChanged += new System.EventHandler(this.textBoxY_TextChanged);
             // 
             // label4
             // 
@@ -300,6 +325,7 @@
             this.textBoxX.Name = "textBoxX";
             this.textBoxX.Size = new System.Drawing.Size(148, 21);
             this.textBoxX.TabIndex = 4;
+            this.textBoxX.TextChanged += new System.EventHandler(this.textBoxX_TextChanged);
             // 
             // label3
             // 
@@ -326,29 +352,6 @@
             this.label1.Size = new System.Drawing.Size(198, 21);
             this.label1.Text = "Datos de Señal de Tránsito";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // botonGuardar
-            // 
-            this.botonGuardar.BackColor = System.Drawing.Color.DarkGreen;
-            this.botonGuardar.Location = new System.Drawing.Point(80, 15);
-            this.botonGuardar.Name = "botonGuardar";
-            this.botonGuardar.Size = new System.Drawing.Size(28, 30);
-            this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
-            // 
-            // labelObs
-            // 
-            this.labelObs.Location = new System.Drawing.Point(4, 391);
-            this.labelObs.Name = "labelObs";
-            this.labelObs.Size = new System.Drawing.Size(100, 20);
-            this.labelObs.Text = "Observaciones";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(14, 414);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 65);
-            this.textBox1.TabIndex = 46;
             // 
             // FSenal
             // 
@@ -399,7 +402,7 @@
         private System.Windows.Forms.PictureBox boVolver;
         private System.Windows.Forms.PictureBox botonReset;
         private System.Windows.Forms.PictureBox botonGuardar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxObservaciones;
         private System.Windows.Forms.Label labelObs;
     }
 }
