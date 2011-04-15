@@ -174,10 +174,11 @@
             // 
             // botonGuardar
             // 
-            this.botonGuardar.BackColor = System.Drawing.Color.DarkGreen;
-            this.botonGuardar.Location = new System.Drawing.Point(80, 15);
+            this.botonGuardar.BackColor = System.Drawing.Color.IndianRed;
+            this.botonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("botonGuardar.Image")));
+            this.botonGuardar.Location = new System.Drawing.Point(77, 15);
             this.botonGuardar.Name = "botonGuardar";
-            this.botonGuardar.Size = new System.Drawing.Size(28, 30);
+            this.botonGuardar.Size = new System.Drawing.Size(18, 30);
             this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
             // botonReset

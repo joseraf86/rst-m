@@ -7,25 +7,23 @@ namespace RSTmobile
 {
     public partial class FAveria : Form
     {
-        private Transito.SenalTransito senal;
+        //private Transito.SenalTransito senal;
         private ArrayList listaMotivos;
         private Transito.Averia averia;
+        private Transito.Senal senales;
 
         public FAveria()
         {
             InitializeComponent();
         }
 
-        public void SetSenal(Transito.SenalTransito senal)
+        public void SetAveria(Transito.Averia averia)
         {
-            this.senal = senal;
-            averia = new Transito.Averia();
+            this.averia = averia;
         }
 
         private void FAveria_Load(object sender, EventArgs e)
         {
-            Transito.Senal senales;
-
             senales = Transito.Senal.GetInstance();
             listaMotivos = senales.ConsultarMotivo();
             foreach (Transito.Indicador data in listaMotivos)
@@ -61,7 +59,7 @@ namespace RSTmobile
             user = rst.Usuario.GetInstance();
             path = "RSTmobile/servidor/controller/MobileSenalController.php";
             vars = "id_op=3" +
-                   "&id_senal=" + senal.GetID() +
+                   "&id_senal=" + averia.GetSenal().GetID() +
                    "&fechaAveria=" + HttpUtility.UrlEncode(averia.GetFechaAveria()) +
                    "&loginRegistro=" + user.GetLogin() +
                    "&idMotivo=" + "" + averia.GetIDMotivo() +

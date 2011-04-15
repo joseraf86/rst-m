@@ -4,6 +4,7 @@ using System.Collections;
 using System.Net;
 using System.IO;
 using RSTmobile.view;
+using System.Xml;
 
 namespace RSTmobile
 {
@@ -345,17 +346,18 @@ namespace RSTmobile
 
         private void botonAveria_Click(object sender, EventArgs e)
         {
+            Transito.Averia averia = null;
             if (stActual.GetIDAveria().Equals("S"))
             {
                 //Solicitar al controlador (en el servidor) la averia segun Id de la señal
-                string vars;
+                string vars = "";
                 rst.Usuario user;
                 string path = "RSTmobile/servidor/controller/MobileAveriaController.php";
-                string respuesta = "";
-                Stream stream;
-                StreamReader reader;
+                Stream stream = null;
                 HTTP.EnlaceHTTP enlace;
-                //XmlTextReader xmlReader;
+                XmlTextReader xmlReader = null;
+                string currentNode = "";
+                
 
                 user = rst.Usuario.GetInstance();
                 enlace = new HTTP.EnlaceHTTP(); 
@@ -366,16 +368,103 @@ namespace RSTmobile
                 try
                 {
                     stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
-                    reader = new StreamReader(stream);
-                    respuesta = reader.ReadToEnd();
-                    reader.Close();
-                    MessageBox.Show("Averia consultada: "+respuesta);
+                    // Nota no puede utilizarse otro reader ademas de xmlreader, ya que este ultimo deja de funcionar
+                    //reader = new StreamReader(stream);
+                    //xml = reader.ReadToEnd();
+                    //MessageBox.Show("Averia consultada: " + xml);
+                    //reader.Close(); 
+                    ////%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    if (stream != null)
+                    {
+                        xmlReader = new XmlTextReader(stream);
+                        xmlReader.WhitespaceHandling = WhitespaceHandling.None;
+                        while (xmlReader.Read())
+                        {
+                            switch (xmlReader.NodeType)
+                            {
+                                case XmlNodeType.Element:
+                                    // e.g. <rst>
+                                    currentNode = xmlReader.LocalName;
+                                    if (currentNode == "averia")
+                                    {
+                                        averia = new Transito.Averia(stActual);
+                                        averia.SetID(xmlReader.GetAttribute(0));
+                                    }
+                                    break;
+                                case XmlNodeType.EndElement:
+                                    // e.g. </rst>
+                                    currentNode = xmlReader.LocalName;
+                                    if (currentNode == "averia")
+                                    {
+                                        //MessageBox.Show(senal.ToString());
+                                        //senales.Add(senal);
+                                    }
+                                    break;
+                                case XmlNodeType.Text:
+                                    switch (currentNode)
+                                    {
+                                        case "rst":
+                                            break;
+                                        case "averia":
+                                            break;
+                                        case "senal":
+                                            averia.SetSenal(stActual);
+                                            //MessageBox.Show(stActual.GetID()+" "+xmlReader.Value.ToString());
+                                            /*
+                                            if (stActual.GetID().Equals(xmlReader.Value.ToString()))
+                                            {
+                                                if (averia != null)
+                                                    
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("los datos fueron dañados durante su transmisión, por favor intente de nuevo");
+                                                //averia = null;
+                                                break;
+                                            }
+                                             * */
+                                            break;
+                                        case "motivo":
+                                            averia.SetIDMotivo(xmlReader.Value.ToString());
+                                            break;
+                                        case "fecha":
+                                            averia.SetFechaAveria(xmlReader.Value.ToString());
+                                            break;
+                                        case "login":
+                                            averia.SetLoginRegistro(xmlReader.Value.ToString());
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    /////////
+
                 }
                 catch (WebException)
                 {
                     MessageBox.Show("Asegúrese de estar en un lugar con buena señal e intente de nuevo");
                 }
-
+                catch (XmlException)
+                {
+                    // xml mal formado
+                    MessageBox.Show("Los datos de la averia fueron dañados en la transmisión. Intente de nuevo");
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Close();
+                    if (xmlReader != null)
+                        xmlReader.Close();
+                }
+                FConsultarAveria fcaveria = new FConsultarAveria();
+                fcaveria.SetAveria(averia);
+                fcaveria.Show();
+                this.Hide();
 
             }
             else
@@ -386,12 +475,15 @@ namespace RSTmobile
                         == DialogResult.Yes)
                 {
                     //stActual.setIDAveria("S");
+                    averia = new Transito.Averia(stActual);
                     FAveria faveria = new FAveria();
-                    faveria.SetSenal(stActual);
+                    faveria.SetAveria(averia);
                     faveria.Show();
                     this.Hide();
+
                 }
             }
+            
         }
 
         private void boVolver_Click(object sender, EventArgs e)
