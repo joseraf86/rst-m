@@ -36,6 +36,11 @@ namespace RSTmobile.view
             return instance;
         }
 
+        public void SetSenales(FSenales fsenales)
+        {
+            this.fsenales = fsenales;
+        }
+
         public FMain GetMain() {
             if (fmain == null)
                 fmain = new FMain();

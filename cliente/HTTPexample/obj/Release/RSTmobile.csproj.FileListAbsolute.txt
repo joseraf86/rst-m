@@ -14,3 +14,5 @@ C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.exe
 C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.pdb
 C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FConfirmarSenal.resources
 C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FSenales.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FConsultarAveria.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FRepararAveria.resources

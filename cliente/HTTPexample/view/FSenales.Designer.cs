@@ -84,7 +84,7 @@
             this.Controls.Add(this.panel1);
             this.Menu = this.mainMenu1;
             this.Name = "FSenales";
-            this.Text = "FSenales";
+            this.Text = "RST";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

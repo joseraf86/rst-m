@@ -347,8 +347,9 @@ namespace RSTmobile
 
                     if (senales.Count > 0)
                     {
+                        view.FSenales fsenales = new RSTmobile.view.FSenales();
                         view.RSTApp rstapp = view.RSTApp.GetInstance();
-                        view.FSenales fsenales = rstapp.GetSenales();
+                        rstapp.SetSenales(fsenales);
                         fsenales.SetSenales(senales);
                         fsenales.Show();
                         this.Hide();
