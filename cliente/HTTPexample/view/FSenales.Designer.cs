@@ -31,9 +31,9 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +45,17 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 379);
+            this.panel1.Size = new System.Drawing.Size(239, 268);
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.Color.PapayaWhip;
+            this.botonVolver.Location = new System.Drawing.Point(16, 236);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(52, 17);
+            this.botonVolver.TabIndex = 1;
+            this.botonVolver.Text = "volver";
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // panel2
             // 
@@ -64,15 +74,6 @@
             this.label1.Size = new System.Drawing.Size(180, 22);
             this.label1.Text = "Listado de Señales";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.Location = new System.Drawing.Point(17, 352);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(39, 17);
-            this.botonVolver.TabIndex = 1;
-            this.botonVolver.Text = "button1";
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // FSenales
             // 

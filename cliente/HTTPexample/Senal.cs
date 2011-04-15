@@ -101,7 +101,7 @@ namespace Transito
         {
             this.observaciones = observaciones;
         }
-        public void setIDAveria(string idAveria)
+        public void SetIDAveria(string idAveria)
         {
             this.idAveria = idAveria;
         }
@@ -154,6 +154,10 @@ namespace Transito
         public string GetObservaciones()
         {
             return observaciones;
+        }
+        public string GetIDAveria()
+        {
+            return this.idAveria;
         }
         public override string ToString()
         {

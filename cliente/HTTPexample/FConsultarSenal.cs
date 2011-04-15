@@ -331,7 +331,7 @@ namespace RSTmobile
                                         senal.SetCodParroquia(xmlReader.Value.ToString());
                                         break;
                                     case "averia":
-                                        senal.setIDAveria(xmlReader.Value.ToString());
+                                        senal.SetIDAveria(xmlReader.Value.ToString());
                                         break;
                                     case "observaciones":
                                         senal.SetObservaciones(xmlReader.Value.ToString());

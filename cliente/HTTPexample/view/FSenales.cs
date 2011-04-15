@@ -7,13 +7,11 @@ namespace RSTmobile.view
     public partial class FSenales : Form
     {
         private ArrayList senales;
-        //private ArrayList labelsSenales;
-        private Button label;
+        private Button buttonSenal;
             
         public FSenales()
         {
             InitializeComponent();
-            //labelsSenales = new ArrayList();
         }
 
         public void SetSenales(ArrayList senales)
@@ -24,16 +22,16 @@ namespace RSTmobile.view
             this.SuspendLayout();
             foreach (Transito.SenalTransito senal in senales)
             {
-                label = new Button();
-                label.Location = new System.Drawing.Point(16, 50+i*tam);
-                label.Name = "l_"+i;
-                label.Size = new System.Drawing.Size(128, 16);
-                label.TabIndex = 0;
-                label.Text = senal.GetCodParroquia();
+                buttonSenal = new Button();
+                buttonSenal.Location = new System.Drawing.Point(16, 50+i*tam);
+                buttonSenal.Name = "l_"+i;
+                buttonSenal.Size = new System.Drawing.Size(128, 16);
+                buttonSenal.TabIndex = 0;
+                buttonSenal.Text = senal.GetCodParroquia();
                 //label.Font.Style = System.Drawing.FontStyle.Underline;
-                label.Click += new System.EventHandler(label_Click);
+                buttonSenal.Click += new System.EventHandler(label_Click);
                 // Add the control to the form.
-                panel1.Controls.Add(label);
+                panel1.Controls.Add(buttonSenal);
                 i++;
 
                // MessageBox.Show(senal.GetCodParroquia());

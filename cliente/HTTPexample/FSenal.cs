@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections;
+using System.Net;
+using System.IO;
 using RSTmobile.view;
 
 namespace RSTmobile
@@ -77,6 +79,7 @@ namespace RSTmobile
             stActual.SetCodEstado(senal.GetCodEstado());
             stActual.SetCodMunicipio(senal.GetCodMunicipio());
             stActual.SetCodParroquia(senal.GetCodParroquia());
+            stActual.SetIDAveria(senal.GetIDAveria());
             stActual.SetObservaciones("");
             int i = 0;
 
@@ -254,7 +257,6 @@ namespace RSTmobile
 
         }
 
-
         private void comboEntidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             Ubicacion.Entidad aux;
@@ -343,17 +345,60 @@ namespace RSTmobile
 
         private void botonAveria_Click(object sender, EventArgs e)
         {
-            FAveria faveria = new FAveria();
-            faveria.SetSenal(stActual);
-            faveria.Show();
-            this.Hide();
+            if (stActual.GetIDAveria().Equals("S"))
+            {
+                //Solicitar al controlador (en el servidor) la averia segun Id de la señal
+                string vars;
+                rst.Usuario user;
+                string path = "RSTmobile/servidor/controller/MobileAveriaController.php";
+                string respuesta = "";
+                Stream stream;
+                StreamReader reader;
+                HTTP.EnlaceHTTP enlace;
+                //XmlTextReader xmlReader;
+
+                user = rst.Usuario.GetInstance();
+                enlace = new HTTP.EnlaceHTTP(); 
+
+                vars = "id_op=1&id_senal=" + stActual.GetID() +
+                       "&login=" + user.GetLogin();
+
+                try
+                {
+                    stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
+                    reader = new StreamReader(stream);
+                    respuesta = reader.ReadToEnd();
+                    reader.Close();
+                    MessageBox.Show("Averia consultada: "+respuesta);
+                }
+                catch (WebException)
+                {
+                    MessageBox.Show("Asegúrese de estar en un lugar con buena señal e intente de nuevo");
+                }
+
+
+            }
+            else
+            {
+                //confirmar si se desea registrar una averia nueva para esta señal
+                if (MessageBox.Show("¿Desea notificar una averia nueva para esta señal?", "Alerta",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+                        == DialogResult.Yes)
+                {
+                    //stActual.setIDAveria("S");
+                    FAveria faveria = new FAveria();
+                    faveria.SetSenal(stActual);
+                    faveria.Show();
+                    this.Hide();
+                }
+            }
         }
 
         private void boVolver_Click(object sender, EventArgs e)
         {
             RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
-            FConsultarSenal fcsenal = rst.GetConsultarSenal();
-            fcsenal.Show();
+            FSenales fsenales = rst.GetSenales();
+            fsenales.Show();
             this.Hide();
         }
 
