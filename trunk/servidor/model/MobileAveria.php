@@ -7,32 +7,42 @@ class MobileAveria {
 
 	private $trst_datos_ave = "rst_datos_ave";
 
-	public function consultar( $id_senal, $id_status ) {
+	public function consultar( $id_senal ) {
 		//El valor '0' representa la opcion TODOS
 		$conexion 	= new EnlaceBD;
 		
 		$var 		= $conexion->conectar( $_SESSION['db_rst'] );
 		//$conexion->activarModoDebug();
-		$fmt_fecha 	= $conexion->extraerCampoFechaHora('ds.fecha_registro'); // '%d/%m/%Y %H:%i:%s'
+		$fmt_fecha 	= $conexion->extraerCampoFechaHora('fecha_registro'); // '%d/%m/%Y %H:%i:%s'
 
-		$sql	= "SELECT 	ds.id_senal as id_senal,
-							ds.id_averia as id_averia,
-							$fmt_fecha as fecha_registro
+		$sql	= "SELECT 	id_senal as id_senal,
+							id_averia as id_averia,
+							$fmt_fecha as fecha_registro,
+							id_motiv_ave as id_motivo,
+							login_registro as login_registro
 						FROM db_rst.rst_datos_ave as rave
 						WHERE id_senal = '$id_senal'";
 		
 		$this->respuesta = $conexion->consultar($sql) 
 			or die("No se pudo consultar la Señal de Tránsito");
 		
-		//while( $temparray = $this->respuesta->buscar_fila() ) {
+		$xml = '<rst>';
+		while( $temparray = $this->respuesta->buscar_fila() ) {
+			$xml .= '<averia id="'.$temparray['id_averia'].'">'; 
+			$xml .= '<senal>'.$temparray['id_senal'].'</senal>';
+			$xml .= '<motivo>'.$temparray['id_motivo'].'</motivo>';
+			$xml .= '<fecha>'.$temparray['fecha_registro'].'</fecha>';
+			$xml .= '<login>'.$temparray['login_registro'].'</login>';
+			$xml .= '</averia>';
+		}
 		
-		//}
+		$xml .= '</rst>';
 		
 		$conexion->desconectar();
 		
 		//$auditoria 	= new Auditoria;
 		//$auditoria->insertar( "210" );
-		
+		return $xml;
 	}
 	
 	public function registrar( $id_senal, $id_motiv_ave, $observaciones, $login, $fecha_averia ) {
