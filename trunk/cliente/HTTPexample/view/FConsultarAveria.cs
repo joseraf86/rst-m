@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace RSTmobile.view
+namespace RSTmobile.controller
 {
     public partial class FConsultarAveria : Form
     {
@@ -27,6 +27,7 @@ namespace RSTmobile.view
         private void button2_Click(object sender, EventArgs e)
         {
             FRepararAveria fraveria = new FRepararAveria();
+            fraveria.SetAveria(averia);
             fraveria.Show();
             this.Hide();
         }
@@ -37,6 +38,11 @@ namespace RSTmobile.view
             FSenal fsenal = rstapp.GetSenal();
             fsenal.Show();
             this.Hide();
+        }
+
+        private void textBoxObservaciones_TextChanged(object sender, EventArgs e)
+        {
+            averia.SetObservaciones(textBoxObservaciones.Text);
         }
 
     }

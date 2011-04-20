@@ -25,7 +25,7 @@ namespace RSTmobile
         private void FAveria_Load(object sender, EventArgs e)
         {
             senales = Transito.Senal.GetInstance();
-            listaMotivos = senales.ConsultarMotivo();
+            listaMotivos = senales.ConsultarMotivos();
             foreach (Transito.Indicador data in listaMotivos)
             {
                 this.comboMotivos.Items.Add(data.descripcion);
@@ -36,7 +36,7 @@ namespace RSTmobile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
             FMenu fmenu = rstapp.GetMenu();
             fmenu.Show();
             this.Hide();
@@ -49,36 +49,10 @@ namespace RSTmobile
 
         private void botonNotificar_Click(object sender, EventArgs e)
         {
-            string vars;
-            string path;
-            rst.Usuario user;
-            HTTP.EnlaceHTTP enlace;
-            //string fecha = HttpUtility.UrlEncode(averia.GetFechaAveria());
-
-            enlace = new HTTP.EnlaceHTTP();
-            user = rst.Usuario.GetInstance();
-            path = "RSTmobile/servidor/controller/MobileSenalController.php";
-            vars = "id_op=3" +
-                   "&id_senal=" + averia.GetSenal().GetID() +
-                   "&fechaAveria=" + HttpUtility.UrlEncode(averia.GetFechaAveria()) +
-                   "&loginRegistro=" + user.GetLogin() +
-                   "&idMotivo=" + "" + averia.GetIDMotivo() +
-                   "&observaciones=" + HttpUtility.UrlEncode(observaciones.Text);
-            // "&loginReparacion=" + "&fechaReparacion" +"&idStatus" +
-            try
-            {
-                enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
-                MessageBox.Show("Averia registrada exitosamente");
-                RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
-                FMenu fmenu = rstapp.GetMenu();
-                fmenu.Show();
-                this.Hide();
-            }
-            catch //(WebException)
-            {
-                MessageBox.Show("Conexión fallida con el servidor. Verifique la red inalámbrica e intente de nuevo");
-            }
-
+            controller.FConfirmarAveria fcaveria = new RSTmobile.controller.FConfirmarAveria();
+            fcaveria.SetAveria(averia);
+            fcaveria.Show();
+            this.Hide();
         }
 
         private void comboMotivos_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,6 +67,10 @@ namespace RSTmobile
                 MessageBox.Show("Opps... ocurrio un error en la lista de motivos");
         }
 
+        private void observaciones_TextChanged(object sender, EventArgs e)
+        {
+            averia.SetObservaciones(observaciones.Text);
+        }
         
     }
 }

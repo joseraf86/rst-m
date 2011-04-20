@@ -13,7 +13,7 @@ namespace RSTmobile
         [MTAThread]
         static void Main()
         {
-            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
             FMain fmain = rst.GetMain();
             Application.Run(fmain);
         }

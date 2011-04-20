@@ -13,7 +13,7 @@ namespace RSTmobile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
             FConsultarSenal fcsenal = rst.GetConsultarSenal();
             fcsenal.Show();
             this.Hide();
@@ -21,7 +21,7 @@ namespace RSTmobile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
             FRegistrarSenal frsenal = rst.GetRegistrarSenal();
             frsenal.Show();
             this.Hide();

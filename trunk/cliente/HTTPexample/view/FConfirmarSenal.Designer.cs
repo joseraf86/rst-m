@@ -1,4 +1,4 @@
-﻿namespace RSTmobile.view
+﻿namespace RSTmobile.controller
 {
     partial class FConfirmarSenal
     {
@@ -65,7 +65,7 @@
             // botonActualizar
             // 
             botonActualizar.BackColor = System.Drawing.Color.PapayaWhip;
-            botonActualizar.Location = new System.Drawing.Point(133, 15);
+            botonActualizar.Location = new System.Drawing.Point(137, 11);
             botonActualizar.Name = "botonActualizar";
             botonActualizar.Size = new System.Drawing.Size(72, 20);
             botonActualizar.TabIndex = 21;
@@ -99,7 +99,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 392);
+            this.panel1.Size = new System.Drawing.Size(224, 376);
             // 
             // labelCategoria
             // 
@@ -276,12 +276,12 @@
             this.panel3.Controls.Add(this.botonCancelar);
             this.panel3.Location = new System.Drawing.Point(0, 322);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(239, 50);
+            this.panel3.Size = new System.Drawing.Size(225, 40);
             // 
             // botonCancelar
             // 
             this.botonCancelar.BackColor = System.Drawing.Color.PapayaWhip;
-            this.botonCancelar.Location = new System.Drawing.Point(14, 15);
+            this.botonCancelar.Location = new System.Drawing.Point(14, 11);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(72, 20);
             this.botonCancelar.TabIndex = 22;
