@@ -191,7 +191,7 @@ namespace RSTmobile
                         enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, domainName, path);
                         MessageBox.Show("Señal registrada exitosamente");
 
-                        RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                        RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
                         FMenu fmenu = rstapp.GetMenu();
                         fmenu.Show();
                         this.Hide();

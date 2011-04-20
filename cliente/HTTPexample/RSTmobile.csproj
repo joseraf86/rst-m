@@ -62,75 +62,79 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Averia.cs" />
-    <Compile Include="EnlaceHTTP.cs" />
-    <Compile Include="Estado.cs" />
-    <Compile Include="FAveria.cs">
+    <Compile Include="model\EnlaceHTTP.cs" />
+    <Compile Include="model\Estado.cs" />
+    <Compile Include="view\FAveria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FAveria.Designer.cs">
+    <Compile Include="view\FAveria.Designer.cs">
       <DependentUpon>FAveria.cs</DependentUpon>
     </Compile>
-    <Compile Include="FConsultarSenal.cs">
+    <Compile Include="view\FConsultarSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FConsultarSenal.Designer.cs">
+    <Compile Include="view\FConsultarSenal.Designer.cs">
       <DependentUpon>FConsultarSenal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FMain.cs">
+    <Compile Include="view\FMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FMain.Designer.cs">
+    <Compile Include="view\FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FMenu.cs">
+    <Compile Include="view\FMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FMenu.Designer.cs">
+    <Compile Include="view\FMenu.Designer.cs">
       <DependentUpon>FMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRegistrarSenal.cs">
+    <Compile Include="view\FRegistrarSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRegistrarSenal.Designer.cs">
+    <Compile Include="view\FRegistrarSenal.Designer.cs">
       <DependentUpon>FRegistrarSenal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSenal.cs">
+    <Compile Include="view\FSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FSenal.Designer.cs">
+    <Compile Include="view\FSenal.Designer.cs">
       <DependentUpon>FSenal.cs</DependentUpon>
     </Compile>
     <Compile Include="model\HtmlEntities.cs" />
     <Compile Include="model\HttpUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FAveria.resx">
+    <EmbeddedResource Include="view\FAveria.resx">
       <DependentUpon>FAveria.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FConsultarSenal.resx">
+    <EmbeddedResource Include="view\FConsultarSenal.resx">
       <DependentUpon>FConsultarSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FMain.resx">
+    <EmbeddedResource Include="view\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FMenu.resx">
+    <EmbeddedResource Include="view\FMenu.resx">
       <DependentUpon>FMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRegistrarSenal.resx">
+    <EmbeddedResource Include="view\FRegistrarSenal.resx">
       <DependentUpon>FRegistrarSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FSenal.resx">
+    <EmbeddedResource Include="view\FSenal.resx">
       <DependentUpon>FSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\FConfirmarAveria.resx">
+      <DependentUpon>FConfirmarAveria.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="view\FConfirmarSenal.resx">
@@ -154,13 +158,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Senal.cs" />
+    <Compile Include="model\Senal.cs" />
     <Compile Include="ubicacionDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ubicacionDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Usuario.cs" />
+    <Compile Include="model\Usuario.cs" />
+    <Compile Include="view\FConfirmarAveria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FConfirmarAveria.Designer.cs">
+      <DependentUpon>FConfirmarAveria.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\FConfirmarSenal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,7 +195,7 @@
     <Compile Include="view\FSenales.Designer.cs">
       <DependentUpon>FSenales.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\RSTApp.cs" />
+    <Compile Include="controller\RSTApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="db_rst.sdf">

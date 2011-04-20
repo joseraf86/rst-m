@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-namespace RSTmobile.view
+namespace RSTmobile.controller
 {
     public partial class FSenales : Form
     {
@@ -48,7 +48,7 @@ namespace RSTmobile.view
             Transito.SenalTransito senal;
             senal = (Transito.SenalTransito)senales[index];
             
-            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
             FSenal fsenal = rst.GetSenal();
             fsenal.SetSenal(senal);
             fsenal.Show();
@@ -58,7 +58,7 @@ namespace RSTmobile.view
 
         private void botonVolver_Click(object sender, System.EventArgs e)
         {
-            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
             FConsultarSenal fcsenal = rst.GetConsultarSenal();
             fcsenal.Show();
             this.Hide();

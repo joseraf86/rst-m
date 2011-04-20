@@ -57,7 +57,7 @@ namespace RSTmobile
                 
                 if (respuesta == "OK")
                 {
-                    RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                    RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
                     user.SetLogin(login);
                     user.SetPassword(hashedPassword);
                     FMenu fmenu = rstapp.GetMenu();

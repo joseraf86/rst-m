@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace RSTmobile.view
+namespace RSTmobile.controller
 {
     public partial class FConfirmarSenal : Form
     {
@@ -68,7 +68,7 @@ namespace RSTmobile.view
                 enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
                 MessageBox.Show("Señal actualizada exitosamente");
 
-                RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
                 FMenu fmenu = rstapp.GetMenu();
                 fmenu.Show();
                 this.Hide();

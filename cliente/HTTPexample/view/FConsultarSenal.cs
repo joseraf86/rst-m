@@ -347,8 +347,8 @@ namespace RSTmobile
 
                     if (senales.Count > 0)
                     {
-                        view.FSenales fsenales = new RSTmobile.view.FSenales();
-                        view.RSTApp rstapp = view.RSTApp.GetInstance();
+                        controller.FSenales fsenales = new RSTmobile.controller.FSenales();
+                        controller.RSTApp rstapp = controller.RSTApp.GetInstance();
                         rstapp.SetSenales(fsenales);
                         fsenales.SetSenales(senales);
                         fsenales.Show();
@@ -376,7 +376,7 @@ namespace RSTmobile
             {
                 MessageBox.Show("El formato del XML recibido no es valido");
 
-                RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+                RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
                 FMenu fmenu = rstapp.GetMenu();
                 fmenu.Show();
                 this.Hide();
@@ -390,7 +390,7 @@ namespace RSTmobile
 
         private void boVolver_Click(object sender, EventArgs e)
         {
-            RSTmobile.view.RSTApp rstapp = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
             FMenu fmenu = rstapp.GetMenu();
             fmenu.Show();
             this.Hide();

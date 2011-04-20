@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Net;
 using System.IO;
-using RSTmobile.view;
+using RSTmobile.controller;
 using System.Xml;
 
 namespace RSTmobile
@@ -454,6 +454,10 @@ namespace RSTmobile
                     // xml mal formado
                     MessageBox.Show("Los datos de la averia fueron dañados en la transmisión. Intente de nuevo");
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("Intente de nuevo");
+                }
                 finally
                 {
                     if (stream != null)
@@ -488,7 +492,7 @@ namespace RSTmobile
 
         private void boVolver_Click(object sender, EventArgs e)
         {
-            RSTmobile.view.RSTApp rst = RSTmobile.view.RSTApp.GetInstance();
+            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
             FSenales fsenales = rst.GetSenales();
             fsenales.Show();
             this.Hide();

@@ -12,7 +12,8 @@ C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.Properties.Resou
 C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.csproj.GenerateResource.Cache
 C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.exe
 C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.pdb
-C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FConfirmarSenal.resources
-C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FSenales.resources
-C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FConsultarAveria.resources
-C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.view.FRepararAveria.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.controller.FConfirmarAveria.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.controller.FConfirmarSenal.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.controller.FConsultarAveria.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.controller.FRepararAveria.resources
+C:\wamp\www\RSTmobile\cliente\HTTPexample\obj\Release\RSTmobile.controller.FSenales.resources

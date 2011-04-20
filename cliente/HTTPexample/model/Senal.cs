@@ -423,7 +423,7 @@ namespace Transito
             }
         }
 
-        public ArrayList ConsultarMotivo() {
+        public ArrayList ConsultarMotivos() {
             string sdf_path;
             SqlCeEngine engine;
             ArrayList list = new ArrayList();
@@ -457,6 +457,41 @@ namespace Transito
             }
 
             return list;
+        }
+
+        public string ConsultarMotivo( string id )
+        {
+            string sdf_path;
+            string queryResult = "";
+            SqlCeEngine engine;
+
+
+            try
+            {
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
+                engine = new SqlCeEngine(sdf_path);
+
+                conn = new SqlCeConnection(sdf_path);
+                conn.Open();
+                cmd = conn.CreateCommand();
+
+                cmd.CommandText = "SELECT descripcion FROM rst_motiv_ave WHERE id_motiv_ave=" + id;
+                cmd.ExecuteNonQuery();
+
+                SqlCeDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    queryResult = rdr.GetString(0);
+                }
+
+            }
+            catch (SqlCeException e)
+            {
+                e.ToString();
+                //ShowErrors(e);
+            }
+
+            return queryResult;
         }
 
     }

@@ -69,6 +69,7 @@
             this.observaciones.Name = "observaciones";
             this.observaciones.Size = new System.Drawing.Size(203, 49);
             this.observaciones.TabIndex = 11;
+            this.observaciones.TextChanged += new System.EventHandler(this.observaciones_TextChanged);
             // 
             // label4
             // 

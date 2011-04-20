@@ -1,4 +1,4 @@
-﻿namespace RSTmobile.view
+﻿namespace RSTmobile.controller
 {
     partial class FSenales
     {

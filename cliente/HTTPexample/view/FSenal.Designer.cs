@@ -99,7 +99,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 568);
+            this.panel1.Size = new System.Drawing.Size(239, 544);
             // 
             // textBoxObservaciones
             // 
@@ -170,13 +170,13 @@
             this.panel3.Controls.Add(this.botonAveria);
             this.panel3.Location = new System.Drawing.Point(1, 492);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(227, 60);
+            this.panel3.Size = new System.Drawing.Size(227, 40);
             // 
             // botonGuardar
             // 
             this.botonGuardar.BackColor = System.Drawing.Color.IndianRed;
             this.botonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("botonGuardar.Image")));
-            this.botonGuardar.Location = new System.Drawing.Point(77, 15);
+            this.botonGuardar.Location = new System.Drawing.Point(79, 5);
             this.botonGuardar.Name = "botonGuardar";
             this.botonGuardar.Size = new System.Drawing.Size(18, 30);
             this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
@@ -184,7 +184,7 @@
             // botonReset
             // 
             this.botonReset.Image = ((System.Drawing.Image)(resources.GetObject("botonReset.Image")));
-            this.botonReset.Location = new System.Drawing.Point(39, 14);
+            this.botonReset.Location = new System.Drawing.Point(39, 4);
             this.botonReset.Name = "botonReset";
             this.botonReset.Size = new System.Drawing.Size(32, 31);
             this.botonReset.Click += new System.EventHandler(this.botonReset_Click);
@@ -192,7 +192,7 @@
             // boVolver
             // 
             this.boVolver.Image = ((System.Drawing.Image)(resources.GetObject("boVolver.Image")));
-            this.boVolver.Location = new System.Drawing.Point(6, 14);
+            this.boVolver.Location = new System.Drawing.Point(6, 4);
             this.boVolver.Name = "boVolver";
             this.boVolver.Size = new System.Drawing.Size(27, 32);
             this.boVolver.Click += new System.EventHandler(this.boVolver_Click);
@@ -201,11 +201,11 @@
             // 
             this.botonAveria.BackColor = System.Drawing.Color.PapayaWhip;
             this.botonAveria.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.botonAveria.Location = new System.Drawing.Point(118, 14);
+            this.botonAveria.Location = new System.Drawing.Point(101, 4);
             this.botonAveria.Name = "botonAveria";
-            this.botonAveria.Size = new System.Drawing.Size(100, 32);
+            this.botonAveria.Size = new System.Drawing.Size(117, 32);
             this.botonAveria.TabIndex = 6;
-            this.botonAveria.Text = "Notificar Averia";
+            this.botonAveria.Text = "Consultar Averia";
             this.botonAveria.Click += new System.EventHandler(this.botonAveria_Click);
             // 
             // label10
