@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
-using Transito;
-using System.Web;
-using System.Net;
 using System.IO;
-using System.Xml;
+using System.Net;
+using System.Web;
+using System.Windows.Forms;
 using RSTmobile.controller;
+using Transito;
 
 namespace RSTmobile.view
 {
@@ -25,52 +24,23 @@ namespace RSTmobile.view
             rst.Usuario user = rst.Usuario.GetInstance();
             averiaReparada = new Averia(averia.GetSenal());
             averiaReparada.SetID( averia.GetID() );
-            averiaReparada.SetIDMotivo(averia.GetIDMotivo());
+            averiaReparada.SetMotivo( averia.GetIDMotivo(), averia.GetMotivo() );
             averiaReparada.SetIDStatus(averia.GetIDStatus());
             averiaReparada.SetFechaAveria(averia.GetFechaAveria());
-            averiaReparada.SetFechaReparacion(pickerFecha.Value.ToString("dd/MM/yyyy"));
+            //averiaReparada.SetFechaReparacion(pickerFecha.Value.ToString("dd/MM/yyyy"));
             averiaReparada.SetLoginRegistro(averia.GetLoginRegistro());
             averiaReparada.SetLoginReparacion(user.GetLogin());
             averiaReparada.SetObservaciones(averia.GetObservaciones());
             averiaReparada.SetRutaIMG1(averia.GetRutaIMG1());
             averiaReparada.SetRutaIMG2(averia.GetRutaIMG2());
             averiaReparada.SetRutaIMG3(averia.GetRutaIMG3());
+        }
 
+        private void FRepararAveria_Load(object sender, EventArgs e)
+        {
             textBoxObservaciones.Text = averiaReparada.GetObservaciones();
             pickerFecha.MinDate = Convert.ToDateTime(averiaReparada.GetFechaAveria());
-        }
-
-        private void buttonVolver_Click(object sender, EventArgs e)
-        {
-
-            RSTApp rstapp = RSTApp.GetInstance();
-            //rstapp.GetAveria();
-            FMenu menu = rstapp.GetMenu();
-            menu.Show();
-            this.Hide();
-        }
-
-        private void buttonReparar_Click(object sender, EventArgs e)
-        {       
-                string vars = "";
-                rst.Usuario user;
-                string path = "RSTmobile/servidor/controller/MobileAveriaController.php";
-                Stream stream = null;
-                HTTP.EnlaceHTTP enlace;                
-
-                user = rst.Usuario.GetInstance();
-                enlace = new HTTP.EnlaceHTTP(); 
-
-                vars = "id_op=5&id_averia=" + averia.GetID() +
-                       "&login=" + user.GetLogin();
-
-                try
-                {
-                    stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
-                }
-                catch (WebException) {
-                    MessageBox.Show("Asegúrese de estar en un lugar con buena señal e intente de nuevo");
-                }
+            averiaReparada.SetFechaReparacion(pickerFecha.Value.ToString("dd/MM/yyyy"));
         }
 
         private void pickerFecha_ValueChanged(object sender, EventArgs e)
@@ -82,6 +52,49 @@ namespace RSTmobile.view
         {
             averiaReparada.SetObservaciones(HttpUtility.UrlEncode(textBoxObservaciones.Text));
             textBoxObservaciones.Text = averiaReparada.GetObservaciones();
+        }
+
+        private void buttonVolver_Click(object sender, EventArgs e)
+        {
+            RSTApp rstapp = RSTApp.GetInstance();
+            FSenal fsenal = rstapp.GetSenal();
+            fsenal.Show();
+            this.Dispose();
+        }
+
+        private void buttonReparar_Click(object sender, EventArgs e)
+        {       
+                string vars = "";
+                rst.Usuario user;
+                string path = "RSTmobile/servidor/controller/MobileAveriaController.php";
+                Stream stream = null;
+                HTTP.EnlaceHTTP enlace;                
+
+                user = rst.Usuario.GetInstance();
+                enlace = new HTTP.EnlaceHTTP();
+                MessageBox.Show(HttpUtility.UrlEncode(averia.GetFechaReparacion()));
+
+                vars = "id_op=4" +
+                       "&id_averia=" + averia.GetID() +
+                       "&id_senal=" + averia.GetSenal().GetID() +
+                       "&fecha=" + HttpUtility.UrlEncode(averia.GetFechaReparacion()) +
+                       "&login=" + user.GetLogin() +
+                       "&observaciones=" + HttpUtility.UrlEncode(averia.GetObservaciones());
+
+                try
+                {
+                    stream = enlace.Transferir(vars, HTTP.EnlaceHTTP.POST, user.GetServer(), path);
+                    MessageBox.Show("Averia reparada exitosamente");
+
+                    RSTApp rstapp = RSTApp.GetInstance();
+                    FSenal fsenal = rstapp.GetSenal();
+                    fsenal.Show();
+                    this.Dispose();
+
+                }
+                catch (WebException) {
+                    MessageBox.Show("Asegúrese de estar en un lugar con buena señal e intente de nuevo");
+                }
         }
 
     }

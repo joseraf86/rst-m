@@ -314,7 +314,7 @@ namespace RSTmobile.view
                                         senal.SetIDCategoria(xmlReader.Value);
                                         break;
                                     case "descripcion":
-                                        senal.SetSenal(xmlReader.Value,"");
+                                        senal.SetSenal(xmlReader.Value, "");
                                         break;
                                     case "estado":
                                         senal.SetIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
@@ -355,9 +355,9 @@ namespace RSTmobile.view
                         fsenales.Show();
                         this.Hide();
                     }
-                    else 
+                    else
                         MessageBox.Show("No se encontraron señales con las opciones especificadas");
-    
+
                     /*
                     if (senal != null)
                     {
@@ -385,6 +385,14 @@ namespace RSTmobile.view
             catch (WebException)
             {
                 MessageBox.Show("Asegúrese de estar en un lugar con buena señal e intente de nuevo");
+            }
+            catch
+            {
+                RSTApp rstapp = RSTApp.GetInstance();
+                FMain fmain = rstapp.GetMain();
+                fmain.Show();
+                this.Hide();
+                MessageBox.Show("Se ha perdido la comunicacion con el servidor");
             }
 
         }

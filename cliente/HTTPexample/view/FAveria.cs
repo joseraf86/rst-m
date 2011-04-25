@@ -20,7 +20,6 @@ namespace RSTmobile
         public void SetAveria(Averia averia)
         {
             this.averia = averia;
-            //MessageBox.Show("id: "+averia.GetSenal().GetID());
         }
 
         private void FAveria_Load(object sender, EventArgs e)
@@ -59,9 +58,9 @@ namespace RSTmobile
         private void button1_Click(object sender, EventArgs e)
         {
             RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
-            FMenu fmenu = rstapp.GetMenu();
-            fmenu.Show();
-            this.Hide();
+            FSenal fsenal = rstapp.GetSenal();
+            fsenal.Show();
+            this.Dispose();
         }
 
         private void botonNotificar_Click(object sender, EventArgs e)

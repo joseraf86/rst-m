@@ -64,16 +64,16 @@
             // 
             // observaciones
             // 
-            this.observaciones.Location = new System.Drawing.Point(14, 150);
+            this.observaciones.Location = new System.Drawing.Point(14, 155);
             this.observaciones.Multiline = true;
             this.observaciones.Name = "observaciones";
-            this.observaciones.Size = new System.Drawing.Size(203, 49);
+            this.observaciones.Size = new System.Drawing.Size(213, 49);
             this.observaciones.TabIndex = 11;
             this.observaciones.TextChanged += new System.EventHandler(this.observaciones_TextChanged);
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(10, 127);
+            this.label4.Location = new System.Drawing.Point(10, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 21);
             this.label4.Text = "Observaciones";
@@ -82,7 +82,7 @@
             // 
             this.comboMotivos.Location = new System.Drawing.Point(78, 93);
             this.comboMotivos.Name = "comboMotivos";
-            this.comboMotivos.Size = new System.Drawing.Size(140, 22);
+            this.comboMotivos.Size = new System.Drawing.Size(149, 22);
             this.comboMotivos.TabIndex = 5;
             this.comboMotivos.SelectedIndexChanged += new System.EventHandler(this.comboMotivos_SelectedIndexChanged);
             // 
@@ -100,7 +100,7 @@
             this.fechaAveria.Location = new System.Drawing.Point(78, 64);
             this.fechaAveria.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.fechaAveria.Name = "fechaAveria";
-            this.fechaAveria.Size = new System.Drawing.Size(141, 22);
+            this.fechaAveria.Size = new System.Drawing.Size(96, 22);
             this.fechaAveria.TabIndex = 3;
             this.fechaAveria.ValueChanged += new System.EventHandler(this.fechaAveria_ValueChanged);
             // 
@@ -116,15 +116,15 @@
             this.panel3.BackColor = System.Drawing.Color.IndianRed;
             this.panel3.Controls.Add(this.botonNotificar);
             this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(0, 210);
+            this.panel3.Location = new System.Drawing.Point(0, 215);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(239, 46);
+            this.panel3.Size = new System.Drawing.Size(239, 40);
             // 
             // botonNotificar
             // 
             this.botonNotificar.BackColor = System.Drawing.Color.PapayaWhip;
             this.botonNotificar.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.botonNotificar.Location = new System.Drawing.Point(141, 13);
+            this.botonNotificar.Location = new System.Drawing.Point(141, 10);
             this.botonNotificar.Name = "botonNotificar";
             this.botonNotificar.Size = new System.Drawing.Size(86, 20);
             this.botonNotificar.TabIndex = 1;
@@ -135,18 +135,18 @@
             // 
             this.button1.BackColor = System.Drawing.Color.PapayaWhip;
             this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(9, 14);
+            this.button1.Location = new System.Drawing.Point(9, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 20);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Ir a Menú";
+            this.button1.Text = "Cancelar";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.IndianRed;
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(0, 17);
+            this.panel2.Location = new System.Drawing.Point(0, 11);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(238, 37);
             // 
