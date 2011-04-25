@@ -5,13 +5,14 @@ using System.Net;
 using System.IO;
 using RSTmobile.controller;
 using System.Xml;
+using Transito;
 
-namespace RSTmobile
+namespace RSTmobile.view
 {
     public partial class FSenal : Form
     {
-        private Transito.SenalTransito senalXML;
-        private Transito.SenalTransito stActual;
+        private SenalTransito senalXML;
+        private SenalTransito stActual;
         private ArrayList listaSenalesTra;
         private ArrayList listaCategSen;
         private ArrayList listaTiposSen;
@@ -19,7 +20,7 @@ namespace RSTmobile
         private ArrayList listaMunicipios;
         private ArrayList listaParroquias;
         private Ubicacion.Ubicacion ubicacion;
-        private Transito.Senal senales;
+        private Senal senales;
 
         public FSenal()
         {
@@ -74,7 +75,7 @@ namespace RSTmobile
             stActual.SetID(senal.GetID());
             stActual.SetIDTipo(senal.GetIDTipo());
             stActual.SetIDCategoria(senal.GetIDCategoria());
-            stActual.SetIDSenal(senal.GetIDSenal());
+            
             stActual.SetIDEstado(senal.GetIDEstado());
             stActual.SetIDEstatus(senal.GetIDEstatus());
             stActual.SetCodEstado(senal.GetCodEstado());
@@ -115,8 +116,10 @@ namespace RSTmobile
                 foreach (Transito.Indicador aux in listaSenalesTra)
                 {
                     comboSenal.Items.Add(aux.descripcion);
-                    if (aux.id.Equals(senalXML.GetIDSenal()))
+                    if (aux.id.Equals(senalXML.GetIDSenal())) {
                         comboSenal.SelectedIndex = i;
+                        stActual.SetSenal( aux.id, aux.descripcion );
+                    }
                     i++;
                 }
                 i = 1;
@@ -184,8 +187,7 @@ namespace RSTmobile
 
                 stActual.SetIDTipo(idTipo);
                 stActual.SetIDCategoria("");
-                stActual.SetIDSenal("");
-                
+                stActual.SetSenal("","");
                 comboCategoria.Items.Clear();
                 comboSenal.Items.Clear();
                 comboCategoria.Items.Add("SELECCIONE");
@@ -220,7 +222,7 @@ namespace RSTmobile
             if (!stActual.Equals(idCategoria)){
 
                 stActual.SetIDCategoria(idCategoria);
-                stActual.SetIDSenal("");
+                stActual.SetSenal("","");
                 
                 comboSenal.Items.Clear();
                 comboSenal.Items.Add("SELECCIONE");
@@ -242,6 +244,7 @@ namespace RSTmobile
             Transito.Indicador aux;
             int selectedIndex;
             string idSenal = "";
+            string descSenal = "";
 
             selectedIndex = comboSenal.SelectedIndex;
             if (selectedIndex != 0)
@@ -249,11 +252,12 @@ namespace RSTmobile
                     //listaSenalesTra = senales.GetSenales(tipoActual, categoriaActual);
                     aux = (Transito.Indicador)listaSenalesTra[selectedIndex - 1];
                     idSenal = aux.id;
+                    descSenal = aux.descripcion;
                 }
 
             if (!stActual.GetIDSenal().Equals(idSenal))
             {
-                stActual.SetIDSenal(idSenal);
+                stActual.SetSenal(idSenal, descSenal);
             }
 
         }
@@ -357,7 +361,6 @@ namespace RSTmobile
                 HTTP.EnlaceHTTP enlace;
                 XmlTextReader xmlReader = null;
                 string currentNode = "";
-                
 
                 user = rst.Usuario.GetInstance();
                 enlace = new HTTP.EnlaceHTTP(); 
@@ -425,7 +428,8 @@ namespace RSTmobile
                                              * */
                                             break;
                                         case "motivo":
-                                            averia.SetIDMotivo(xmlReader.Value.ToString());
+                                            string aux = xmlReader.Value.ToString();
+                                            averia.SetMotivo(aux, senales.ConsultarMotivo(aux));
                                             break;
                                         case "fecha":
                                             averia.SetFechaAveria(xmlReader.Value.ToString());
@@ -465,28 +469,33 @@ namespace RSTmobile
                     if (xmlReader != null)
                         xmlReader.Close();
                 }
-                FConsultarAveria fcaveria = new FConsultarAveria();
-                fcaveria.SetAveria(averia);
-                fcaveria.Show();
+                if (averia != null)
+                {
+                    FConsultarAveria fcaveria = new FConsultarAveria();
+                    fcaveria.SetAveria(averia);
+                    fcaveria.Show();
+                    this.Hide();
+                    return;
+                }
+                // Inconsistencia en bd: averia = S, pero no hay ningun registro en datos_ave
+                MessageBox.Show("No hay averias registradas");
+            }
+            
+           
+            //confirmar si se desea registrar una averia nueva para esta señal
+            if ( MessageBox.Show("¿Desea notificar una averia nueva para esta señal?", "Alerta",
+                   MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+                   == DialogResult.Yes)
+            {
+                //stActual.setIDAveria("S");
+                averia = new Transito.Averia(stActual);
+                FAveria faveria = new FAveria();
+                faveria.SetAveria(averia);
+                faveria.Show();
                 this.Hide();
 
             }
-            else
-            {
-                //confirmar si se desea registrar una averia nueva para esta señal
-                if (MessageBox.Show("¿Desea notificar una averia nueva para esta señal?", "Alerta",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
-                        == DialogResult.Yes)
-                {
-                    //stActual.setIDAveria("S");
-                    averia = new Transito.Averia(stActual);
-                    FAveria faveria = new FAveria();
-                    faveria.SetAveria(averia);
-                    faveria.Show();
-                    this.Hide();
-
-                }
-            }
+            
             
         }
 

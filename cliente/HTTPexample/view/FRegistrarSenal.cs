@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Web;
+using RSTmobile.controller;
 
-namespace RSTmobile
+namespace RSTmobile.view
 {
     public partial class FRegistrarSenal : Form
     {

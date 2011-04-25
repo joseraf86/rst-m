@@ -64,6 +64,7 @@
     <Compile Include="model\Averia.cs" />
     <Compile Include="model\EnlaceHTTP.cs" />
     <Compile Include="model\Estado.cs" />
+    <Compile Include="model\Utils.cs" />
     <Compile Include="view\FAveria.cs">
       <SubType>Form</SubType>
     </Compile>

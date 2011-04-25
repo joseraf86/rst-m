@@ -1,4 +1,4 @@
-﻿namespace RSTmobile
+﻿namespace RSTmobile.view
 {
     partial class FMain
     {
@@ -62,7 +62,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(137, 21);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "192.168.2.100";
+            this.textBox1.Text = "192.168.2.102";
             // 
             // label2
             // 

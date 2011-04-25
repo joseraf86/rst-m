@@ -4,8 +4,9 @@ using System.Xml;
 using System.IO;
 using System.Net;
 using System.Collections;
+using RSTmobile.controller;
 
-namespace RSTmobile
+namespace RSTmobile.view
 {
     public partial class FConsultarSenal : Form
     {
@@ -313,7 +314,7 @@ namespace RSTmobile
                                         senal.SetIDCategoria(xmlReader.Value);
                                         break;
                                     case "descripcion":
-                                        senal.SetIDSenal(xmlReader.Value);
+                                        senal.SetSenal(xmlReader.Value,"");
                                         break;
                                     case "estado":
                                         senal.SetIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
@@ -347,8 +348,8 @@ namespace RSTmobile
 
                     if (senales.Count > 0)
                     {
-                        controller.FSenales fsenales = new RSTmobile.controller.FSenales();
-                        controller.RSTApp rstapp = controller.RSTApp.GetInstance();
+                        FSenales fsenales = new FSenales();
+                        RSTApp rstapp = RSTApp.GetInstance();
                         rstapp.SetSenales(fsenales);
                         fsenales.SetSenales(senales);
                         fsenales.Show();

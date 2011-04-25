@@ -1,4 +1,4 @@
-﻿namespace RSTmobile.controller
+﻿namespace RSTmobile.view
 {
     partial class FConfirmarAveria
     {
@@ -31,22 +31,22 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelObservaciones = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonEnviar = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
+            this.labelFecha = new System.Windows.Forms.Label();
+            this.labelMotivo = new System.Windows.Forms.Label();
+            this.labelSenal = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelSenal = new System.Windows.Forms.Label();
-            this.labelMotivo = new System.Windows.Forms.Label();
-            this.labelFecha = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonCancelar = new System.Windows.Forms.Button();
-            this.buttonEnviar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelObservaciones = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,6 +66,88 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 268);
             // 
+            // labelObservaciones
+            // 
+            this.labelObservaciones.Location = new System.Drawing.Point(17, 160);
+            this.labelObservaciones.Name = "labelObservaciones";
+            this.labelObservaciones.Size = new System.Drawing.Size(209, 40);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(17, 140);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 20);
+            this.label5.Text = "Observaciones";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.IndianRed;
+            this.panel3.Controls.Add(this.buttonEnviar);
+            this.panel3.Controls.Add(this.buttonCancelar);
+            this.panel3.Location = new System.Drawing.Point(2, 212);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(237, 40);
+            // 
+            // buttonEnviar
+            // 
+            this.buttonEnviar.Location = new System.Drawing.Point(152, 11);
+            this.buttonEnviar.Name = "buttonEnviar";
+            this.buttonEnviar.Size = new System.Drawing.Size(72, 20);
+            this.buttonEnviar.TabIndex = 1;
+            this.buttonEnviar.Text = "Enviar";
+            this.buttonEnviar.Click += new System.EventHandler(this.buttonEnviar_Click);
+            // 
+            // buttonCancelar
+            // 
+            this.buttonCancelar.Location = new System.Drawing.Point(15, 11);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(72, 20);
+            this.buttonCancelar.TabIndex = 0;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
+            // 
+            // labelFecha
+            // 
+            this.labelFecha.Location = new System.Drawing.Point(74, 112);
+            this.labelFecha.Name = "labelFecha";
+            this.labelFecha.Size = new System.Drawing.Size(152, 20);
+            // 
+            // labelMotivo
+            // 
+            this.labelMotivo.Location = new System.Drawing.Point(74, 87);
+            this.labelMotivo.Name = "labelMotivo";
+            this.labelMotivo.Size = new System.Drawing.Size(152, 20);
+            // 
+            // labelSenal
+            // 
+            this.labelSenal.Location = new System.Drawing.Point(74, 62);
+            this.labelSenal.Name = "labelSenal";
+            this.labelSenal.Size = new System.Drawing.Size(152, 20);
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(17, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 20);
+            this.label4.Text = "Señal";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(17, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 20);
+            this.label3.Text = "Fecha";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(17, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 20);
+            this.label2.Text = "Motivo";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.IndianRed;
@@ -84,87 +166,6 @@
             this.label1.Text = "Confirmar Avería";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(3, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 20);
-            this.label2.Text = "Motivo";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(3, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 20);
-            this.label3.Text = "Fecha";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(3, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 20);
-            this.label4.Text = "Señal";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelSenal
-            // 
-            this.labelSenal.Location = new System.Drawing.Point(99, 62);
-            this.labelSenal.Name = "labelSenal";
-            this.labelSenal.Size = new System.Drawing.Size(100, 20);
-            // 
-            // labelMotivo
-            // 
-            this.labelMotivo.Location = new System.Drawing.Point(99, 87);
-            this.labelMotivo.Name = "labelMotivo";
-            this.labelMotivo.Size = new System.Drawing.Size(100, 20);
-            // 
-            // labelFecha
-            // 
-            this.labelFecha.Location = new System.Drawing.Point(99, 112);
-            this.labelFecha.Name = "labelFecha";
-            this.labelFecha.Size = new System.Drawing.Size(100, 20);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.IndianRed;
-            this.panel3.Controls.Add(this.buttonEnviar);
-            this.panel3.Controls.Add(this.buttonCancelar);
-            this.panel3.Location = new System.Drawing.Point(2, 212);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(237, 40);
-            // 
-            // buttonCancelar
-            // 
-            this.buttonCancelar.Location = new System.Drawing.Point(15, 11);
-            this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(72, 20);
-            this.buttonCancelar.TabIndex = 0;
-            this.buttonCancelar.Text = "Cancelar";
-            // 
-            // buttonEnviar
-            // 
-            this.buttonEnviar.Location = new System.Drawing.Point(152, 11);
-            this.buttonEnviar.Name = "buttonEnviar";
-            this.buttonEnviar.Size = new System.Drawing.Size(72, 20);
-            this.buttonEnviar.TabIndex = 1;
-            this.buttonEnviar.Text = "Enviar";
-            this.buttonEnviar.Click += new System.EventHandler(this.buttonEnviar_Click);
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(17, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.Text = "Observaciones";
-            // 
-            // labelObservaciones
-            // 
-            this.labelObservaciones.Location = new System.Drawing.Point(17, 180);
-            this.labelObservaciones.Name = "labelObservaciones";
-            this.labelObservaciones.Size = new System.Drawing.Size(100, 20);
-            // 
             // FConfirmarAveria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -176,8 +177,8 @@
             this.Name = "FConfirmarAveria";
             this.Text = "RST";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
