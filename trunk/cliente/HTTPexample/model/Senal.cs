@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlServerCe;
 using System.Data.Common;
 using System.IO;
+using RST;
 
 namespace Transito
 {
@@ -24,7 +25,7 @@ namespace Transito
 
         private string idTipo;
         private string idCategoria;
-        private string idSenal;
+        private Celda senal;
 
         private int idEstado;
         private string idEstatus;
@@ -40,7 +41,7 @@ namespace Transito
         {
             idTipo = "";
             idCategoria = "";
-            idSenal = "";
+            senal.id = "";
 
             idEstado = 0;
             idEstatus = "";
@@ -73,9 +74,10 @@ namespace Transito
         {
             this.idCategoria = idCategoria;
         }
-        public void SetIDSenal(string idSenal)
+        public void SetSenal(string idSenal, string descripcion )
         {
-            this.idSenal = idSenal;
+            senal.id = idSenal;
+            senal.descripcion = descripcion;
         }
         public void SetIDEstado(int idEstado)
         {
@@ -129,7 +131,11 @@ namespace Transito
         }
         public string GetIDSenal()
         {
-            return this.idSenal;
+            return senal.id;
+        }
+        public string GetSenal()
+        {
+            return senal.descripcion;
         }
         public int GetIDEstado()
         {
@@ -169,7 +175,7 @@ namespace Transito
 
             str += ", " + idTipo;
             str += ", " + idCategoria;
-            str += ", " + idSenal;
+            str += ", " + senal.id;
 
             str += ", " + idEstado;
             str += ", " + idEstatus;

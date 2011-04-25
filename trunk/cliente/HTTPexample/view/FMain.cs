@@ -2,8 +2,9 @@
 using System.Net;
 using System.Windows.Forms;
 using System.IO;
+using RSTmobile.controller;
 
-namespace RSTmobile
+namespace RSTmobile.view
 {
 
     public partial class FMain : Form

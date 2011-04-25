@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using RST;
 
 namespace Transito
 {
@@ -14,6 +15,8 @@ namespace Transito
        // private string fechaRegistro;
         private string loginReparacion;
         private string fechaReparacion;
+        private Celda motivo;
+        private Celda status;
         private string idMotivo; // es de tipo numeric en la bd
         private string idStatus;
         private string observaciones;
@@ -60,9 +63,21 @@ namespace Transito
             this.loginReparacion = loginReparacion;
         }
 
+        public void SetMotivo(string idMotivo, string descripcion)
+        {
+            this.motivo.id = idMotivo;
+            this.motivo.descripcion = descripcion;
+        }
+
         public void SetIDMotivo(string idMotivo)
         {
             this.idMotivo = idMotivo;
+        }
+
+        public void SetStatus(string id, string descripcion)
+        {
+            this.status.id = id;
+            this.status.descripcion = descripcion;
         }
 
         public void SetIDStatus(string idStatus)
@@ -119,12 +134,22 @@ namespace Transito
 
         public string GetIDMotivo()
         {
-            return this.idMotivo;
+            return this.motivo.id;
+        }
+
+        public string GetMotivo()
+        {
+            return this.motivo.descripcion;
         }
 
         public string GetIDStatus()
         {
-            return this.idStatus;
+            return this.status.id;
+        }
+
+        public string GetStatus()
+        {
+            return this.status.descripcion;
         }
 
         public string GetObservaciones()

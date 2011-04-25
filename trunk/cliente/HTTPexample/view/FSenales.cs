@@ -1,8 +1,9 @@
 ﻿using System.Windows.Forms;
 using System.Collections;
 using System;
+using RSTmobile.controller;
 
-namespace RSTmobile.controller
+namespace RSTmobile.view
 {
     public partial class FSenales : Form
     {

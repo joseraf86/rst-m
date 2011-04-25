@@ -5,8 +5,9 @@ using System.Web;
 using System.Net;
 using System.IO;
 using System.Xml;
+using RSTmobile.controller;
 
-namespace RSTmobile.controller
+namespace RSTmobile.view
 {
     public partial class FRepararAveria : Form
     {

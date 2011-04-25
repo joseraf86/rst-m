@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using RSTmobile.controller;
 
-namespace RSTmobile
+namespace RSTmobile.view
 {
     public partial class FMenu : Form
     {
@@ -13,7 +14,7 @@ namespace RSTmobile
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
+            RSTApp rst = RSTApp.GetInstance();
             FConsultarSenal fcsenal = rst.GetConsultarSenal();
             fcsenal.Show();
             this.Hide();
@@ -21,7 +22,7 @@ namespace RSTmobile
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RSTmobile.controller.RSTApp rst = RSTmobile.controller.RSTApp.GetInstance();
+            RSTApp rst = RSTApp.GetInstance();
             FRegistrarSenal frsenal = rst.GetRegistrarSenal();
             frsenal.Show();
             this.Hide();

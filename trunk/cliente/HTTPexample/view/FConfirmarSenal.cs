@@ -6,8 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using RSTmobile.controller;
 
-namespace RSTmobile.controller
+namespace RSTmobile.view
 {
     public partial class FConfirmarSenal : Form
     {

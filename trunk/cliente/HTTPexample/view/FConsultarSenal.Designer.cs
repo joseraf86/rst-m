@@ -1,4 +1,4 @@
-﻿namespace RSTmobile
+﻿namespace RSTmobile.view
 {
     partial class FConsultarSenal
     {

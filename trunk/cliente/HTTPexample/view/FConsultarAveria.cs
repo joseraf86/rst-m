@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using RSTmobile.controller;
+using Transito;
 
-namespace RSTmobile.controller
+namespace RSTmobile.view
 {
     public partial class FConsultarAveria : Form
     {
-        private Transito.Averia averia;
+        private Averia averia;
 
         public FConsultarAveria()
         {
             InitializeComponent();
         }
 
-        public void SetAveria(Transito.Averia averia) {
+        public void SetAveria( Averia averia ) {
             this.averia = averia;
             labelFecha.Text = averia.GetFechaAveria();
             labelMotivo.Text = averia.GetIDMotivo();
