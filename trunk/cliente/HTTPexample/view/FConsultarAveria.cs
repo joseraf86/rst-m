@@ -17,10 +17,15 @@ namespace RSTmobile.view
         public void SetAveria( Averia averia ) {
             this.averia = averia;
             labelFecha.Text = averia.GetFechaAveria();
-            labelMotivo.Text = averia.GetIDMotivo();
+            labelMotivo.Text = averia.GetMotivo();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void textBoxObservaciones_TextChanged(object sender, EventArgs e)
+        {
+            averia.SetObservaciones(textBoxObservaciones.Text);
+        }
+
+        private void buttonReparar_Click(object sender, EventArgs e)
         {
             FRepararAveria fraveria = new FRepararAveria();
             fraveria.SetAveria(averia);
@@ -34,11 +39,6 @@ namespace RSTmobile.view
             FSenal fsenal = rstapp.GetSenal();
             fsenal.Show();
             this.Hide();
-        }
-
-        private void textBoxObservaciones_TextChanged(object sender, EventArgs e)
-        {
-            averia.SetObservaciones(textBoxObservaciones.Text);
         }
 
     }

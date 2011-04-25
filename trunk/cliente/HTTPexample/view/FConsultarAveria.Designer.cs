@@ -31,6 +31,8 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxObservaciones = new System.Windows.Forms.TextBox();
             this.labelMotivo = new System.Windows.Forms.Label();
             this.labelFecha = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,8 +42,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxObservaciones = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,11 +62,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 268);
             // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(15, 138);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 20);
+            this.label4.Text = "Observaciones";
+            // 
+            // textBoxObservaciones
+            // 
+            this.textBoxObservaciones.Location = new System.Drawing.Point(15, 161);
+            this.textBoxObservaciones.Multiline = true;
+            this.textBoxObservaciones.Name = "textBoxObservaciones";
+            this.textBoxObservaciones.Size = new System.Drawing.Size(205, 40);
+            this.textBoxObservaciones.TabIndex = 6;
+            this.textBoxObservaciones.TextChanged += new System.EventHandler(this.textBoxObservaciones_TextChanged);
+            // 
             // labelMotivo
             // 
             this.labelMotivo.Location = new System.Drawing.Point(90, 88);
             this.labelMotivo.Name = "labelMotivo";
-            this.labelMotivo.Size = new System.Drawing.Size(130, 22);
+            this.labelMotivo.Size = new System.Drawing.Size(130, 40);
             // 
             // labelFecha
             // 
@@ -97,7 +113,7 @@
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(2, 219);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(235, 34);
+            this.panel3.Size = new System.Drawing.Size(235, 40);
             // 
             // button2
             // 
@@ -107,7 +123,7 @@
             this.button2.Size = new System.Drawing.Size(72, 20);
             this.button2.TabIndex = 1;
             this.button2.Text = "Reparar";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.buttonReparar_Click);
             // 
             // button1
             // 
@@ -123,7 +139,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.IndianRed;
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(0, 15);
+            this.panel2.Location = new System.Drawing.Point(0, 9);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(240, 34);
             // 
@@ -136,22 +152,6 @@
             this.label1.Size = new System.Drawing.Size(233, 26);
             this.label1.Text = "Consulta de Averia";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBoxObservaciones
-            // 
-            this.textBoxObservaciones.Location = new System.Drawing.Point(15, 161);
-            this.textBoxObservaciones.Multiline = true;
-            this.textBoxObservaciones.Name = "textBoxObservaciones";
-            this.textBoxObservaciones.Size = new System.Drawing.Size(205, 40);
-            this.textBoxObservaciones.TabIndex = 6;
-            this.textBoxObservaciones.TextChanged += new System.EventHandler(this.textBoxObservaciones_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(15, 138);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
-            this.label4.Text = "Observaciones";
             // 
             // FConsultarAveria
             // 

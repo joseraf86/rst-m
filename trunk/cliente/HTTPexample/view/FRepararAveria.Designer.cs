@@ -50,7 +50,7 @@
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(72, 20);
             this.buttonVolver.TabIndex = 0;
-            this.buttonVolver.Text = "Volver";
+            this.buttonVolver.Text = "Cancelar";
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
             // panel1
@@ -140,6 +140,7 @@
             this.Menu = this.mainMenu1;
             this.Name = "FRepararAveria";
             this.Text = "RST";
+            this.Load += new System.EventHandler(this.FRepararAveria_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

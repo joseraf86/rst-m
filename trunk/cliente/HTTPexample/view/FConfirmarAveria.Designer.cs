@@ -90,6 +90,7 @@
             // 
             // buttonEnviar
             // 
+            this.buttonEnviar.BackColor = System.Drawing.Color.PapayaWhip;
             this.buttonEnviar.Location = new System.Drawing.Point(152, 11);
             this.buttonEnviar.Name = "buttonEnviar";
             this.buttonEnviar.Size = new System.Drawing.Size(72, 20);
@@ -99,6 +100,7 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.BackColor = System.Drawing.Color.PapayaWhip;
             this.buttonCancelar.Location = new System.Drawing.Point(15, 11);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(72, 20);
