@@ -160,5 +160,24 @@ class MobileSenal {
 		$auditoria->insertar( "709" );
 	}
 	
+	public function modificarEstado( $id_senal, $id_estad_sen, $averia ) {
+	
+		$conexion 	= new EnlaceBD;
+		$var 		= $conexion->conectar( $_SESSION['db_rst'] );		
+		
+		//$conexion->activarModoDebug();
+		
+		$sql = "UPDATE ".$_SESSION['db_rst'].$_SESSION['schema_db'].".$this->trst_datos_sen SET 
+					id_estad_sen = '$id_estad_sen',
+					averia = '$averia'
+				WHERE id_senal = '$id_senal'";
+		
+		$this->respuesta = $conexion->consultar($sql) 
+			or die("No se pudo registrar la Señal de Tránsito");
+			
+		$conexion->desconectar();
+	
+	}
+	
 } // End Class
 ?>

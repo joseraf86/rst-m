@@ -31,5 +31,5 @@ if ( $data_sesion == 'CONEXION SATISFACTORIA' ) {
 else
 	echo 'ERROR';
 
-echo '<script>parent.location="../view/averia/consultar.php"</script>';
+echo '<script>parent.location="../view/confirmarAveria.php"</script>';
 ?>
