@@ -41,6 +41,7 @@ namespace RSTmobile.view
             textBoxObservaciones.Text = averiaReparada.GetObservaciones();
             pickerFecha.MinDate = Convert.ToDateTime(averiaReparada.GetFechaAveria());
             averiaReparada.SetFechaReparacion(pickerFecha.Value.ToString("dd/MM/yyyy"));
+            //MessageBox.Show(averiaReparada.GetFechaReparacion());
         }
 
         private void pickerFecha_ValueChanged(object sender, EventArgs e)
@@ -50,8 +51,7 @@ namespace RSTmobile.view
 
         private void textBoxObservaciones_TextChanged(object sender, EventArgs e)
         {
-            averiaReparada.SetObservaciones(HttpUtility.UrlEncode(textBoxObservaciones.Text));
-            textBoxObservaciones.Text = averiaReparada.GetObservaciones();
+            averiaReparada.SetObservaciones(textBoxObservaciones.Text);
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
@@ -72,14 +72,13 @@ namespace RSTmobile.view
 
                 user = rst.Usuario.GetInstance();
                 enlace = new HTTP.EnlaceHTTP();
-                MessageBox.Show(HttpUtility.UrlEncode(averia.GetFechaReparacion()));
-
+                
                 vars = "id_op=4" +
-                       "&id_averia=" + averia.GetID() +
-                       "&id_senal=" + averia.GetSenal().GetID() +
-                       "&fecha=" + HttpUtility.UrlEncode(averia.GetFechaReparacion()) +
+                       "&id_averia=" + averiaReparada.GetID() +
+                       "&id_senal=" + averiaReparada.GetSenal().GetID() +
+                       "&fecha=" + HttpUtility.UrlEncode(averiaReparada.GetFechaReparacion()) +
                        "&login=" + user.GetLogin() +
-                       "&observaciones=" + HttpUtility.UrlEncode(averia.GetObservaciones());
+                       "&observaciones=" + HttpUtility.UrlEncode(averiaReparada.GetObservaciones());
 
                 try
                 {

@@ -61,20 +61,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\ConsultaSenalController.cs" />
+    <Compile Include="controller\XmlController.cs" />
     <Compile Include="model\Averia.cs" />
     <Compile Include="model\EnlaceHTTP.cs" />
     <Compile Include="model\Estado.cs" />
     <Compile Include="model\Utils.cs" />
-    <Compile Include="view\FAveria.cs">
+    <Compile Include="view\averia\FAveria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FAveria.Designer.cs">
+    <Compile Include="view\averia\FAveria.Designer.cs">
       <DependentUpon>FAveria.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FConsultarSenal.cs">
+    <Compile Include="view\senal\FConsultarSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FConsultarSenal.Designer.cs">
+    <Compile Include="view\senal\FConsultarSenal.Designer.cs">
       <DependentUpon>FConsultarSenal.cs</DependentUpon>
     </Compile>
     <Compile Include="view\FMain.cs">
@@ -89,27 +91,27 @@
     <Compile Include="view\FMenu.Designer.cs">
       <DependentUpon>FMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FRegistrarSenal.cs">
+    <Compile Include="view\senal\FRegistrarSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FRegistrarSenal.Designer.cs">
+    <Compile Include="view\senal\FRegistrarSenal.Designer.cs">
       <DependentUpon>FRegistrarSenal.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FSenal.cs">
+    <Compile Include="view\senal\FSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FSenal.Designer.cs">
+    <Compile Include="view\senal\FSenal.Designer.cs">
       <DependentUpon>FSenal.cs</DependentUpon>
     </Compile>
     <Compile Include="model\HtmlEntities.cs" />
     <Compile Include="model\HttpUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="view\FAveria.resx">
+    <EmbeddedResource Include="view\averia\FAveria.resx">
       <DependentUpon>FAveria.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FConsultarSenal.resx">
+    <EmbeddedResource Include="view\senal\FConsultarSenal.resx">
       <DependentUpon>FConsultarSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -121,11 +123,11 @@
       <DependentUpon>FMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FRegistrarSenal.resx">
+    <EmbeddedResource Include="view\senal\FRegistrarSenal.resx">
       <DependentUpon>FRegistrarSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FSenal.resx">
+    <EmbeddedResource Include="view\senal\FSenal.resx">
       <DependentUpon>FSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -134,23 +136,23 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FConfirmarAveria.resx">
+    <EmbeddedResource Include="view\averia\FConfirmarAveria.resx">
       <DependentUpon>FConfirmarAveria.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FConfirmarSenal.resx">
+    <EmbeddedResource Include="view\senal\FConfirmarSenal.resx">
       <DependentUpon>FConfirmarSenal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FConsultarAveria.resx">
+    <EmbeddedResource Include="view\averia\FConsultarAveria.resx">
       <DependentUpon>FConsultarAveria.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FRepararAveria.resx">
+    <EmbeddedResource Include="view\averia\FRepararAveria.resx">
       <DependentUpon>FRepararAveria.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\FSenales.resx">
+    <EmbeddedResource Include="view\senal\FSenales.resx">
       <DependentUpon>FSenales.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -166,34 +168,34 @@
       <DependentUpon>ubicacionDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="model\Usuario.cs" />
-    <Compile Include="view\FConfirmarAveria.cs">
+    <Compile Include="view\averia\FConfirmarAveria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FConfirmarAveria.Designer.cs">
+    <Compile Include="view\averia\FConfirmarAveria.Designer.cs">
       <DependentUpon>FConfirmarAveria.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FConfirmarSenal.cs">
+    <Compile Include="view\senal\FConfirmarSenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FConfirmarSenal.Designer.cs">
+    <Compile Include="view\senal\FConfirmarSenal.Designer.cs">
       <DependentUpon>FConfirmarSenal.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FConsultarAveria.cs">
+    <Compile Include="view\averia\FConsultarAveria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FConsultarAveria.Designer.cs">
+    <Compile Include="view\averia\FConsultarAveria.Designer.cs">
       <DependentUpon>FConsultarAveria.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FRepararAveria.cs">
+    <Compile Include="view\averia\FRepararAveria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FRepararAveria.Designer.cs">
+    <Compile Include="view\averia\FRepararAveria.Designer.cs">
       <DependentUpon>FRepararAveria.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\FSenales.cs">
+    <Compile Include="view\senal\FSenales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\FSenales.Designer.cs">
+    <Compile Include="view\senal\FSenales.Designer.cs">
       <DependentUpon>FSenales.cs</DependentUpon>
     </Compile>
     <Compile Include="controller\RSTApp.cs" />

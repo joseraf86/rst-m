@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Collections;
-using System.Text;
-using System.Data;
 using System.Data.SqlServerCe;
-using System.Data.Common;
-using System.IO;
 using RST;
+using System.Windows.Forms;
 
 namespace Transito
 {
@@ -23,32 +19,32 @@ namespace Transito
         private string x;
         private string y;
 
-        private string idTipo;
-        private string idCategoria;
+        private Celda tipo;
+        private Celda categoria;
         private Celda senal;
 
-        private int idEstado;
-        private string idEstatus;
+        private Celda estado;
+        private Celda estatus;
 
-        private string codEstado;
-        private string codMunicipio;
-        private string codParroquia;
+        private Celda entidad;
+        private Celda municipio;
+        private Celda parroquia;
 
         private string observaciones;
         private string idAveria;
 
         public SenalTransito()
         {
-            idTipo = "";
-            idCategoria = "";
+            tipo.id = "";
+            categoria.id = "";
             senal.id = "";
 
-            idEstado = 0;
-            idEstatus = "";
+            estado.id = "";
+            estatus.id = "";
 
-            codEstado = "";
-            codMunicipio = "";
-            codParroquia = "";
+            entidad.id = "";
+            municipio.id = "";
+            parroquia.id = "";
 
             idAveria = "";
         }
@@ -58,51 +54,69 @@ namespace Transito
         {
             this.id = id;
         }
+
         public void SetX(string x)
         {
             this.x = x;
         }
+
         public void SetY(string y)
         {
             this.y = y;
         }
-        public void SetIDTipo(string idTipo)
+        public void SetTipo( string idTipo, string descripcion )
         {
-            this.idTipo = idTipo;
+            tipo.id = idTipo;
+            tipo.descripcion = descripcion;
         }
-        public void SetIDCategoria(string idCategoria)
+
+        public void SetCategoria(string idCategoria, string descripcion)
         {
-            this.idCategoria = idCategoria;
+            categoria.id = idCategoria;
+            categoria.descripcion = descripcion;
         }
+
         public void SetSenal(string idSenal, string descripcion )
         {
             senal.id = idSenal;
             senal.descripcion = descripcion;
         }
-        public void SetIDEstado(int idEstado)
+
+        public void SetEstado(string idEstado, string descripcion)
         {
-            this.idEstado = idEstado;
+            estado.id = idEstado;
+            estado.descripcion = descripcion;
         }
-        public void SetIDEstatus(string idEstatus)
+
+        public void SetEstatus(string idEstatus, string descripcion )
         {
-            this.idEstatus = idEstatus;
+            estatus.id = idEstatus;
+            estatus.descripcion = descripcion;
         }
-        public void SetCodEstado(string codEstado)
+
+        public void SetEntidad(string codEstado, string descripcion )
         {
-            this.codEstado = codEstado;
+            entidad.id = codEstado;
+            entidad.descripcion = descripcion;
         }
-        public void SetCodMunicipio(string codMunicipio)
+
+        public void SetMunicipio(string codMunicipio, string descripcion)
         {
-            this.codMunicipio = codMunicipio;
+            municipio.id = codMunicipio;
+            municipio.descripcion = descripcion;
         }
-        public void SetCodParroquia(string codParroquia)
+
+        public void SetParroquia(string codParroquia, string descripcion)
         {
-            this.codParroquia = codParroquia;
+            parroquia.id = codParroquia;
+            parroquia.descripcion = descripcion;
         }
+
         public void SetObservaciones(string observaciones)
         {
             this.observaciones = observaciones;
         }
+
         public void SetIDAveria(string idAveria)
         {
             this.idAveria = idAveria;
@@ -123,39 +137,73 @@ namespace Transito
         }
         public string GetIDTipo()
         {
-            return this.idTipo;
+            return this.tipo.id;
+        }
+        public string GetDescripcionTipo()
+        {
+            return this.tipo.descripcion;
         }
         public string GetIDCategoria()
         {
-            return this.idCategoria;
+            return this.categoria.id;
+        }
+        public string GetDescripcionCategoria()
+        {
+            return this.categoria.descripcion;
         }
         public string GetIDSenal()
         {
             return senal.id;
         }
+
         public string GetSenal()
         {
             return senal.descripcion;
         }
-        public int GetIDEstado()
+
+        public string GetIDEstado()
         {
-            return this.idEstado;
+            return estado.id;
         }
+
+        public string GetDescEstado()
+        {
+            return estado.descripcion;
+        }
+
         public string GetIDEstatus()
         {
-            return this.idEstatus;
+            return estatus.id;
         }
+
+        public string GetDescripcionEstatus()
+        {
+            return estatus.descripcion;
+        }
+
         public string GetCodEstado()
         {
-            return this.codEstado;
+            return entidad.id;
+        }
+        public string GetEntidad()
+        {
+            return entidad.descripcion;
         }
         public string GetCodMunicipio()
         {
-            return this.codMunicipio;
+            return municipio.id;
+        }
+        public string GetMunicipio()
+        {
+            return municipio.descripcion;
         }
         public string GetCodParroquia()
         {
-            return this.codParroquia;
+            return parroquia.id;
+        }
+        public string GetParroquia()
+        {
+            return parroquia.descripcion;
         }
         public string GetObservaciones()
         {
@@ -173,16 +221,16 @@ namespace Transito
             str += ", " + x;
             str += ", " + y;
 
-            str += ", " + idTipo;
-            str += ", " + idCategoria;
+            str += ", " + tipo.id;
+            str += ", " + categoria.id;
             str += ", " + senal.id;
 
-            str += ", " + idEstado;
-            str += ", " + idEstatus;
+            str += ", " + estado.id;
+            str += ", " + estatus.id;
 
-            str += ", " + codEstado;
-            str += ", " + codMunicipio;
-            str += ", " + codParroquia;
+            str += ", " + entidad.id;
+            str += ", " + municipio.id;
+            str += ", " + parroquia.id;
 
             str += ", " + idAveria;
             str += ")";
@@ -394,7 +442,6 @@ namespace Transito
             return list;
         }
 
-
         /* Consultar señales de transito por tipo, categoria, señal, estado, municipio, parroquia y coordenadas */
         public string ConsultarSenalesPor(string idTipo,
                                              string idCategoria,
@@ -498,6 +545,82 @@ namespace Transito
             }
 
             return queryResult;
+        }
+
+        public ArrayList ConsultarEstados()
+        {
+            string sdf_path;
+            SqlCeEngine engine;
+            SqlCeDataReader rdr;
+
+            ArrayList list = new ArrayList();
+            Celda aux;
+
+            try
+            {
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
+                engine = new SqlCeEngine(sdf_path);
+                conn = new SqlCeConnection(sdf_path);
+                conn.Open();
+
+                cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT id_estad_sen, descripcion FROM rst_estad_sen";
+                cmd.ExecuteNonQuery();
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    aux.id = "" + rdr.GetDecimal(0);
+                    aux.descripcion = rdr.GetString(1);
+                    list.Add(aux);
+                }
+            }
+            catch (SqlCeException e)
+            {
+                e.ToString();
+                //ShowErrors(e);
+            }
+
+          /*  foreach (Celda cel in list){
+                MessageBox.Show("id "+cel.id+" descripcion "+cel.descripcion);
+            }*/
+            return list;
+        }
+
+        public ArrayList ConsultarLosStatus()
+        {
+            string sdf_path;
+            SqlCeEngine engine;
+            ArrayList list = new ArrayList();
+            Celda aux;
+            try
+            {
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
+                engine = new SqlCeEngine(sdf_path);
+
+                conn = new SqlCeConnection(sdf_path);
+                conn.Open();
+                cmd = conn.CreateCommand();
+
+                cmd.CommandText = "SELECT id_status, descripcion FROM estatus";
+                cmd.ExecuteNonQuery();
+
+                SqlCeDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    aux.id = "" + rdr.GetString(0);
+                    aux.descripcion = rdr.GetString(1);
+                    list.Add(aux);
+                }
+
+            }
+            catch (SqlCeException e)
+            {
+                e.ToString();
+                //ShowErrors(e);
+            }
+
+            return list;
         }
 
     }
