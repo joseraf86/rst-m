@@ -18,6 +18,7 @@ namespace RSTmobile.view
             this.averia = averia;
             labelFecha.Text = averia.GetFechaAveria();
             labelMotivo.Text = averia.GetMotivo();
+            textBoxObservaciones.Text = averia.GetObservaciones();
         }
 
         private void textBoxObservaciones_TextChanged(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace RSTmobile.view
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonVolver_Click(object sender, EventArgs e)
         {
             RSTApp rstapp = RSTApp.GetInstance();
             FSenal fsenal = rstapp.GetSenal();

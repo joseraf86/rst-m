@@ -38,7 +38,7 @@ namespace RSTmobile.view
             path = "RSTmobile/servidor/controller/MobileAveriaController.php";
 
             averia.GetSenal().SetIDAveria("S");
-            averia.GetSenal().SetIDEstado(2);
+            averia.GetSenal().SetEstado("2","REGULAR");
 
             vars = "id_op=2" +
                    "&id_senal=" + averia.GetSenal().GetID() +

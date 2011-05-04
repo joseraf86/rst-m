@@ -249,6 +249,22 @@ namespace RSTmobile.view
             string currentNode = "";
             HTTP.EnlaceHTTP enlace = new HTTP.EnlaceHTTP();
             XmlTextReader xmlReader;
+            string cod_municipio = "";
+            string cod_parroquia = "";
+
+            int flags = 0;
+
+            if (comboTipo.SelectedIndex == 0)
+                flags += Transito.Senal.CUALQUIER_TIPO;
+
+            if (comboEntidad.SelectedIndex == 0)
+                flags += Transito.Senal.CUALQUIER_ENTIDAD;
+
+            if (flags == 0)
+            {
+                MessageBox.Show("Por favor, seleccione al menos una restricción");
+                return;
+            }
 
             user = rst.Usuario.GetInstance();
             domainName = user.GetServer();
@@ -308,28 +324,32 @@ namespace RSTmobile.view
                                         senal.SetY(xmlReader.Value);
                                         break;
                                     case "tipo"://Convert.ToInt32(
-                                        senal.SetIDTipo(xmlReader.Value);
+                                        senal.SetTipo(xmlReader.Value,"");
                                         break;
                                     case "categoria":
-                                        senal.SetIDCategoria(xmlReader.Value);
+                                        senal.SetCategoria(xmlReader.Value,"");
                                         break;
                                     case "descripcion":
                                         senal.SetSenal(xmlReader.Value, "");
                                         break;
                                     case "estado":
-                                        senal.SetIDEstado(Convert.ToInt32(xmlReader.Value.ToString()));
+                                        senal.SetEstado(xmlReader.Value.ToString(),"");
                                         break;
                                     case "estatus":
-                                        senal.SetIDEstatus(xmlReader.Value.ToString());
+                                        senal.SetEstatus(xmlReader.Value.ToString(),"");
                                         break;
                                     case "entidad":
-                                        senal.SetCodEstado(xmlReader.Value.ToString());
+                                        senal.SetEntidad(xmlReader.Value.ToString(),"");
                                         break;
                                     case "municipio":
-                                        senal.SetCodMunicipio(xmlReader.Value.ToString());
+                                        cod_municipio = xmlReader.Value.ToString();
+                                        senal.SetMunicipio(cod_municipio, ubicacion.DescribirMunicipio(cod_municipio));
+                                        cod_municipio = "";
                                         break;
                                     case "parroquia":
-                                        senal.SetCodParroquia(xmlReader.Value.ToString());
+                                        cod_parroquia = xmlReader.Value.ToString();
+                                        senal.SetParroquia(cod_parroquia, ubicacion.DescribirParrroquia(cod_parroquia));
+                                        cod_parroquia = "";
                                         break;
                                     case "averia":
                                         senal.SetIDAveria(xmlReader.Value.ToString());
@@ -351,25 +371,12 @@ namespace RSTmobile.view
                         FSenales fsenales = new FSenales();
                         RSTApp rstapp = RSTApp.GetInstance();
                         rstapp.SetSenales(fsenales);
-                        fsenales.SetSenales(senales);
+                        fsenales.SetSenales(senales, flags);
                         fsenales.Show();
                         this.Hide();
                     }
                     else
                         MessageBox.Show("No se encontraron señales con las opciones especificadas");
-
-                    /*
-                    if (senal != null)
-                    {
-                        view.RSTApp rstapp = view.RSTApp.GetInstance();
-                        FSenal fsenal = rstapp.GetSenal();
-                        fsenal.SetSenal(senal);
-                        fsenal.Show();
-                        this.Hide();
-                    }
-                     */
-                    //    MessageBox.Show("No se encontraron señales");
-
                 }
 
             }

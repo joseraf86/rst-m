@@ -146,6 +146,38 @@ namespace Ubicacion
             return list;
         }
 
+        public string DescribirMunicipio( string id )
+        {
+            string sdf_path;
+            SqlCeEngine engine;
+            string descripcion = "";
+            try
+            {
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
+                engine = new SqlCeEngine(sdf_path);
+                conn = new SqlCeConnection(sdf_path);
+                conn.Open();
+                cmd = conn.CreateCommand();
+
+                cmd.CommandText = "SELECT municipio FROM municipio WHERE cod_municipio = '"+id+"'";
+                cmd.ExecuteNonQuery();
+
+                SqlCeDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    descripcion = rdr.GetString(0);
+                }
+
+            }
+            catch (SqlCeException e)
+            {
+                e.ToString();
+                //ShowErrors(e);
+            }
+
+            return descripcion;
+        }
+        
         public ArrayList ConsultarParroquias( string id )
         {
             string sdf_path;
@@ -180,6 +212,38 @@ namespace Ubicacion
             }
 
             return list;
+        }
+
+        public string DescribirParrroquia(string id)
+        {
+            string sdf_path;
+            SqlCeEngine engine;
+            string descripcion = "";
+            try
+            {
+                sdf_path = "Data Source = " + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\db_rst.sdf;Persist Security Info=False;";
+                engine = new SqlCeEngine(sdf_path);
+                conn = new SqlCeConnection(sdf_path);
+                conn.Open();
+                cmd = conn.CreateCommand();
+
+                cmd.CommandText = "SELECT parroquia FROM parroquia WHERE cod_parroquia = '" + id + "'";
+                cmd.ExecuteNonQuery();
+
+                SqlCeDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    descripcion = rdr.GetString(0);
+                }
+
+            }
+            catch (SqlCeException e)
+            {
+                e.ToString();
+                //ShowErrors(e);
+            }
+
+            return descripcion;
         }
 
 

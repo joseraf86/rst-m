@@ -55,7 +55,7 @@ namespace RSTmobile
             averia.SetObservaciones(observaciones.Text);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCancelar_Click(object sender, EventArgs e)
         {
             RSTmobile.controller.RSTApp rstapp = RSTmobile.controller.RSTApp.GetInstance();
             FSenal fsenal = rstapp.GetSenal();

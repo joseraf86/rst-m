@@ -15,7 +15,7 @@ namespace RSTmobile.view
             InitializeComponent();
         }
 
-        public void SetSenales(ArrayList senales)
+        public void SetSenales(ArrayList senales, int flags)
         {
             int i = 0;
             int tam = 24;
@@ -26,16 +26,13 @@ namespace RSTmobile.view
                 buttonSenal = new Button();
                 buttonSenal.Location = new System.Drawing.Point(16, 50+i*tam);
                 buttonSenal.Name = "l_"+i;
-                buttonSenal.Size = new System.Drawing.Size(128, 16);
+                buttonSenal.Size = new System.Drawing.Size(180, 16);
                 buttonSenal.TabIndex = 0;
-                buttonSenal.Text = senal.GetCodParroquia();
-                //label.Font.Style = System.Drawing.FontStyle.Underline;
+                buttonSenal.Text = senal.GetMunicipio() + ", " + senal.GetParroquia();
+                //MessageBox.Show(""+buttonSenal.Text.Length);
                 buttonSenal.Click += new System.EventHandler(label_Click);
-                // Add the control to the form.
                 panel1.Controls.Add(buttonSenal);
                 i++;
-
-               // MessageBox.Show(senal.GetCodParroquia());
             }
             this.ResumeLayout(false);
 

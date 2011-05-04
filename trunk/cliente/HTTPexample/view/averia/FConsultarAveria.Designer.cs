@@ -39,7 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonVolver = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -71,9 +71,11 @@
             // 
             // textBoxObservaciones
             // 
+            this.textBoxObservaciones.BackColor = System.Drawing.Color.PapayaWhip;
             this.textBoxObservaciones.Location = new System.Drawing.Point(15, 161);
             this.textBoxObservaciones.Multiline = true;
             this.textBoxObservaciones.Name = "textBoxObservaciones";
+            this.textBoxObservaciones.ReadOnly = true;
             this.textBoxObservaciones.Size = new System.Drawing.Size(205, 40);
             this.textBoxObservaciones.TabIndex = 6;
             this.textBoxObservaciones.TextChanged += new System.EventHandler(this.textBoxObservaciones_TextChanged);
@@ -110,7 +112,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.IndianRed;
             this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.buttonVolver);
             this.panel3.Location = new System.Drawing.Point(2, 219);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(235, 40);
@@ -125,15 +127,15 @@
             this.button2.Text = "Reparar";
             this.button2.Click += new System.EventHandler(this.buttonReparar_Click);
             // 
-            // button1
+            // buttonVolver
             // 
-            this.button1.BackColor = System.Drawing.Color.PapayaWhip;
-            this.button1.Location = new System.Drawing.Point(13, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 20);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Volver";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonVolver.BackColor = System.Drawing.Color.PapayaWhip;
+            this.buttonVolver.Location = new System.Drawing.Point(13, 8);
+            this.buttonVolver.Name = "buttonVolver";
+            this.buttonVolver.Size = new System.Drawing.Size(72, 20);
+            this.buttonVolver.TabIndex = 0;
+            this.buttonVolver.Text = "Volver";
+            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
             // panel2
             // 
@@ -176,7 +178,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelMotivo;
         private System.Windows.Forms.Label labelFecha;

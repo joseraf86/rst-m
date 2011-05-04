@@ -44,7 +44,6 @@
             this.botonGuardar = new System.Windows.Forms.PictureBox();
             this.botonReset = new System.Windows.Forms.PictureBox();
             this.boVolver = new System.Windows.Forms.PictureBox();
-            this.botonAveria = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -164,10 +164,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.IndianRed;
+            this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.botonGuardar);
             this.panel3.Controls.Add(this.botonReset);
             this.panel3.Controls.Add(this.boVolver);
-            this.panel3.Controls.Add(this.botonAveria);
             this.panel3.Location = new System.Drawing.Point(1, 492);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(227, 40);
@@ -176,15 +176,15 @@
             // 
             this.botonGuardar.BackColor = System.Drawing.Color.IndianRed;
             this.botonGuardar.Image = ((System.Drawing.Image)(resources.GetObject("botonGuardar.Image")));
-            this.botonGuardar.Location = new System.Drawing.Point(79, 5);
+            this.botonGuardar.Location = new System.Drawing.Point(109, 4);
             this.botonGuardar.Name = "botonGuardar";
-            this.botonGuardar.Size = new System.Drawing.Size(18, 30);
+            this.botonGuardar.Size = new System.Drawing.Size(32, 31);
             this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
             // botonReset
             // 
             this.botonReset.Image = ((System.Drawing.Image)(resources.GetObject("botonReset.Image")));
-            this.botonReset.Location = new System.Drawing.Point(39, 4);
+            this.botonReset.Location = new System.Drawing.Point(60, 5);
             this.botonReset.Name = "botonReset";
             this.botonReset.Size = new System.Drawing.Size(32, 31);
             this.botonReset.Click += new System.EventHandler(this.botonReset_Click);
@@ -196,17 +196,6 @@
             this.boVolver.Name = "boVolver";
             this.boVolver.Size = new System.Drawing.Size(27, 32);
             this.boVolver.Click += new System.EventHandler(this.boVolver_Click);
-            // 
-            // botonAveria
-            // 
-            this.botonAveria.BackColor = System.Drawing.Color.PapayaWhip;
-            this.botonAveria.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold);
-            this.botonAveria.Location = new System.Drawing.Point(101, 4);
-            this.botonAveria.Name = "botonAveria";
-            this.botonAveria.Size = new System.Drawing.Size(117, 32);
-            this.botonAveria.TabIndex = 6;
-            this.botonAveria.Text = "Consultar Averia";
-            this.botonAveria.Click += new System.EventHandler(this.botonAveria_Click);
             // 
             // label10
             // 
@@ -354,6 +343,14 @@
             this.label1.Text = "Datos de Señal de Tránsito";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(158, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 31);
+            this.pictureBox1.Click += new System.EventHandler(this.botonNotificar_Click);
+            // 
             // FSenal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -399,11 +396,11 @@
         private System.Windows.Forms.ComboBox comboEstatus;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboEstado;
-        private System.Windows.Forms.Button botonAveria;
         private System.Windows.Forms.PictureBox boVolver;
         private System.Windows.Forms.PictureBox botonReset;
         private System.Windows.Forms.PictureBox botonGuardar;
         private System.Windows.Forms.TextBox textBoxObservaciones;
         private System.Windows.Forms.Label labelObs;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

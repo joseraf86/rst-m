@@ -46,7 +46,7 @@
             // buttonVolver
             // 
             this.buttonVolver.BackColor = System.Drawing.Color.PapayaWhip;
-            this.buttonVolver.Location = new System.Drawing.Point(16, 8);
+            this.buttonVolver.Location = new System.Drawing.Point(16, 10);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(72, 20);
             this.buttonVolver.TabIndex = 0;
@@ -60,12 +60,12 @@
             this.panel1.Controls.Add(this.buttonVolver);
             this.panel1.Location = new System.Drawing.Point(0, 222);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 34);
+            this.panel1.Size = new System.Drawing.Size(240, 40);
             // 
             // buttonReparar
             // 
             this.buttonReparar.BackColor = System.Drawing.Color.PapayaWhip;
-            this.buttonReparar.Location = new System.Drawing.Point(147, 8);
+            this.buttonReparar.Location = new System.Drawing.Point(147, 10);
             this.buttonReparar.Name = "buttonReparar";
             this.buttonReparar.Size = new System.Drawing.Size(73, 20);
             this.buttonReparar.TabIndex = 1;
@@ -80,6 +80,7 @@
             this.pickerFecha.Name = "pickerFecha";
             this.pickerFecha.Size = new System.Drawing.Size(88, 22);
             this.pickerFecha.TabIndex = 1;
+            this.pickerFecha.Value = new System.DateTime(2011, 5, 4, 0, 0, 0, 0);
             this.pickerFecha.ValueChanged += new System.EventHandler(this.pickerFecha_ValueChanged);
             // 
             // label1

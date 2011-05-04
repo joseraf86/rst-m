@@ -26,16 +26,16 @@ namespace RSTmobile.view
             labelCoordX.Text = senal.GetX();
             labelCoordY.Text = senal.GetY();
 
-            labelTipo.Text = senal.GetIDTipo();
-            labelCategoria.Text = senal.GetIDCategoria();
-            labelSenal.Text = senal.GetIDSenal();
+            labelTipo.Text = senal.GetDescripcionTipo();
+            labelCategoria.Text = senal.GetDescripcionCategoria();
+            labelSenal.Text = senal.GetSenal();
 
-            labelEstado.Text = "" + senal.GetIDEstado();
-            labelEstatus.Text = senal.GetIDEstatus();
+            labelEstado.Text = "" + senal.GetDescEstado();
+            labelEstatus.Text = senal.GetDescripcionEstatus();
 
-            labelEntidad.Text = senal.GetCodEstado();
-            labelMunicio.Text = senal.GetCodMunicipio();
-            labelParroquia.Text = senal.GetCodParroquia();
+            labelEntidad.Text = senal.GetEntidad();
+            labelMunicio.Text = senal.GetMunicipio();
+            labelParroquia.Text = senal.GetParroquia();
         }
 
         private void botonCancelar_Click(object sender, EventArgs e)

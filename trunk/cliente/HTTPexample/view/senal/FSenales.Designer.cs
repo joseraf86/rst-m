@@ -31,13 +31,13 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.botonVolver = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -49,6 +49,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(239, 268);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.IndianRed;
+            this.panel3.Controls.Add(this.botonVolver);
+            this.panel3.Location = new System.Drawing.Point(0, 214);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(239, 40);
+            // 
             // botonVolver
             // 
             this.botonVolver.BackColor = System.Drawing.Color.PapayaWhip;
@@ -56,7 +64,7 @@
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(65, 26);
             this.botonVolver.TabIndex = 1;
-            this.botonVolver.Text = "volver";
+            this.botonVolver.Text = "Cancelar";
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // panel2
@@ -77,14 +85,6 @@
             this.label1.Text = "Listado de Señales";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.IndianRed;
-            this.panel3.Controls.Add(this.botonVolver);
-            this.panel3.Location = new System.Drawing.Point(0, 214);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(239, 40);
-            // 
             // FSenales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -96,8 +96,8 @@
             this.Name = "FSenales";
             this.Text = "RST";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
