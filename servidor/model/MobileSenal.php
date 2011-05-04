@@ -65,6 +65,7 @@ class MobileSenal {
 							ds.cod_municipio as cod_municipio,
 							ds.cod_parroquia as cod_parroquia,
 							$fmt_fecha as fecha_registro,
+							observaciones as observaciones,
 							ds.desc_image_sen as desc_image_sen
 						FROM db_rst.rst_datos_sen as ds 
 						WHERE $condicion";
@@ -86,6 +87,7 @@ class MobileSenal {
 			$xml .= '<municipio>'.$temparray['cod_municipio'].'</municipio>';
 			$xml .= '<parroquia>'.$temparray['cod_parroquia'].'</parroquia>';
 			$xml .= '<averia>'.$temparray['averia'].'</averia>';
+			$xml .= '<observaciones>'.$temparray['observaciones'].'</observaciones>';
 			$xml .= '</senal>';
 		}
 		
