@@ -76,9 +76,10 @@ switch ($id_op) {
 		$id_senal			= $_POST['id_senal'];
 		$fecha_reparacion	= $_POST['fecha'];
 		$login_reparacion	= $_POST['login'];
+		$observaciones		= $_POST['observaciones'];
 		
 		$averia = new MobileAveria;
-		$averia->reparar( $id_averia, $login_reparacion, $fecha_reparacion ); 
+		$averia->reparar( $id_averia, $login_reparacion, $fecha_reparacion, $observaciones ); 
 		
 		$senal = new MobileSenal;
 		$senal->modificarEstado( $id_senal, 1, "N" );

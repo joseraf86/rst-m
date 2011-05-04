@@ -13,13 +13,14 @@ class MobileAveria {
 		
 		$var 		= $conexion->conectar( $_SESSION['db_rst'] );
 		//$conexion->activarModoDebug();
-		$fmt_fecha 	= $conexion->extraerCampoFechaHora('fecha_registro'); // '%d/%m/%Y %H:%i:%s'
+		$fmt_fecha 	= $conexion->extraerCampoFechaHora('fecha_averia'); // '%d/%m/%Y %H:%i:%s'
 
 		$sql	= "SELECT 	id_senal as id_senal,
 							id_averia as id_averia,
-							$fmt_fecha as fecha_registro,
+							$fmt_fecha as fecha_averia,
 							id_motiv_ave as id_motivo,
-							login_registro as login_registro
+							login_registro as login_registro,
+							observaciones as observaciones
 						FROM db_rst.rst_datos_ave as rave
 						WHERE id_senal = '$id_senal'";
 		
@@ -31,8 +32,9 @@ class MobileAveria {
 			$xml .= '<averia id="'.$temparray['id_averia'].'">'; 
 			$xml .= '<senal>'.$temparray['id_senal'].'</senal>';
 			$xml .= '<motivo>'.$temparray['id_motivo'].'</motivo>';
-			//$xml .= '<fecha>'.$temparray['fecha_registro'].'</fecha>';
+			$xml .= '<fecha>'.$temparray['fecha_averia'].'</fecha>';
 			$xml .= '<login>'.$temparray['login_registro'].'</login>';
+			$xml .= '<observaciones>'.$temparray['observaciones'].'</observaciones>';
 			$xml .= '</averia>';
 		}
 		$xml .= '</rst>';
@@ -98,7 +100,7 @@ class MobileAveria {
 	
 	}
 	
-	public function reparar ( $id_averia, $login_reparacion, $fecha_reparacion	) {
+	public function reparar ( $id_averia, $login_reparacion, $fecha_reparacion, $observaciones ) {
 	
 		$conexion 	= new EnlaceBD;
 		$var 		= $conexion->conectar( $_SESSION['db_rst'] );		
@@ -108,7 +110,8 @@ class MobileAveria {
 				
 		$sql = "UPDATE ".$_SESSION['db_rst'].$_SESSION['schema_db'].".$this->trst_datos_ave SET 
 					login_reparacion = '$login_reparacion',
-					fecha_reparacion = $fmt_fecha_rep
+					fecha_reparacion = $fmt_fecha_rep,
+					observaciones = $observaciones
 				WHERE id_averia = '$id_averia'";				
 		
 		$fp = fopen('sql.txt','a' ); 
